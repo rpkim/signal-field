@@ -1,0 +1,61 @@
+@import "./tokens.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: var(--leading-body);
+  color: var(--color-ink);
+  background:
+    radial-gradient(120% 80% at 0% 0%, rgb(15 118 110 / 0.05), transparent 50%),
+    radial-gradient(90% 60% at 100% 0%, rgb(18 20 26 / 0.04), transparent 45%),
+    linear-gradient(180deg, #f8f9fa 0%, var(--color-field) 40%, #eef0f3 100%);
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+a {
+  color: var(--color-ink);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--color-signal-deep);
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--elev-focus);
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}

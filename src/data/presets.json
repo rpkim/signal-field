@@ -1,0 +1,111 @@
+{
+  "label": "Presets (saved mixes)",
+  "items": [
+    {
+      "id": "precise-quiet",
+      "name": "Precise quiet tech",
+      "ko": "\uc815\ubc00\u00b7\uace0\uc694",
+      "mix": {
+        "research": [
+          "wcag-22",
+          "m3-roles",
+          "fluid-type"
+        ],
+        "references": [
+          "ibm-lang"
+        ],
+        "color": "signal-teal",
+        "type": "plex",
+        "density": "default"
+      }
+    },
+    {
+      "id": "day-editorial",
+      "name": "Day editorial",
+      "ko": "\ubc1d\uc740 \ud3b8\uc9d1",
+      "mix": {
+        "research": [
+          "fluid-type",
+          "content-plain"
+        ],
+        "references": [
+          "awwwards",
+          "brandnew"
+        ],
+        "color": "day-mist",
+        "type": "plex",
+        "density": "comfortable"
+      }
+    },
+    {
+      "id": "warm-commerce",
+      "name": "Warm commerce",
+      "ko": "\ub530\ub73b\ud55c \ucee4\uba38\uc2a4",
+      "mix": {
+        "research": [
+          "m3-roles",
+          "content-plain"
+        ],
+        "references": [
+          "polaris"
+        ],
+        "color": "kiln-copper",
+        "type": "outfit-source",
+        "density": "comfortable"
+      }
+    },
+    {
+      "id": "utility-clear",
+      "name": "Utility clear",
+      "ko": "\uc720\ud2f8\u00b7\uc811\uadfc\uc131",
+      "mix": {
+        "research": [
+          "wcag-22",
+          "content-plain"
+        ],
+        "references": [
+          "govuk",
+          "atlassian"
+        ],
+        "color": "clear-ink",
+        "type": "plex",
+        "density": "a11y-large"
+      }
+    },
+    {
+      "id": "soft-product",
+      "name": "Soft product",
+      "ko": "\uc18c\ud504\ud2b8 \uc81c\ud488",
+      "mix": {
+        "research": [
+          "apple-deference",
+          "fluid-type"
+        ],
+        "references": [
+          "brandnew"
+        ],
+        "color": "soft-sage",
+        "type": "jakarta",
+        "density": "comfortable"
+      }
+    },
+    {
+      "id": "ink-ledger",
+      "name": "Ink ledger",
+      "ko": "\uc789\ud06c\u00b7\uc7a5\ubd80",
+      "mix": {
+        "research": [
+          "wcag-22",
+          "m3-roles"
+        ],
+        "references": [
+          "ibm-lang",
+          "atlassian"
+        ],
+        "color": "ledger-slate",
+        "type": "grotesk-source",
+        "density": "compact"
+      }
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "axis": "type",
+  "label": "Type pairing",
+  "select": "one",
+  "default": "plex",
+  "items": [
+    {
+      "id": "plex",
+      "name": "IBM Plex Sans",
+      "display": "IBM Plex Sans",
+      "body": "IBM Plex Sans",
+      "mono": "IBM Plex Mono",
+      "google": "family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500",
+      "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", sans-serif",
+      "rationale": "Default Signal Field — institutional product clarity; weight scale instead of novelty display.",
+      "trackingDisplay": "-0.015em"
+    },
+    {
+      "id": "source-sans",
+      "name": "Source Sans 3",
+      "display": "Source Sans 3",
+      "body": "Source Sans 3",
+      "mono": "IBM Plex Mono",
+      "google": "family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500",
+      "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", sans-serif",
+      "rationale": "Neutral UI alternative when Plex feels too corporate.",
+      "trackingDisplay": "-0.01em"
+    },
+    {
+      "id": "outfit-source",
+      "name": "Outfit + Source Sans 3",
+      "display": "Outfit",
+      "body": "Source Sans 3",
+      "google": "family=Source+Sans+3:wght@400;500;600&family=Outfit:wght@600;700",
+      "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", sans-serif",
+      "rationale": "Slightly friendlier display for commerce — use sparingly.",
+      "trackingDisplay": "-0.02em"
+    },
+    {
+      "id": "jakarta",
+      "name": "Plus Jakarta Sans",
+      "display": "Plus Jakarta Sans",
+      "body": "Plus Jakarta Sans",
+      "google": "family=Plus+Jakarta+Sans:wght@400;500;600;700",
+      "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", sans-serif",
+      "rationale": "Soft geometric consumer product tone.",
+      "trackingDisplay": "-0.02em"
+    },
+    {
+      "id": "grotesk-source",
+      "name": "Space Grotesk + Source Sans 3",
+      "display": "Space Grotesk",
+      "body": "Source Sans 3",
+      "google": "family=Source+Sans+3:wght@400;500;600&family=Space+Grotesk:wght@500;600;700",
+      "fallbacks": "\"Segoe UI\", \"Helvetica Neue\", sans-serif",
+      "rationale": "Sharp ops/fintech order — not for the guidelines shell default.",
+      "trackingDisplay": "-0.03em"
+    }
+  ]
+}

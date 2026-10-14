@@ -1,0 +1,83 @@
+{
+  "axis": "research",
+  "label": "Research pillars",
+  "select": "multi",
+  "max": 3,
+  "items": [
+    {
+      "id": "wcag-22",
+      "title": "WCAG 2.2 accessibility floor",
+      "year": 2023,
+      "source": "https://www.w3.org/TR/WCAG22/",
+      "implications": [
+        "Focus ring ≥ ~2px effective with strong contrast change",
+        "Pointer targets ≥ 24×24 CSS px (prefer 44×44)",
+        "Focus must not be fully obscured by sticky chrome",
+        "Honor prefers-reduced-motion"
+      ],
+      "ruleDeltas": {
+        "--elev-focus": "0 0 0 3px rgb(61 207 191 / 0.5)",
+        "--a11y-target-min": "44px",
+        "--motion-policy": "respect-reduced"
+      }
+    },
+    {
+      "id": "m3-roles",
+      "title": "Material 3 color roles",
+      "year": 2024,
+      "source": "https://m3.material.io/styles/color/roles",
+      "implications": [
+        "Use paired roles (surface + on-surface), not ad-hoc hex",
+        "Keep semantic status colors out of brand accent",
+        "One primary accent family"
+      ],
+      "ruleDeltas": {
+        "--role-discipline": "strict-pairs",
+        "--status-isolation": "true"
+      }
+    },
+    {
+      "id": "apple-deference",
+      "title": "Apple depth / deference (Liquid Glass era)",
+      "year": 2025,
+      "source": "https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass",
+      "implications": [
+        "Chrome yields to content",
+        "Avoid stacked translucent decoration on docs",
+        "Test increase-contrast and reduce-motion settings"
+      ],
+      "ruleDeltas": {
+        "--chrome-policy": "quiet",
+        "--grain-opacity": "0.02"
+      }
+    },
+    {
+      "id": "fluid-type",
+      "title": "Fluid rem type scales",
+      "year": 2024,
+      "source": "https://noahliebman.net/2024/01/the-math-and-css-of-responsive-type-scales/",
+      "implications": [
+        "Keep type in rem / clamp with readable floors",
+        "Components consume semantic roles, not raw steps"
+      ],
+      "ruleDeltas": {
+        "--type-unit": "rem",
+        "--text-hero": "clamp(2.5rem, 5vw + 1rem, 4.5rem)"
+      }
+    },
+    {
+      "id": "content-plain",
+      "title": "Plain-language content design",
+      "year": 2024,
+      "source": "https://design-system.service.gov.uk/",
+      "implications": [
+        "Visible labels on fields",
+        "Short instructional errors",
+        "One job per section"
+      ],
+      "ruleDeltas": {
+        "--content-policy": "plain-labels"
+      }
+    }
+  ]
+}

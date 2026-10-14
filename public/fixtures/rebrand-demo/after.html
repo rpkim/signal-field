@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Harbor Desk — after Signal Field</title>
+    <link rel="stylesheet" href="old.css" />
+    <link rel="stylesheet" href="hook-signal.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="side">
+        <div class="logo">Harbor Desk</div>
+        <a class="is-active" href="#overview">Overview</a>
+        <a href="#shipments">Shipments</a>
+        <a href="#settings">Settings</a>
+      </aside>
+      <main class="main">
+        <div class="top">
+          <h1>Operations overview</h1>
+          <a class="cta" href="#shipments">New shipment</a>
+        </div>
+        <div class="banner">
+          <strong>Week in review is ready</strong>
+          <p>
+            Same structure, Signal Field roles via hook: graphite primary, hairline
+            borders, no pill glow, Figtree/Syne.
+          </p>
+        </div>
+        <section class="grid" id="overview">
+          <article class="card">
+            <p class="label">On time</p>
+            <p class="stat">94%</p>
+            <p>Last 7 days across active lanes.</p>
+          </article>
+          <article class="card">
+            <p class="label">Open issues</p>
+            <p class="stat">12</p>
+            <p>Awaiting ops review.</p>
+          </article>
+          <article class="card">
+            <p class="label">Avg. dwell</p>
+            <p class="stat">3.4h</p>
+            <p>Dock to departure.</p>
+          </article>
+        </section>
+        <section class="table" id="shipments">
+          <div class="row head">
+            <span>Shipment</span>
+            <span>Lane</span>
+            <span>Status</span>
+          </div>
+          <div class="row">
+            <span>HD-20481</span>
+            <span>Busan → Oakland</span>
+            <span><span class="badge">In transit</span></span>
+          </div>
+          <div class="row">
+            <span>HD-20466</span>
+            <span>Shanghai → LA</span>
+            <span><span class="badge">Customs</span></span>
+          </div>
+          <div class="row">
+            <span>HD-20452</span>
+            <span>Rotterdam → NY</span>
+            <span><span class="badge">Scheduled</span></span>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

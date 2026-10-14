@@ -1,0 +1,60 @@
+{
+  "axis": "density",
+  "label": "Space / radius density",
+  "select": "one",
+  "items": [
+    {
+      "id": "comfortable",
+      "name": "Comfortable",
+      "ko": "여유",
+      "tokens": {
+        "--text-base": "1.0625rem",
+        "--radius-sm": "0.625rem",
+        "--radius-md": "1rem",
+        "--radius-lg": "1.5rem",
+        "--space-section": "clamp(4.5rem, 9vw, 8rem)",
+        "--leading-body": "1.6"
+      }
+    },
+    {
+      "id": "default",
+      "name": "Default",
+      "ko": "기본",
+      "tokens": {
+        "--text-base": "1.0625rem",
+        "--radius-sm": "0.375rem",
+        "--radius-md": "0.75rem",
+        "--radius-lg": "1.25rem",
+        "--space-section": "clamp(4rem, 8vw, 7rem)",
+        "--leading-body": "1.55"
+      }
+    },
+    {
+      "id": "compact",
+      "name": "Compact",
+      "ko": "밀도",
+      "tokens": {
+        "--text-base": "1rem",
+        "--radius-sm": "0.25rem",
+        "--radius-md": "0.5rem",
+        "--radius-lg": "0.75rem",
+        "--space-section": "clamp(3rem, 6vw, 5.5rem)",
+        "--leading-body": "1.5"
+      }
+    },
+    {
+      "id": "a11y-large",
+      "name": "A11y large",
+      "ko": "접근성 확대",
+      "tokens": {
+        "--text-base": "1.125rem",
+        "--radius-sm": "0.25rem",
+        "--radius-md": "0.375rem",
+        "--radius-lg": "0.5rem",
+        "--space-section": "clamp(3rem, 6vw, 5rem)",
+        "--leading-body": "1.65",
+        "--elev-focus": "0 0 0 4px #0066cc"
+      }
+    }
+  ]
+}

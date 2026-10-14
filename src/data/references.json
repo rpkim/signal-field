@@ -1,0 +1,56 @@
+{
+  "axis": "references",
+  "label": "Reference sites",
+  "select": "multi",
+  "max": 2,
+  "items": [
+    {
+      "id": "govuk",
+      "title": "GOV.UK Design System",
+      "url": "https://design-system.service.gov.uk/",
+      "steal": "Plain language, service clarity, strong a11y defaults",
+      "dont": "Government visual identity",
+      "visualLean": "utility"
+    },
+    {
+      "id": "ibm-lang",
+      "title": "IBM Design Language",
+      "url": "https://www.ibm.com/design/language/",
+      "steal": "Systematic roles and corporate calm",
+      "dont": "IBM blue as signal",
+      "visualLean": "precise"
+    },
+    {
+      "id": "polaris",
+      "title": "Shopify Polaris",
+      "url": "https://polaris.shopify.com/",
+      "steal": "Commerce form rigor and merchant clarity",
+      "dont": "Polaris green kit",
+      "visualLean": "commerce"
+    },
+    {
+      "id": "atlassian",
+      "title": "Atlassian Design System",
+      "url": "https://atlassian.design/",
+      "steal": "Component anatomy and dense product patterns",
+      "dont": "Product chrome as brand marketing",
+      "visualLean": "utility"
+    },
+    {
+      "id": "awwwards",
+      "title": "Awwwards craft scan",
+      "url": "https://www.awwwards.com/",
+      "steal": "Composition courage; study motion restraint",
+      "dont": "Award-bait noise or illegible type",
+      "visualLean": "editorial"
+    },
+    {
+      "id": "brandnew",
+      "title": "Brand New critique",
+      "url": "https://www.underconsideration.com/brandnew/",
+      "steal": "Longevity questions for identity",
+      "dont": "Chasing every rebrand aesthetic",
+      "visualLean": "precise"
+    }
+  ]
+}

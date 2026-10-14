@@ -1,0 +1,158 @@
+{
+  "axis": "trends",
+  "label": "Current trends",
+  "canonicalLog": "docs/design.md §9 Trends (append-only technical log)",
+  "friendlyIndex": "docs/trends/README.md",
+  "categories": [
+    {
+      "id": "type",
+      "en": "Type",
+      "ko": "타이포"
+    },
+    {
+      "id": "color",
+      "en": "Color",
+      "ko": "컬러"
+    },
+    {
+      "id": "motion",
+      "en": "Motion",
+      "ko": "모션"
+    },
+    {
+      "id": "layout",
+      "en": "Layout",
+      "ko": "레이아웃"
+    },
+    {
+      "id": "platform",
+      "en": "Platform",
+      "ko": "플랫폼"
+    },
+    {
+      "id": "a11y",
+      "en": "A11y",
+      "ko": "접근성"
+    }
+  ],
+  "items": [
+    {
+      "id": "chromatic-restraint",
+      "category": "color",
+      "en": "Single accent restraint",
+      "ko": "단일 액센트 절제",
+      "what": "One brand chroma family; no second purple.",
+      "when": "Almost always for Signal Field products.",
+      "skip": "Never skip unless a Trend explicitly overrides (rare).",
+      "research": ["m3-roles"],
+      "refs": ["ibm-lang"],
+      "logDate": "2026-02-08"
+    },
+    {
+      "id": "soft-grain",
+      "category": "layout",
+      "en": "Soft grain atmosphere",
+      "ko": "소프트 그레인 분위기",
+      "what": "Subtle grain + gradient planes instead of flat or glass stacks.",
+      "when": "Marketing surfaces that need presence.",
+      "skip": "Guidelines docs, Clearline/utility, print.",
+      "research": ["apple-deference"],
+      "refs": ["awwwards"],
+      "logDate": "2026-06-21"
+    },
+    {
+      "id": "kinetic-lockups",
+      "category": "motion",
+      "en": "Kinetic brand lockups",
+      "ko": "키네틱 브랜드 락업",
+      "what": "2–3 short entrance motions on marketing heroes only.",
+      "when": "Launch / brand landings.",
+      "skip": "Admin, forms, reduced-motion users.",
+      "research": ["wcag-22"],
+      "refs": [],
+      "logDate": "2026-04-10"
+    },
+    {
+      "id": "utility-contrast",
+      "category": "a11y",
+      "en": "Utility high-contrast",
+      "ko": "유틸 고대비",
+      "what": "Near B/W, stronger focus, larger type, no grain.",
+      "when": "Admin, settings, critical tools.",
+      "skip": "Lifestyle marketing that needs soft atmosphere.",
+      "research": ["wcag-22"],
+      "refs": ["govuk"],
+      "logDate": "2026-08-02",
+      "suggestMix": {
+        "color": "clear-ink",
+        "type": "plex",
+        "density": "a11y-large"
+      }
+    },
+    {
+      "id": "quiet-commerce",
+      "category": "color",
+      "en": "Quiet commerce materiality",
+      "ko": "조용한 커머스 질감",
+      "what": "Stone + copper warmth without cream+terracotta+serif kits.",
+      "when": "Stores, PDPs, catalogs.",
+      "skip": "Fintech ledgers; clinical/admin tools.",
+      "research": ["content-plain"],
+      "refs": ["polaris"],
+      "logDate": "2026-09-18",
+      "suggestMix": {
+        "color": "kiln-copper",
+        "type": "outfit-figtree",
+        "density": "comfortable"
+      }
+    },
+    {
+      "id": "compose-export",
+      "category": "platform",
+      "en": "Compose → export kits",
+      "ko": "조합 → 키트 내보내기",
+      "what": "Mix research×refs×color×type×density into portable DESIGN.md + CSS.",
+      "when": "Any new product branding task.",
+      "skip": "Never — this is the apply path.",
+      "research": ["fluid-type"],
+      "refs": [],
+      "logDate": "2026-10-13"
+    },
+    {
+      "id": "fluid-rem-type",
+      "category": "type",
+      "en": "Fluid rem type",
+      "ko": "플루이드 rem 타이포",
+      "what": "Type in rem/clamp with readable floors; roles not raw px.",
+      "when": "All web surfaces.",
+      "skip": "Never for web body text.",
+      "research": ["fluid-type"],
+      "refs": [],
+      "logDate": "2026-10-13"
+    },
+    {
+      "id": "deference-chrome",
+      "category": "platform",
+      "en": "Quiet chrome / deference",
+      "ko": "조용한 크롬·디퍼런스",
+      "what": "Controls yield to content; no glass-card farms on docs.",
+      "when": "Guidelines, apps, most product UI.",
+      "skip": "Rare immersive marketing experiments only.",
+      "research": ["apple-deference"],
+      "refs": [],
+      "logDate": "2026-10-13"
+    },
+    {
+      "id": "guidelines-framing",
+      "category": "layout",
+      "en": "Guidelines-site framing",
+      "ko": "가이드라인 사이트 구성",
+      "what": "Philosophy → foundations → components; not cinematic demos.",
+      "when": "Design system documentation.",
+      "skip": "Campaign microsites (use marketing hero budget).",
+      "research": ["content-plain"],
+      "refs": ["govuk"],
+      "logDate": "2026-10-13"
+    }
+  ]
+}

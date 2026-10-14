@@ -1,0 +1,110 @@
+/* Signal Field hook — precise-quiet lean over Harbor Desk */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+:root {
+  --color-ink: #12141a;
+  --color-ink-soft: #5c6370;
+  --color-chalk: #ffffff;
+  --color-field: #f6f7f8;
+  --color-field-mid: #e8eaee;
+  --color-field-deep: #12141a;
+  --color-signal: #0f766e;
+  --color-signal-bright: #14b8a6;
+  --color-signal-deep: #0d5c56;
+  --color-focus: #0f766e;
+  --color-hairline: rgb(18 20 26 / 0.1);
+  --radius-md: 0.375rem;
+  --font-display: "IBM Plex Sans", "Avenir Next", "Segoe UI", sans-serif;
+  --font-body: "IBM Plex Sans", "Avenir Next", "Segoe UI", sans-serif;
+
+  --brand-primary: var(--color-ink);
+  --brand-accent: var(--color-signal);
+  --brand-bg: var(--color-field);
+  --brand-surface: var(--color-chalk);
+  --brand-text: var(--color-ink);
+  --brand-muted: var(--color-ink-soft);
+  --brand-border: var(--color-hairline);
+  --brand-radius: var(--radius-md);
+  --brand-font: var(--font-body);
+  --brand-shadow: none;
+}
+
+body {
+  font-family: var(--font-body) !important;
+  background: var(--color-field) !important;
+  color: var(--color-ink) !important;
+}
+
+.side {
+  background: var(--color-field-deep) !important;
+  color: var(--color-chalk) !important;
+}
+
+.side .logo {
+  font-family: var(--font-display) !important;
+  letter-spacing: -0.035em;
+}
+
+.side a {
+  color: rgb(246 247 248 / 0.62) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+.side a.is-active {
+  background: rgb(246 247 248 / 0.08) !important;
+  color: var(--color-chalk) !important;
+}
+
+.top h1 {
+  font-family: var(--font-body) !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.03em !important;
+}
+
+.top .cta,
+.cta,
+button {
+  background: var(--color-ink) !important;
+  background-image: none !important;
+  color: var(--color-chalk) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: none !important;
+  font-weight: 500 !important;
+}
+
+.banner {
+  background: var(--color-chalk) !important;
+  border: 1px solid var(--color-hairline) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: none !important;
+}
+
+.banner strong {
+  color: var(--color-ink) !important;
+  font-weight: 500 !important;
+}
+
+.card,
+.table {
+  background: var(--color-chalk) !important;
+  border: 1px solid var(--color-hairline) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: none !important;
+}
+
+.card .stat {
+  color: var(--color-ink) !important;
+  font-weight: 500 !important;
+}
+
+.table .row.head {
+  background: var(--color-field) !important;
+}
+
+.badge {
+  background: transparent !important;
+  color: var(--color-signal-deep) !important;
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-md) !important;
+  font-weight: 500 !important;
+}

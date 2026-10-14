@@ -1,0 +1,200 @@
+/* Believable mediocre product CSS — default SaaS, not a joke palette */
+:root {
+  --brand-primary: #2563eb;
+  --brand-accent: #3b82f6;
+  --brand-bg: #f3f4f6;
+  --brand-surface: #ffffff;
+  --brand-text: #111827;
+  --brand-muted: #6b7280;
+  --brand-border: #e5e7eb;
+  --brand-radius: 12px;
+  --brand-font: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --brand-space: 16px;
+  --brand-shadow: 0 1px 3px rgba(17, 24, 39, 0.08), 0 8px 24px rgba(17, 24, 39, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--brand-font);
+  background: var(--brand-bg);
+  color: var(--brand-text);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+  min-height: 100vh;
+}
+
+@media (max-width: 800px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+  .side {
+    display: none;
+  }
+}
+
+.side {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 1.25rem 1rem;
+}
+
+.side .logo {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.02em;
+}
+
+.side a {
+  display: block;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.875rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: 8px;
+  margin-bottom: 0.2rem;
+}
+
+.side a.is-active {
+  background: rgba(37, 99, 235, 0.25);
+  color: #fff;
+}
+
+.main {
+  padding: 1.5rem 1.75rem 2.5rem;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.top h1 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.top .cta {
+  display: inline-block;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  background: var(--brand-primary);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+}
+
+.banner {
+  background: linear-gradient(90deg, #eff6ff, #ffffff);
+  border: 1px solid #bfdbfe;
+  border-radius: var(--brand-radius);
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.banner strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #1e40af;
+}
+
+.banner p {
+  margin: 0;
+  color: var(--brand-muted);
+  font-size: 0.9rem;
+}
+
+.grid {
+  display: grid;
+  gap: var(--brand-space);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--brand-surface);
+  border-radius: var(--brand-radius);
+  padding: 1.15rem 1.2rem;
+  border: 1px solid var(--brand-border);
+  box-shadow: var(--brand-shadow);
+}
+
+.card .label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--brand-muted);
+  margin: 0 0 0.5rem;
+}
+
+.card .stat {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--brand-text);
+  margin: 0 0 0.35rem;
+}
+
+.card p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--brand-muted);
+}
+
+.table {
+  margin-top: 1.25rem;
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  border-radius: var(--brand-radius);
+  box-shadow: var(--brand-shadow);
+  overflow: hidden;
+}
+
+.table .row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 0.8fr;
+  gap: 1rem;
+  padding: 0.85rem 1.15rem;
+  border-top: 1px solid var(--brand-border);
+  font-size: 0.875rem;
+}
+
+.table .row.head {
+  border-top: 0;
+  background: #f9fafb;
+  color: var(--brand-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 0.75rem;
+  font-weight: 600;
+}

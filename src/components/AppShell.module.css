@@ -1,0 +1,9 @@
+.main {
+  padding: var(--space-8) 0 var(--space-9);
+}
+
+.wrap {
+  width: min(100%, var(--content-max));
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+}
