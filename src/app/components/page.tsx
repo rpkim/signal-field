@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { AppShell } from "@/components/AppShell";
 import { Button } from "@/components/Button";
 import { Field } from "@/components/Field";
-import { PageHeader } from "@/components/PageHeader";
+import { PageChrome } from "@/components/PageChrome";
 import { Specimen } from "@/components/Specimen";
 import styles from "@/styles/pages.module.css";
 
@@ -11,12 +11,7 @@ export const metadata: Metadata = { title: "Components" };
 export default function ComponentsPage() {
   return (
     <AppShell current="/components">
-      <PageHeader eyebrow="Guide" title="Components">
-        <p>
-          Real React primitives used across the product shell — not static HTML
-          pasted into a demo. States first; decoration optional.
-        </p>
-      </PageHeader>
+      <PageChrome eyebrowKey="page.guide" titleKey="components.title" ledeKey="components.lede" />
 
       <section className={styles.section}>
         <h2>Button</h2>

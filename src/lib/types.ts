@@ -38,6 +38,8 @@ export type TypeItem = {
   rationale: string;
   trackingDisplay: string;
   recommended?: boolean;
+  hangul?: boolean;
+  hangulNote?: string;
 };
 
 export type DensityItem = {

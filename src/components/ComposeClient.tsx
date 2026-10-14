@@ -14,6 +14,7 @@ import { applySuggestions } from "@/lib/discover/syncPropose";
 import type { TrendCandidate } from "@/lib/discover/types";
 import { downloadBlob } from "@/lib/exportKit";
 import type { ColorItem, DensityItem, MixState, TypeItem } from "@/lib/types";
+import { useLocale } from "@/i18n/LocaleProvider";
 import { Button } from "./Button";
 import { Specimen } from "./Specimen";
 import styles from "./ComposeClient.module.css";
@@ -49,6 +50,7 @@ function byId<T extends { id: string }>(list: T[], id: string) {
 }
 
 export function ComposeClient() {
+  const { t } = useLocale();
   const params = useSearchParams();
   const [mix, setMix] = useState<MixState>(DEFAULT);
   const [presetId, setPresetId] = useState<string | null>("precise-quiet");
@@ -317,30 +319,29 @@ export function ComposeClient() {
     <div>
       <div className={styles.toolbar}>
         <div className={styles.saveField}>
-          <label htmlFor="save-name">Save mix</label>
+          <label htmlFor="save-name">{t("compose.saveMix")}</label>
           <input
             id="save-name"
             value={saveName}
             onChange={(e) => setSaveName(e.target.value)}
-            placeholder="Name this mix"
+            placeholder={t("compose.saveName")}
           />
         </div>
         <Button type="button" disabled={busy} onClick={saveCurrent}>
-          Save
+          {t("compose.save")}
         </Button>
         <Button type="button" variant="ghost" disabled={busy} onClick={exportKit}>
-          Download kit (zip)
+          {t("compose.download")}
         </Button>
       </div>
 
       {newCount > 0 ? (
         <div className={styles.banner}>
           <p>
-            Trends/Research catalogs have {newCount} item(s) not in this mix.
-            Sync proposes adds/replaces — nothing changes until you confirm.
+            {t("compose.syncBanner", { n: newCount })}
           </p>
           <Button type="button" disabled={busy} onClick={openSync}>
-            업데이트 반영
+            {t("compose.syncApply")}
           </Button>
         </div>
       ) : null}
@@ -368,7 +369,7 @@ export function ComposeClient() {
           )}
           <div className={styles.syncActions}>
             <Button type="button" onClick={confirmSync}>
-              Confirm selected
+              {t("compose.syncConfirm")}
             </Button>
             <Button
               type="button"
@@ -378,7 +379,7 @@ export function ComposeClient() {
                 setStatus("Sync dismissed — mix unchanged.");
               }}
             >
-              Cancel
+              {t("compose.syncDismiss")}
             </Button>
           </div>
         </div>
@@ -386,7 +387,7 @@ export function ComposeClient() {
 
       {status ? <p className={styles.status}>{status}</p> : null}
 
-      <div className={styles.presets} role="group" aria-label="Presets">
+      <div className={styles.presets} role="group" aria-label={t("compose.presets")}>
         {presets.items.map((p) => (
           <button
             key={p.id}
@@ -510,7 +511,7 @@ export function ComposeClient() {
 
           <Axis
             title={`${typeData.label} (${typeItems.length})`}
-            hint={`Select one · default ${recommendedTypeId} (recommended)`}
+            hint={t("compose.typeHint", { id: recommendedTypeId })}
           >
             <div className={styles.optGrid}>
               {typeItems.map((item) => (
@@ -534,7 +535,10 @@ export function ComposeClient() {
                       <span className={styles.ko}>{item.ko}</span>
                     ) : null}
                     {item.recommended || item.id === recommendedTypeId ? (
-                      <span className={styles.badgeRec}>Recommended</span>
+                      <span className={styles.badgeRec}>{t("compose.recommended")}</span>
+                    ) : null}
+                    {item.hangul ? (
+                      <span className={styles.badgeHangul}>{t("compose.hangulNote")}</span>
                     ) : null}
                   </strong>
                   <span className={styles.meta}>

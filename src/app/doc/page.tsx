@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { readFile } from "fs/promises";
 import path from "path";
-import Link from "next/link";
 import { marked } from "marked";
 import { AppShell } from "@/components/AppShell";
-import { PageHeader } from "@/components/PageHeader";
+import { DocIntro } from "@/components/DocIntro";
 import { SavedMixes } from "@/components/SavedMixes";
 import styles from "@/styles/pages.module.css";
 
@@ -22,58 +21,13 @@ export default async function DocPage() {
 
   return (
     <AppShell current="/doc">
-      <PageHeader eyebrow="Canon" title="design.md">
-        <p>
-          Full Signal Field guidelines — the underlying system document. Also
-          see{" "}
-          <Link href="https://github.com/rpkim/signal-field/blob/main/USAGE.md">
-            USAGE.md
-          </Link>{" "}
-          for the human/agent playbook. Compose{" "}
-          <strong>Download kit (zip)</strong> bundles this file with{" "}
-          <code>tokens.css</code> + <code>theme.css</code>.
-        </p>
-      </PageHeader>
-
-      <nav className={styles.homeGrid} aria-label="Doc sections">
-        <a href="#canonical-guidelines">
-          <span className={styles.kicker}>Document</span>
-          <span>
-            <span className={styles.gridTitle}>Canonical guidelines</span>
-            <p className={styles.gridDesc}>
-              Full design.md below — philosophy, foundations, components,
-              responsive, trends.
-            </p>
-          </span>
-        </a>
-        <Link href="/compose">
-          <span className={styles.kicker}>Export</span>
-          <span>
-            <span className={styles.gridTitle}>Compose → zip kit</span>
-            <p className={styles.gridDesc}>
-              One download: design.md + tokens.css + theme.css.
-            </p>
-          </span>
-        </Link>
-      </nav>
-
+      <DocIntro />
       <SavedMixes />
-
-      <section
+      <article
         id="canonical-guidelines"
-        className={styles.section}
-        aria-labelledby="guidelines-heading"
-      >
-        <h2 id="guidelines-heading">Canonical guidelines</h2>
-        <p>
-          Source file: <code>content/design.md</code> (synced with store{" "}
-          <code>docs/design.md</code>).
-        </p>
-        <article
-          className={styles.prose}
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
-      </section>
+        className={styles.doc}
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
     </AppShell>
   );
 }

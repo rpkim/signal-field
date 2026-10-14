@@ -1,17 +1,14 @@
-import Link from "next/link";
+"use client";
+
+import { useLocale } from "@/i18n/LocaleProvider";
 import styles from "./SiteFooter.module.css";
 
 export function SiteFooter() {
+  const { t } = useLocale();
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
-        <Link href="/trends">Trends</Link>
-        <span aria-hidden>·</span>
-        <Link href="/research">Research</Link>
-        <span aria-hidden>·</span>
-        <Link href="/kits/precise-quiet">precise-quiet</Link>
-        <span aria-hidden>·</span>
-        <Link href="/doc">design.md</Link>
+        <p>{t("footer.note")}</p>
       </div>
     </footer>
   );

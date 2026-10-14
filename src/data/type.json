@@ -18,7 +18,9 @@
       "fallbacks": "\"Helvetica Neue\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Segoe UI\", sans-serif",
       "rationale": "Recommended default — institutional product clarity; weight scale instead of novelty display. Latin-first; pair with system KR fallbacks.",
       "trackingDisplay": "-0.015em",
-      "recommended": true
+      "recommended": true,
+      "hangul": true,
+      "hangulNote": "Latin-first; Hangul via system fallbacks (Apple SD Gothic Neo / Noto Sans KR)"
     },
     {
       "id": "source-sans",
@@ -32,7 +34,9 @@
       "google": "family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500",
       "fallbacks": "\"Helvetica Neue\", \"Apple SD Gothic Neo\", \"Segoe UI\", sans-serif",
       "rationale": "Neutral UI alternative when Plex feels too corporate.",
-      "trackingDisplay": "-0.01em"
+      "trackingDisplay": "-0.01em",
+      "hangul": true,
+      "hangulNote": "Latin-first; Hangul via system fallbacks (Apple SD Gothic Neo / Noto Sans KR)"
     },
     {
       "id": "public-sans",
@@ -45,7 +49,9 @@
       "google": "family=Public+Sans:wght@400;500;600;700",
       "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", sans-serif",
       "rationale": "Civic/utility clarity — dense admin and gov-adjacent tools.",
-      "trackingDisplay": "-0.01em"
+      "trackingDisplay": "-0.01em",
+      "hangul": true,
+      "hangulNote": "Latin-first; Hangul via system fallbacks (Apple SD Gothic Neo / Noto Sans KR)"
     },
     {
       "id": "red-hat",
@@ -58,7 +64,9 @@
       "google": "family=Red+Hat+Text:wght@400;500;600;700",
       "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", sans-serif",
       "rationale": "Open-source product UI face — quiet ops/console chrome.",
-      "trackingDisplay": "-0.01em"
+      "trackingDisplay": "-0.01em",
+      "hangul": true,
+      "hangulNote": "Latin-first; Hangul via system fallbacks (Apple SD Gothic Neo / Noto Sans KR)"
     },
     {
       "id": "fira-sans",
@@ -72,7 +80,9 @@
       "google": "family=Fira+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500",
       "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", sans-serif",
       "rationale": "Mozilla-adjacent product clarity with optional Fira Code mono.",
-      "trackingDisplay": "-0.01em"
+      "trackingDisplay": "-0.01em",
+      "hangul": true,
+      "hangulNote": "Latin-first; Hangul via system fallbacks (Apple SD Gothic Neo / Noto Sans KR)"
     },
     {
       "id": "atkinson",
@@ -85,7 +95,9 @@
       "google": "family=Atkinson+Hyperlegible:wght@400;700",
       "fallbacks": "\"Segoe UI\", \"Helvetica Neue\", sans-serif",
       "rationale": "Accessibility-forward UI type — prefer with a11y-large density.",
-      "trackingDisplay": "0em"
+      "trackingDisplay": "0em",
+      "hangul": true,
+      "hangulNote": "Latin-first; Hangul via system fallbacks (Apple SD Gothic Neo / Noto Sans KR)"
     },
     {
       "id": "noto-kr",
@@ -98,7 +110,9 @@
       "google": "family=Noto+Sans+KR:wght@400;500;700&family=Source+Sans+3:wght@400;500;600",
       "fallbacks": "\"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Source Sans 3\", sans-serif",
       "rationale": "KO-friendly UI pairing — Noto for hangul/latin; Source as western fallback note.",
-      "trackingDisplay": "-0.01em"
+      "trackingDisplay": "-0.01em",
+      "hangul": true,
+      "hangulNote": "Noto Sans KR — Hangul + Latin"
     },
     {
       "id": "be-vietnam",
@@ -111,7 +125,9 @@
       "google": "family=Be+Vietnam+Pro:wght@400;500;600;700",
       "fallbacks": "\"Helvetica Neue\", \"Apple SD Gothic Neo\", sans-serif",
       "rationale": "Clean multi-script product face often used in APAC product UIs (Latin-primary).",
-      "trackingDisplay": "-0.015em"
+      "trackingDisplay": "-0.015em",
+      "hangul": true,
+      "hangulNote": "Latin-first; Hangul via system fallbacks (Apple SD Gothic Neo / Noto Sans KR)"
     },
     {
       "id": "instrument-sans",
@@ -124,7 +140,9 @@
       "google": "family=Instrument+Sans:wght@400;500;600;700",
       "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", sans-serif",
       "rationale": "2024–26 geometric product trend — restrained, not Inter/Syne novelty.",
-      "trackingDisplay": "-0.02em"
+      "trackingDisplay": "-0.02em",
+      "hangul": false,
+      "hangulNote": "Latin-first — pair with a Hangul UI face for KO body copy"
     },
     {
       "id": "albert-sans",
@@ -137,7 +155,9 @@
       "google": "family=Albert+Sans:wght@400;500;600;700",
       "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", sans-serif",
       "rationale": "Soft geometric single-family for modern SaaS without template defaults.",
-      "trackingDisplay": "-0.02em"
+      "trackingDisplay": "-0.02em",
+      "hangul": false,
+      "hangulNote": "Latin-first — pair with a Hangul UI face for KO body copy"
     },
     {
       "id": "spline-sans",
@@ -150,7 +170,9 @@
       "google": "family=Spline+Sans:wght@400;500;600;700",
       "fallbacks": "\"Segoe UI\", \"Helvetica Neue\", sans-serif",
       "rationale": "Slightly technical geometric — dashboards and design-tool chrome.",
-      "trackingDisplay": "-0.02em"
+      "trackingDisplay": "-0.02em",
+      "hangul": false,
+      "hangulNote": "Latin-first — pair with a Hangul UI face for KO body copy"
     },
     {
       "id": "dm-sans",
@@ -163,7 +185,9 @@
       "google": "family=DM+Sans:wght@400;500;600;700",
       "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", sans-serif",
       "rationale": "Friendly geometric single-family for soft product UIs.",
-      "trackingDisplay": "-0.02em"
+      "trackingDisplay": "-0.02em",
+      "hangul": false,
+      "hangulNote": "Latin-first — pair with a Hangul UI face for KO body copy"
     },
     {
       "id": "jakarta",
@@ -176,7 +200,9 @@
       "google": "family=Plus+Jakarta+Sans:wght@400;500;600;700",
       "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", sans-serif",
       "rationale": "Soft geometric consumer product tone.",
-      "trackingDisplay": "-0.02em"
+      "trackingDisplay": "-0.02em",
+      "hangul": false,
+      "hangulNote": "Latin-first — pair with a Hangul UI face for KO body copy"
     },
     {
       "id": "manrope-source",
@@ -189,7 +215,9 @@
       "google": "family=Source+Sans+3:wght@400;500;600&family=Manrope:wght@600;700",
       "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", sans-serif",
       "rationale": "Geometric display clarity for product marketing heroes.",
-      "trackingDisplay": "-0.025em"
+      "trackingDisplay": "-0.025em",
+      "hangul": false,
+      "hangulNote": "Latin-first — pair with a Hangul UI face for KO body copy"
     },
     {
       "id": "outfit-source",
@@ -202,7 +230,9 @@
       "google": "family=Source+Sans+3:wght@400;500;600&family=Outfit:wght@600;700",
       "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", sans-serif",
       "rationale": "Slightly friendlier display for commerce — use sparingly.",
-      "trackingDisplay": "-0.02em"
+      "trackingDisplay": "-0.02em",
+      "hangul": false,
+      "hangulNote": "Latin-first — pair with a Hangul UI face for KO body copy"
     },
     {
       "id": "sora-source",
@@ -215,7 +245,9 @@
       "google": "family=Source+Sans+3:wght@400;500;600&family=Sora:wght@600;700",
       "fallbacks": "\"Segoe UI\", \"Helvetica Neue\", sans-serif",
       "rationale": "Tech display with restraint — body stays Source; never Inter as expressive face.",
-      "trackingDisplay": "-0.03em"
+      "trackingDisplay": "-0.03em",
+      "hangul": false,
+      "hangulNote": "Latin-first — pair with a Hangul UI face for KO body copy"
     },
     {
       "id": "grotesk-source",
@@ -228,7 +260,9 @@
       "google": "family=Source+Sans+3:wght@400;500;600&family=Space+Grotesk:wght@500;600;700",
       "fallbacks": "\"Segoe UI\", \"Helvetica Neue\", sans-serif",
       "rationale": "Sharp ops/fintech order — not for the guidelines shell default.",
-      "trackingDisplay": "-0.03em"
+      "trackingDisplay": "-0.03em",
+      "hangul": false,
+      "hangulNote": "Latin-first — pair with a Hangul UI face for KO body copy"
     },
     {
       "id": "schibsted-source",
@@ -241,7 +275,9 @@
       "google": "family=Source+Sans+3:wght@400;500;600&family=Schibsted+Grotesk:wght@600;700",
       "fallbacks": "\"Segoe UI\", sans-serif",
       "rationale": "Editorial grotesk display for day-mist editorial mixes.",
-      "trackingDisplay": "-0.02em"
+      "trackingDisplay": "-0.02em",
+      "hangul": false,
+      "hangulNote": "Latin-first — pair with a Hangul UI face for KO body copy"
     },
     {
       "id": "libre-source",
@@ -254,7 +290,9 @@
       "google": "family=Source+Sans+3:wght@400;500;600&family=Libre+Franklin:wght@600;700",
       "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", sans-serif",
       "rationale": "Franklin-adjacent authority without novelty display fonts.",
-      "trackingDisplay": "-0.015em"
+      "trackingDisplay": "-0.015em",
+      "hangul": false,
+      "hangulNote": "Latin-first — pair with a Hangul UI face for KO body copy"
     },
     {
       "id": "work-sans",
@@ -267,7 +305,9 @@
       "google": "family=Work+Sans:wght@400;500;600;700",
       "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", sans-serif",
       "rationale": "Slightly humanist UI face for education and content tools.",
-      "trackingDisplay": "-0.01em"
+      "trackingDisplay": "-0.01em",
+      "hangul": false,
+      "hangulNote": "Latin-first — pair with a Hangul UI face for KO body copy"
     },
     {
       "id": "newsreader-source",
@@ -280,7 +320,9 @@
       "google": "family=Source+Sans+3:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;600;700",
       "fallbacks": "Georgia, \"Times New Roman\", serif",
       "rationale": "Editorial serif display + sans body — publishing and long-read product chrome.",
-      "trackingDisplay": "-0.02em"
+      "trackingDisplay": "-0.02em",
+      "hangul": false,
+      "hangulNote": "Latin-first — pair with a Hangul UI face for KO body copy"
     },
     {
       "id": "literata-source",
@@ -293,7 +335,9 @@
       "google": "family=Source+Sans+3:wght@400;500;600&family=Literata:opsz,wght@7..72,400;600;700",
       "fallbacks": "Georgia, \"Times New Roman\", serif",
       "rationale": "Reading-first serif display for docs/education — body stays Source.",
-      "trackingDisplay": "-0.015em"
+      "trackingDisplay": "-0.015em",
+      "hangul": false,
+      "hangulNote": "Latin-first — pair with a Hangul UI face for KO body copy"
     },
     {
       "id": "plex-serif",
@@ -307,7 +351,9 @@
       "google": "family=IBM+Plex+Serif:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500",
       "fallbacks": "Georgia, \"Apple SD Gothic Neo\", \"Helvetica Neue\", sans-serif",
       "rationale": "Same family system with serif display — institutional editorial without novelty kits.",
-      "trackingDisplay": "-0.02em"
+      "trackingDisplay": "-0.02em",
+      "hangul": true,
+      "hangulNote": "Latin-first; Hangul via system fallbacks (Apple SD Gothic Neo / Noto Sans KR)"
     },
     {
       "id": "jetbrains-source",
@@ -321,7 +367,9 @@
       "google": "family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600",
       "fallbacks": "ui-monospace, Menlo, monospace",
       "rationale": "Mono-forward tools — code/dev consoles; display uses mono sparingly for wordmarks.",
-      "trackingDisplay": "-0.04em"
+      "trackingDisplay": "-0.04em",
+      "hangul": false,
+      "hangulNote": "Latin-first — pair with a Hangul UI face for KO body copy"
     },
     {
       "id": "ibm-plex-mono-ui",
@@ -335,7 +383,9 @@
       "google": "family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600",
       "fallbacks": "ui-monospace, Menlo, \"Helvetica Neue\", sans-serif",
       "rationale": "Mono display accent for developer tools; body stays Plex Sans for reading.",
-      "trackingDisplay": "-0.03em"
+      "trackingDisplay": "-0.03em",
+      "hangul": true,
+      "hangulNote": "Latin-first; Hangul via system fallbacks (Apple SD Gothic Neo / Noto Sans KR)"
     }
   ]
 }

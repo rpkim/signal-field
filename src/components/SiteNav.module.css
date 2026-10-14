@@ -158,3 +158,26 @@
     padding-left: 0;
   }
 }
+
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  justify-self: end;
+}
+
+.localeDesktop {
+  display: none;
+}
+
+@media (min-width: 60rem) {
+  .actions {
+    display: none;
+  }
+  .localeDesktop {
+    display: inline-flex;
+    align-items: center;
+    margin-left: var(--space-2);
+  }
+}

@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useLocale } from "@/i18n/LocaleProvider";
 import { Button } from "./Button";
 import { Field } from "./Field";
 import { composeHref, recommend } from "@/lib/recommend";
 import styles from "./RecommendClient.module.css";
 
 export function RecommendClient() {
+  const { t } = useLocale();
   const [brief, setBrief] = useState(
     "B2B admin console for ledger ops — dense tables, quiet chrome, accessibility floor."
   );
@@ -23,8 +25,8 @@ export function RecommendClient() {
       <form className={styles.form} onSubmit={run}>
         <Field
           id="brief"
-          label="Service brief"
-          hint="Product type, audience, density, tone (new or existing)."
+          label={t("recommend.brief")}
+          hint={t("recommend.briefHint")}
         >
           <textarea
             id="brief"
@@ -33,7 +35,7 @@ export function RecommendClient() {
           />
         </Field>
         <div>
-          <Button type="submit">Rank themes</Button>
+          <Button type="submit">{t("recommend.rank")}</Button>
         </div>
       </form>
 
@@ -58,7 +60,7 @@ export function RecommendClient() {
             </p>
             <div>
               <Link href={composeHref(pick.rule.mix)} style={{ textDecoration: "none" }}>
-                Open in Compose →
+                {t("recommend.openCompose")}
               </Link>
             </div>
           </article>
@@ -66,11 +68,7 @@ export function RecommendClient() {
       </div>
 
       {result.rebrand ? (
-        <p className={styles.note}>
-          Existing product brief — applying Signal Field (
-          <Link href="/doc">design.md</Link> + Compose kit) is the rebrand.
-          Open the primary mix in Compose and Download kit.
-        </p>
+        <p className={styles.note}>{t("recommend.rebrandNote")}</p>
       ) : null}
     </div>
   );

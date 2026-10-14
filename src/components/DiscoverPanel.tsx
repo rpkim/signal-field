@@ -3,13 +3,12 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useLocale } from "@/i18n/LocaleProvider";
+import type { DiscoverAxis } from "@/lib/discover/types";
 import { Button } from "./Button";
 import styles from "./DiscoverPanel.module.css";
-import type { DiscoverAxis } from "@/lib/discover/types";
 
-type Props = {
-  axis: DiscoverAxis;
-};
+type Props = { axis: DiscoverAxis };
 
 type HistoryEntry = {
   at: string;
@@ -21,22 +20,24 @@ type HistoryEntry = {
 };
 
 export function DiscoverPanel({ axis }: Props) {
+  const { t } = useLocale();
   const router = useRouter();
   const [topic, setTopic] = useState("");
   const [busy, setBusy] = useState(false);
   const [toast, setToast] = useState("");
   const [history, setHistory] = useState<HistoryEntry[]>([]);
 
-  const label = axis === "trends" ? "트렌드" : "리서치";
+  const kind =
+    axis === "trends" ? t("discover.kind.trends") : t("discover.kind.research");
   const placeholder =
     axis === "trends"
-      ? "예: quiet commerce, fluid type, deference chrome (비우면 현재 craft 기준)"
-      : "예: WCAG focus appearance, fluid type roles (비우면 현재 craft 기준)";
+      ? "quiet commerce, fluid type…"
+      : "WCAG focus appearance…";
 
   async function ingest(e?: React.FormEvent) {
     e?.preventDefault();
     setBusy(true);
-    setToast(`${label} 찾는 중…`);
+    setToast(t("discover.toast.searching", { kind }));
     try {
       const res = await fetch("/api/discover/ingest", {
         method: "POST",
@@ -54,39 +55,42 @@ export function DiscoverPanel({ axis }: Props) {
 
       const added = data.added || [];
       const skipped = data.skipped || [];
-      const entry: HistoryEntry = {
-        at: new Date().toISOString(),
-        mode: data.mode,
-        provider: data.provider,
-        added,
-        skipped,
-      };
-      setHistory((prev) => [entry, ...prev].slice(0, 8));
+      setHistory((prev) =>
+        [
+          {
+            at: new Date().toISOString(),
+            mode: data.mode,
+            provider: data.provider,
+            added,
+            skipped,
+          },
+          ...prev,
+        ].slice(0, 8)
+      );
 
       if (added.length === 0) {
         setToast(
           skipped.length
-            ? `새 항목 없음 (이미 있거나 스킵 ${skipped.length})`
-            : "새 항목을 찾지 못했습니다"
+            ? t("discover.toast.skipped", { n: skipped.length })
+            : t("discover.toast.none")
         );
       } else {
-        setToast(
-          `추가됨 ${added.length}건 · Compose에서 「업데이트 반영」으로 믹서에 반영`
-        );
+        setToast(t("discover.toast.added", { n: added.length }));
       }
       router.refresh();
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Ingest failed";
-      setToast(message);
-      setHistory((prev) => [
-        {
-          at: new Date().toISOString(),
-          added: [],
-          skipped: [],
-          error: message,
-        },
-        ...prev,
-      ].slice(0, 8));
+      setToast(err instanceof Error ? err.message : "Ingest failed");
+      setHistory((prev) =>
+        [
+          {
+            at: new Date().toISOString(),
+            added: [],
+            skipped: [],
+            error: err instanceof Error ? err.message : "Ingest failed",
+          },
+          ...prev,
+        ].slice(0, 8)
+      );
     } finally {
       setBusy(false);
     }
@@ -95,17 +99,16 @@ export function DiscoverPanel({ axis }: Props) {
   return (
     <section className={styles.hero} aria-labelledby="discover-heading">
       <h2 id="discover-heading" className={styles.title}>
-        AI로 찾아서 추가
+        {t("discover.aiTitle")}
       </h2>
       <p className={styles.intro}>
-        버튼을 누르면 관련 {label}를 찾아 카탈로그에 <strong>바로 추가</strong>
-        합니다. 수동 카드 고르기 없음. Compose →{" "}
-        <Link href="/compose">업데이트 반영</Link>으로 믹서에 불러오세요.
+        {t("discover.aiIntro", { kind })}{" "}
+        <Link href="/compose">{t("nav.compose")}</Link>.
       </p>
 
       <form className={styles.form} onSubmit={ingest}>
         <label htmlFor={`discover-topic-${axis}`} className={styles.topicLabel}>
-          Topic <span>(선택)</span>
+          {t("discover.topic")} <span>{t("discover.optional")}</span>
           <input
             id={`discover-topic-${axis}`}
             value={topic}
@@ -116,7 +119,7 @@ export function DiscoverPanel({ axis }: Props) {
         </label>
         <div className={styles.actions}>
           <Button type="submit" disabled={busy} className={styles.primary}>
-            {busy ? "찾는 중…" : "AI로 찾아서 추가"}
+            {busy ? t("discover.busy") : t("discover.button")}
           </Button>
         </div>
       </form>
@@ -129,7 +132,7 @@ export function DiscoverPanel({ axis }: Props) {
 
       {history.length ? (
         <div className={styles.history}>
-          <h3>추가 기록</h3>
+          <h3>{t("discover.history")}</h3>
           <ul>
             {history.map((h) => (
               <li key={h.at}>
@@ -149,7 +152,7 @@ export function DiscoverPanel({ axis }: Props) {
                     ))}
                   </ul>
                 ) : (
-                  <p className={styles.empty}>새 항목 없음</p>
+                  <p className={styles.empty}>{t("discover.none")}</p>
                 )}
               </li>
             ))}

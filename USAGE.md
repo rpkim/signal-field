@@ -33,6 +33,11 @@ Implement UI using design.md §1–§4 checklist — do not invent a parallel de
 ---
 
 
+## Locale (KO / EN)
+
+Product chrome is bilingual. Shell switcher **KO | EN** (top nav) persists in `localStorage` + cookie `sf-locale`.  
+Default: browser language if English → EN, otherwise **KO**. Long `design.md` body stays English; Doc shows a KO intro blurb when UI is KO.
+
 ## Type options
 
 Compose ships **many** type pairings (current trends: geometric, editorial, KO-friendly Noto, mono-forward tools).  

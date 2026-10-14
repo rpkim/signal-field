@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { AppShell } from "@/components/AppShell";
-import { PageHeader } from "@/components/PageHeader";
+import { PageChrome } from "@/components/PageChrome";
 import { Button } from "@/components/Button";
 import styles from "@/styles/pages.module.css";
 
@@ -9,13 +9,7 @@ export const metadata: Metadata = { title: "Foundations" };
 export default function FoundationsPage() {
   return (
     <AppShell current="/foundations">
-      <PageHeader eyebrow="Guide" title="Foundations">
-        <p>
-          Tokens first: paper field, graphite ink, one teal signal. Type is IBM
-          Plex Sans with Mono for code — weight, space, and responsive layout
-          carry hierarchy.
-        </p>
-      </PageHeader>
+      <PageChrome eyebrowKey="page.guide" titleKey="foundations.title" ledeKey="foundations.lede" />
 
       <section className={styles.section}>
         <h2>Color roles</h2>

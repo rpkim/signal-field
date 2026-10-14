@@ -2,22 +2,26 @@
 
 import Link from "next/link";
 import { useEffect, useId, useState } from "react";
+import { useLocale } from "@/i18n/LocaleProvider";
+import type { MessageKey } from "@/i18n/messages";
+import { LocaleSwitcher } from "./LocaleSwitcher";
 import styles from "./SiteNav.module.css";
 
-type NavItem = { href: string; label: string; group?: string };
+type NavItem = { href: string; labelKey: MessageKey; group?: string };
 
 const primary: NavItem[] = [
-  { href: "/", label: "Home" },
-  { href: "/foundations", label: "Foundations" },
-  { href: "/components", label: "Components" },
-  { href: "/compose", label: "Compose", group: "tools" },
-  { href: "/recommend", label: "Recommend", group: "tools" },
-  { href: "/trends", label: "Trends", group: "canon" },
-  { href: "/research", label: "Research", group: "canon" },
-  { href: "/doc", label: "Doc", group: "doc" },
+  { href: "/", labelKey: "nav.home" },
+  { href: "/foundations", labelKey: "nav.foundations" },
+  { href: "/components", labelKey: "nav.components" },
+  { href: "/compose", labelKey: "nav.compose", group: "tools" },
+  { href: "/recommend", labelKey: "nav.recommend", group: "tools" },
+  { href: "/trends", labelKey: "nav.trends", group: "canon" },
+  { href: "/research", labelKey: "nav.research", group: "canon" },
+  { href: "/doc", labelKey: "nav.doc", group: "doc" },
 ];
 
 export function SiteNav({ current }: { current?: string }) {
+  const { t } = useLocale();
   const [open, setOpen] = useState(false);
   const panelId = useId();
 
@@ -38,21 +42,26 @@ export function SiteNav({ current }: { current?: string }) {
     <header className={styles.header}>
       <div className={styles.inner}>
         <Link href="/" className={styles.brand} onClick={() => setOpen(false)}>
-          Signal Field <span>Guidelines</span>
+          Signal Field <span>{t("brand.guidelines")}</span>
         </Link>
-        <button
-          type="button"
-          className={styles.toggle}
-          aria-expanded={open}
-          aria-controls={panelId}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? "Close" : "Menu"}
-        </button>
+        <div className={styles.actions}>
+          <LocaleSwitcher />
+          <button
+            type="button"
+            className={styles.toggle}
+            aria-expanded={open}
+            aria-controls={panelId}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? t("nav.close") : t("nav.menu")}
+          </button>
+        </div>
         <nav
           id={panelId}
-          className={[styles.nav, open ? styles.navOpen : ""].filter(Boolean).join(" ")}
-          aria-label="Primary"
+          className={[styles.nav, open ? styles.navOpen : ""]
+            .filter(Boolean)
+            .join(" ")}
+          aria-label={t("nav.primary")}
         >
           {primary.map((item, i) => {
             const prev = primary[i - 1];
@@ -66,11 +75,14 @@ export function SiteNav({ current }: { current?: string }) {
                   aria-current={current === item.href ? "page" : undefined}
                   onClick={() => setOpen(false)}
                 >
-                  {item.label}
+                  {t(item.labelKey)}
                 </Link>
               </span>
             );
           })}
+          <span className={styles.localeDesktop}>
+            <LocaleSwitcher />
+          </span>
         </nav>
       </div>
     </header>

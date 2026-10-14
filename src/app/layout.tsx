@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { LocaleProvider } from "@/i18n/LocaleProvider";
 import "@/styles/globals.css";
 
 const plexSans = IBM_Plex_Sans({
@@ -35,8 +36,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${plexSans.variable} ${plexMono.variable}`}>
-      <body>{children}</body>
+    <html lang="ko" className={`${plexSans.variable} ${plexMono.variable}`}>
+      <body>
+        <LocaleProvider>{children}</LocaleProvider>
+      </body>
     </html>
   );
 }
