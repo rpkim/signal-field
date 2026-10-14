@@ -32,6 +32,12 @@ Implement UI using design.md §1–§4 checklist — do not invent a parallel de
 
 ---
 
+
+## Type options
+
+Compose ships **many** type pairings (current trends: geometric, editorial, KO-friendly Noto, mono-forward tools).  
+**Default / recommended = `plex` (IBM Plex Sans).** It stays selected until you change it. Export kits embed the chosen pairing’s Google Fonts import + system fallbacks.
+
 ## Path 1 — New or existing product UI
 
 1. Brief → **`/recommend`** (optional) → **`/compose`**.

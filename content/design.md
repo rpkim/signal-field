@@ -142,7 +142,7 @@ Branding is first-class. **Apply by composing options** (research × references 
 | Research | `brand-options/research.json` | multi ≤3 | Implications + optional CSS rule deltas (focus, motion, roles) |
 | References | `brand-options/references.json` | multi ≤2 | Cited steal/don’t; visual lean notes in DESIGN.md |
 | Color | `brand-options/colors.json` | one | Color role hex recipes |
-| Type | `brand-options/type.json` | one | Display/body pairing + tracking |
+| Type | `src/data/type.json` (default/`recommended`: `plex`) | one | Display/body pairing + tracking; Google load for selected only |
 | Density | `brand-options/density.json` | one | Radius, section space, base size |
 
 #### Mix → export (must)
@@ -241,7 +241,8 @@ Default (`signal`) reference values:
 
 ### 2.2 Typography
 
-**Pairing (must):** **IBM Plex Sans** for UI/body/brand (weight scale) · **IBM Plex Mono** for tokens/code.  
+**Recommended default:** **IBM Plex Sans** (`plex`) for UI/body/brand (weight scale) · **IBM Plex Mono** for tokens/code.  
+Compose exposes a broader type catalog (product · geometric · humanist · editorial · mono). The **recommended** option stays selected until the user picks another.  
 Do **not** default to Syne, Figtree, Inter, or other novelty/AI-template faces for the system shell.
 
 | Role | Token | Size | Weight | Use |

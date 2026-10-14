@@ -25,7 +25,12 @@ export async function POST(req: Request) {
     }
     const mix = body.mix;
     const color = byId(colors.items as ColorItem[], mix.color);
-    const type = byId(typeData.items as TypeItem[], mix.type);
+    const typeId =
+      mix.type ||
+      (typeData as { recommended?: string; default?: string }).recommended ||
+      (typeData as { default?: string }).default ||
+      "plex";
+    const type = byId(typeData.items as TypeItem[], typeId);
     const dens = byId(density.items as unknown as DensityItem[], mix.density);
 
     const systemDesign = await readFile(

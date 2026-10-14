@@ -21,6 +21,11 @@ import styles from "./ComposeClient.module.css";
 const colorItems = colors.items as ColorItem[];
 const typeItems = typeData.items as TypeItem[];
 const densityItems = density.items as unknown as DensityItem[];
+const recommendedTypeId =
+  (typeData as { recommended?: string; default?: string }).recommended ||
+  (typeData as { default?: string }).default ||
+  typeItems.find((item) => item.recommended)?.id ||
+  "plex";
 
 type ResearchItem = {
   id: string;
@@ -34,7 +39,7 @@ const DEFAULT: MixState = {
   research: ["wcag-22", "m3-roles"],
   references: ["ibm-lang"],
   color: "signal-teal",
-  type: "plex",
+  type: recommendedTypeId,
   density: "default",
   trends: [],
 };
@@ -163,11 +168,31 @@ export function ComposeClient() {
       ...roles,
       ["--font-display" as string]: `"${type.display}", ${type.fallbacks}`,
       ["--font-body" as string]: `"${type.body}", ${type.fallbacks}`,
+      ["--font-mono" as string]: type.mono
+        ? `"${type.mono}", ui-monospace, Menlo, monospace`
+        : "ui-monospace, Menlo, monospace",
       ["--tracking-display" as string]: type.trackingDisplay,
       background: roles["--color-field"],
       color: roles["--color-ink"],
     } as React.CSSProperties;
   }, [color, dens, type]);
+
+  // Load Google Fonts only for the selected type option (Compose specimen preview).
+  useEffect(() => {
+    if (!type.google || typeof document === "undefined") return;
+    const href = `https://fonts.googleapis.com/css2?${type.google}&display=swap`;
+    const id = `sf-compose-type-${type.id}`;
+    let link = document.getElementById(id) as HTMLLinkElement | null;
+    if (!link) {
+      link = document.createElement("link");
+      link.id = id;
+      link.rel = "stylesheet";
+      link.href = href;
+      document.head.appendChild(link);
+    } else if (link.href !== href) {
+      link.href = href;
+    }
+  }, [type.id, type.google]);
 
   function toggleMulti(
     axis: "research" | "references" | "trends",
@@ -483,7 +508,10 @@ export function ComposeClient() {
             </div>
           </Axis>
 
-          <Axis title={typeData.label} hint="Select one">
+          <Axis
+            title={`${typeData.label} (${typeItems.length})`}
+            hint={`Select one · default ${recommendedTypeId} (recommended)`}
+          >
             <div className={styles.optGrid}>
               {typeItems.map((item) => (
                 <button
@@ -492,9 +520,27 @@ export function ComposeClient() {
                   className={styles.chip}
                   aria-pressed={mix.type === item.id}
                   onClick={() => setOne("type", item.id)}
+                  style={
+                    mix.type === item.id
+                      ? {
+                          fontFamily: `"${item.display}", ${item.fallbacks}`,
+                        }
+                      : undefined
+                  }
                 >
-                  <strong>{item.name}</strong>
-                  <span className={styles.meta}>{item.rationale}</span>
+                  <strong>
+                    {item.name}
+                    {item.ko ? (
+                      <span className={styles.ko}>{item.ko}</span>
+                    ) : null}
+                    {item.recommended || item.id === recommendedTypeId ? (
+                      <span className={styles.badgeRec}>Recommended</span>
+                    ) : null}
+                  </strong>
+                  <span className={styles.meta}>
+                    {item.category ? `${item.category} · ` : ""}
+                    {item.rationale}
+                  </span>
                 </button>
               ))}
             </div>

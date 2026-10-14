@@ -61,7 +61,7 @@ Without keys, Discover still runs **offline** (topic + URLs/notes → schema).
 
 ## Theme options
 
-Compose catalogs: **30** colors · **12** type pairings · **8** densities · **14** presets.
+Compose catalogs: **30** colors · **25** type pairings (default/recommended: `plex`) · **8** densities · **14** presets.
 
 ## Routes
 

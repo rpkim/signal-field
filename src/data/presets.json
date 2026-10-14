@@ -156,7 +156,7 @@
           "ibm-lang"
         ],
         "color": "cobalt-grid",
-        "type": "sora-inter-avoid",
+        "type": "sora-source",
         "density": "tight"
       }
     },

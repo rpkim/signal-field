@@ -27,6 +27,9 @@ export type ColorItem = {
 export type TypeItem = {
   id: string;
   name: string;
+  ko?: string;
+  category?: string;
+  script?: string;
   display: string;
   body: string;
   mono?: string;
@@ -34,6 +37,7 @@ export type TypeItem = {
   fallbacks: string;
   rationale: string;
   trackingDisplay: string;
+  recommended?: boolean;
 };
 
 export type DensityItem = {
