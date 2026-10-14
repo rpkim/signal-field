@@ -46,9 +46,9 @@ const en = {
     "Richer theme space (color · type · density) + kit zip export.",
   "home.recommend.desc": "Describe a service; get a ranked theme mix.",
   "home.trends.desc":
-    "Find with AI — one button discovers trends for your concept.",
+    "Browse the trend catalog used in Compose — then find more with AI.",
   "home.research.desc":
-    "Find with AI — one button discovers research pillars.",
+    "Browse research pillars used in Compose — then find more with AI.",
   "home.kit.desc": "Default brand kit specimen — IBM Plex, signal teal.",
   "page.tools": "Tools",
   "page.guide": "Guide",
@@ -86,7 +86,7 @@ const en = {
     "Existing product brief — applying Signal Field (design.md + Compose kit) is the rebrand. Open the primary mix in Compose and Download kit.",
   "discover.aiTitle": "Find with AI & add",
   "discover.aiIntro":
-    "Press the button to find related {kind} and add them to the catalog. No manual card picking. Load into the mixer via Compose → Apply updates.",
+    "Find more related {kind} with AI and add them to the catalog. Then load into the mixer via Compose → Apply updates.",
   "discover.topic": "Topic",
   "discover.optional": "(optional)",
   "discover.button": "Find with AI & add",
@@ -102,10 +102,20 @@ const en = {
     "Added {n} · apply in Compose with 「Apply updates」",
   "trends.title": "Trends",
   "trends.lede":
-    "Don’t pick from a static list. AI finds trends for your concept and adds them to content/additions/trends.json. Apply in Compose.",
+    "The same trend catalog Compose mixes — browse here, apply in Compose, or find more with AI below.",
   "research.title": "Research",
   "research.lede":
-    "Don’t browse research cards. AI finds relevant pillars and adds them to content/additions/research.json. Apply in Compose.",
+    "The same research pillars Compose mixes — browse here, apply in Compose, or find more with AI below.",
+  "catalog.researchHeading": "Research pillars",
+  "catalog.trendsHeading": "Trend catalog",
+  "catalog.researchIntro": "Core pillars available in Compose",
+  "catalog.trendsIntro": "Secondary fashion tags available in Compose",
+  "catalog.applySuffix": ".",
+  "catalog.new": "New",
+  "catalog.source": "Source",
+  "catalog.when": "When",
+  "catalog.skip": "Skip",
+  "catalog.useInCompose": "Use in Compose →",
   "doc.title": "design.md",
   "doc.eyebrow": "Canon",
   "doc.introEn":
@@ -177,8 +187,10 @@ const ko: Record<MessageKey, string> = {
   "home.compose.desc":
     "풍부한 테마 공간(컬러·타입·밀도) + 키트 zip 내보내기.",
   "home.recommend.desc": "서비스를 설명하면 순위가 매겨진 테마 믹스.",
-  "home.trends.desc": "AI로 찾아서 추가 — 버튼 하나로 트렌드 발견.",
-  "home.research.desc": "AI로 찾아서 추가 — 버튼 하나로 리서치 필러 발견.",
+  "home.trends.desc":
+    "Compose와 같은 트렌드 카탈로그 — 보고, 적용하고, AI로 더 찾기.",
+  "home.research.desc":
+    "Compose와 같은 리서치 필러 — 보고, 적용하고, AI로 더 찾기.",
   "home.kit.desc": "기본 브랜드 키트 표본 — IBM Plex, 시그널 틸.",
   "page.tools": "도구",
   "page.guide": "가이드",
@@ -216,7 +228,7 @@ const ko: Record<MessageKey, string> = {
     "기존 제품 브리프 — Signal Field(design.md + Compose 키트) 적용이 곧 리브랜드입니다. 1순위 믹스를 Compose에서 열고 키트를 받으세요.",
   "discover.aiTitle": "AI로 찾아서 추가",
   "discover.aiIntro":
-    "버튼을 누르면 관련 {kind}를 찾아 카탈로그에 바로 추가합니다. 수동 카드 고르기 없음. Compose → 업데이트 반영으로 믹서에 불러오세요.",
+    "AI로 관련 {kind}를 더 찾아 카탈로그에 추가합니다. Compose → 업데이트 반영으로 믹서에 불러오세요.",
   "discover.topic": "토픽",
   "discover.optional": "(선택)",
   "discover.button": "AI로 찾아서 추가",
@@ -232,10 +244,20 @@ const ko: Record<MessageKey, string> = {
     "추가됨 {n}건 · Compose에서 「업데이트 반영」으로 믹서에 반영",
   "trends.title": "트렌드",
   "trends.lede":
-    "정적 목록을 고르지 마세요. AI가 컨셉에 맞는 트렌드를 찾아 content/additions/trends.json에 추가합니다. Compose에서 업데이트 반영.",
+    "Compose에서 쓰는 트렌드 카탈로그입니다. 여기서 보고 Compose에 적용하거나, 아래에서 AI로 더 찾으세요.",
   "research.title": "리서치",
   "research.lede":
-    "리서치 카드를 브라우징하지 마세요. AI가 관련 필러를 찾아 content/additions/research.json에 추가합니다. Compose에서 업데이트 반영.",
+    "Compose에서 쓰는 리서치 필러입니다. 여기서 보고 Compose에 적용하거나, 아래에서 AI로 더 찾으세요.",
+  "catalog.researchHeading": "리서치 필러",
+  "catalog.trendsHeading": "트렌드 카탈로그",
+  "catalog.researchIntro": "Compose에서 고를 수 있는 핵심 필러",
+  "catalog.trendsIntro": "Compose에서 고를 수 있는 부가 트렌드 태그",
+  "catalog.applySuffix": "에서 적용.",
+  "catalog.new": "신규",
+  "catalog.source": "출처",
+  "catalog.when": "언제",
+  "catalog.skip": "스킵",
+  "catalog.useInCompose": "Compose에서 사용 →",
   "doc.title": "design.md",
   "doc.eyebrow": "캐논",
   "doc.introEn":
