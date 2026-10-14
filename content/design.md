@@ -541,6 +541,108 @@ Specs. Implement with tokens. Anatomy → variants → states → sizes.
 | **Roles** | info (ink) · ok · warn · danger |
 | **Rules** | Short; actionable if needed; **never** block the whole UI for non-critical info |
 
+### 4.10 Badge / tag
+
+| | |
+| --- | --- |
+| **Variants** | Meta (quiet) · signal outline · solid ink |
+| **Use** | Status / taxonomy labels — not CTAs |
+| **Type** | Uppercase xs · weight 600 · short labels |
+
+### 4.11 Tabs
+
+| | |
+| --- | --- |
+| **Anatomy** | Tab list · one visible panel |
+| **States** | selected (signal underline) · default · focus-visible · disabled |
+| **A11y** | `role="tablist"` / `tab` / `tabpanel`; arrow keys in production |
+
+### 4.12 Table
+
+| | |
+| --- | --- |
+| **Style** | Hairline rules · open density · no card wrapper required |
+| **Header** | Weight 500 · field wash |
+| **Overflow** | Horizontal scroll on narrow viewports |
+
+### 4.13 Breadcrumb
+
+| | |
+| --- | --- |
+| **Anatomy** | Ancestors as links · current as text (`aria-current="page"`) |
+| **Separator** | Quiet slash / middot — decorative (`aria-hidden`) |
+| **Rules** | Hierarchy without chrome noise; omit on top-level pages
+
+### 4.14 Pagination
+
+| | |
+| --- | --- |
+| **Anatomy** | Prev · page numbers · Next |
+| **Current** | Solid ink fill; clear `aria-current="page"` |
+| **Rules** | Compact; disable edges at bounds |
+
+### 4.15 Menu / dropdown
+
+| | |
+| --- | --- |
+| **Anatomy** | Trigger · menu · menuitems |
+| **Behavior** | One open menu; Esc + outside click close in prod; restore focus |
+| **Destructive** | Danger text at end of list; confirm in dialog when irreversible |
+
+### 4.16 Disclosure / accordion
+
+| | |
+| --- | --- |
+| **Anatomy** | Header button (`aria-expanded`) · body |
+| **Rules** | Open layout; hairline between items — not stacked cards |
+| **Default** | Prefer one open panel unless comparison needs many |
+
+### 4.17 Progress / skeleton
+
+| | |
+| --- | --- |
+| **Progress** | Quiet bar; `role="progressbar"` + valuemin/max/now |
+| **Skeleton** | Field wash shimmer; honor `prefers-reduced-motion` |
+| **Never** | Decorative spinner theater for routine loads |
+
+### 4.18 Empty state
+
+| | |
+| --- | --- |
+| **Anatomy** | One sentence · one primary action |
+| **Rules** | No illustration required; dashed or calm field, not a promo card |
+
+### 4.19 Avatar
+
+| | |
+| --- | --- |
+| **Fallback** | Initials on soft signal wash |
+| **Sizes** | sm (~28) · md (~40) · lg (~52) |
+| **Rules** | Decorative images need empty alt; initials need accessible name |
+
+### 4.20 Tooltip
+
+| | |
+| --- | --- |
+| **Content** | Short · supplemental only |
+| **Never** | Essential instructions only in tooltips |
+| **Behavior** | Delay + dismiss on Esc in production; visible on focus too |
+
+### 4.21 Divider
+
+| | |
+| --- | --- |
+| **Variants** | Plain hairline · labeled (“or continue”) |
+| **Rules** | Separate jobs on one surface; do not use as decoration spam |
+
+### 4.22 Segmented control
+
+| | |
+| --- | --- |
+| **Use** | Mutually exclusive compact filters (day / week / month) |
+| **States** | pressed (chalk fill) · default · focus-visible |
+| **A11y** | `role="group"` + `aria-pressed` per option |
+
 ---
 
 ## 5. Interaction patterns
