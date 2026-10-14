@@ -40,6 +40,12 @@ Implement UI using design.md §1–§4 — do not invent a parallel system.
 <link rel="stylesheet" href="./theme.css" />
 ```
 
+## Local path
+
+```
+~/signal-field
+```
+
 ## Dev
 
 ```bash
