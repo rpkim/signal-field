@@ -26,7 +26,7 @@ export async function POST(req: Request) {
     const mix = body.mix;
     const color = byId(colors.items as ColorItem[], mix.color);
     const type = byId(typeData.items as TypeItem[], mix.type);
-    const dens = byId(density.items as DensityItem[], mix.density);
+    const dens = byId(density.items as unknown as DensityItem[], mix.density);
 
     const systemDesign = await readFile(
       path.join(process.cwd(), "content", "design.md"),

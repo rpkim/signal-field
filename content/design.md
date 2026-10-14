@@ -7,7 +7,7 @@ Staff design guideline for UI work in this Project. Normative language: **must**
 | System | Signal Field |
 | Status | Canonical |
 | Example demo brand | Northline Studio (thin sample identity only — not a product brand) |
-| Product app (Next.js) | [`rpkim/signal-field`](https://github.com/rpkim/signal-field) · routes `/`, `/compose`, `/recommend`, `/trends`, `/research`, `/doc` |
+| Product app (Next.js) | [`rpkim/signal-field`](https://github.com/rpkim/signal-field) · routes `/`, `/compose`, `/recommend`, `/trends` (AI button), `/research` (AI button), `/doc` |
 | Usage playbook | [`USAGE.md`](./USAGE.md) (humans + agents) |
 | Legacy static proof | `docs/theme-example/` (superseded for tools by the Next app) |
 | Brand kits (export) | `docs/brand-kits/<kit-id>/` |
@@ -121,9 +121,9 @@ Branding is first-class. **Apply by composing options** (research × references 
 
 **Recommend UI:** Next `/recommend` (service brief → ranked mixes; new or existing)  
 **Existing product:** same path — apply `design.md` + Compose kit (that is the rebrand)  
-**Primary compose UI:** Next `/compose` (Save → load from `/doc`)  
-**Option catalogs:** `docs/brand-options/` (also `src/data/` in the Next app)  
-**Trends (friendly):** Next `/trends` · `brand-options/trends.json` · `docs/trends/README.md`  
+**Primary compose UI:** Next `/compose` (expanded color/type/density; Save → `/doc`)  
+**Option catalogs:** `src/data/` (colors · type · density · presets) synced from store `docs/brand-options/`  
+**Trends / Research:** button-only AI discover (`/trends`, `/research`) → auto-add → Compose 업데이트 반영  
 **Presets (saved mixes):** six kits under `docs/brand-kits/` · Compose presets  
 **Generated mixes:** `docs/brand-kits/_generated/<slug>/` · Compose Download kit
 

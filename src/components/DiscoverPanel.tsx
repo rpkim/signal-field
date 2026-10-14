@@ -1,215 +1,159 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "./Button";
 import styles from "./DiscoverPanel.module.css";
-import type {
-  DiscoverAxis,
-  ProposeResult,
-  ResearchCandidate,
-  TrendCandidate,
-} from "@/lib/discover/types";
+import type { DiscoverAxis } from "@/lib/discover/types";
 
 type Props = {
   axis: DiscoverAxis;
 };
 
-type LocalState = "pending" | "accepted" | "rejected";
+type HistoryEntry = {
+  at: string;
+  mode?: string;
+  provider?: string;
+  added: Array<{ id: string; label: string }>;
+  skipped: Array<{ id: string; reason: string }>;
+  error?: string;
+};
 
 export function DiscoverPanel({ axis }: Props) {
   const router = useRouter();
   const [topic, setTopic] = useState("");
-  const [notes, setNotes] = useState("");
   const [busy, setBusy] = useState(false);
-  const [status, setStatus] = useState("");
-  const [result, setResult] = useState<ProposeResult | null>(null);
-  const [local, setLocal] = useState<Record<string, LocalState>>({});
+  const [toast, setToast] = useState("");
+  const [history, setHistory] = useState<HistoryEntry[]>([]);
 
-  async function propose(e?: React.FormEvent) {
+  const label = axis === "trends" ? "트렌드" : "리서치";
+  const placeholder =
+    axis === "trends"
+      ? "예: quiet commerce, fluid type, deference chrome (비우면 현재 craft 기준)"
+      : "예: WCAG focus appearance, fluid type roles (비우면 현재 craft 기준)";
+
+  async function ingest(e?: React.FormEvent) {
     e?.preventDefault();
     setBusy(true);
-    setStatus("검색·구조화 중…");
-    setResult(null);
-    setLocal({});
+    setToast(`${label} 찾는 중…`);
     try {
-      const res = await fetch("/api/discover/propose", {
+      const res = await fetch("/api/discover/ingest", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ axis, topic, notes }),
+        body: JSON.stringify({ axis, topic, notes: "" }),
       });
-      const data = (await res.json()) as ProposeResult & { error?: string };
-      if (!res.ok) throw new Error(data.error || "Propose failed");
-      setResult(data);
-      setStatus(
-        data.note ||
-          (data.mode === "ai"
-            ? `AI propose (${data.provider || "model"}) — Accept로 카탈로그에 추가`
-            : "Offline propose — Accept로 카탈로그에 추가")
-      );
-    } catch (err) {
-      setStatus(err instanceof Error ? err.message : "Propose failed");
-    } finally {
-      setBusy(false);
-    }
-  }
+      const data = (await res.json()) as {
+        error?: string;
+        mode?: string;
+        provider?: string;
+        added?: Array<{ id: string; label: string }>;
+        skipped?: Array<{ id: string; reason: string }>;
+      };
+      if (!res.ok) throw new Error(data.error || "Ingest failed");
 
-  async function accept(item: TrendCandidate | ResearchCandidate) {
-    setBusy(true);
-    try {
-      const res = await fetch("/api/discover/accept", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ axis, item }),
-      });
-      const data = (await res.json()) as { error?: string };
-      if (!res.ok) throw new Error(data.error || "Accept failed");
-      setLocal((prev) => ({ ...prev, [item.id]: "accepted" }));
-      setStatus(`추가됨: ${item.id}`);
+      const added = data.added || [];
+      const skipped = data.skipped || [];
+      const entry: HistoryEntry = {
+        at: new Date().toISOString(),
+        mode: data.mode,
+        provider: data.provider,
+        added,
+        skipped,
+      };
+      setHistory((prev) => [entry, ...prev].slice(0, 8));
+
+      if (added.length === 0) {
+        setToast(
+          skipped.length
+            ? `새 항목 없음 (이미 있거나 스킵 ${skipped.length})`
+            : "새 항목을 찾지 못했습니다"
+        );
+      } else {
+        setToast(
+          `추가됨 ${added.length}건 · Compose에서 「업데이트 반영」으로 믹서에 반영`
+        );
+      }
       router.refresh();
     } catch (err) {
-      setStatus(err instanceof Error ? err.message : "Accept failed");
+      const message = err instanceof Error ? err.message : "Ingest failed";
+      setToast(message);
+      setHistory((prev) => [
+        {
+          at: new Date().toISOString(),
+          added: [],
+          skipped: [],
+          error: message,
+        },
+        ...prev,
+      ].slice(0, 8));
     } finally {
       setBusy(false);
     }
-  }
-
-  function reject(id: string) {
-    setLocal((prev) => ({ ...prev, [id]: "rejected" }));
   }
 
   return (
-    <section className={styles.panel} aria-labelledby="discover-heading">
-      <h2 id="discover-heading" className="sr-only">
-        Discover
+    <section className={styles.hero} aria-labelledby="discover-heading">
+      <h2 id="discover-heading" className={styles.title}>
+        AI로 찾아서 추가
       </h2>
       <p className={styles.intro}>
-        AI로 검색해 추가 — topic을 비우면 현재 product/UI craft를 기준으로
-        제안합니다. API 키가 없으면 URL·노트를 같은 스키마로 구조화합니다.
+        버튼을 누르면 관련 {label}를 찾아 카탈로그에 <strong>바로 추가</strong>
+        합니다. 수동 카드 고르기 없음. Compose →{" "}
+        <Link href="/compose">업데이트 반영</Link>으로 믹서에 불러오세요.
       </p>
-      <form className={styles.form} onSubmit={propose}>
-        <label htmlFor={`discover-topic-${axis}`}>
-          Topic
+
+      <form className={styles.form} onSubmit={ingest}>
+        <label htmlFor={`discover-topic-${axis}`} className={styles.topicLabel}>
+          Topic <span>(선택)</span>
           <input
             id={`discover-topic-${axis}`}
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
-            placeholder="예: liquid glass deference, fluid type, quiet commerce"
-          />
-        </label>
-        <label htmlFor={`discover-notes-${axis}`}>
-          Notes / URLs
-          <textarea
-            id={`discover-notes-${axis}`}
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-            placeholder="출처 URL이나 메모를 붙여넣기 (offline fallback에 사용)"
-            spellCheck={false}
+            placeholder={placeholder}
+            disabled={busy}
           />
         </label>
         <div className={styles.actions}>
-          <Button type="submit" disabled={busy}>
-            AI로 검색해 추가
-          </Button>
-          <Button
-            type="button"
-            variant="ghost"
-            disabled={busy}
-            onClick={async () => {
-              setTopic("");
-              setBusy(true);
-              setStatus("검색·구조화 중…");
-              setResult(null);
-              setLocal({});
-              try {
-                const res = await fetch("/api/discover/propose", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ axis, topic: "", notes }),
-                });
-                const data = (await res.json()) as ProposeResult & {
-                  error?: string;
-                };
-                if (!res.ok) throw new Error(data.error || "Propose failed");
-                setResult(data);
-                setStatus(
-                  data.note ||
-                    (data.mode === "ai"
-                      ? `AI propose (${data.provider || "model"})`
-                      : "Offline propose")
-                );
-              } catch (err) {
-                setStatus(err instanceof Error ? err.message : "Propose failed");
-              } finally {
-                setBusy(false);
-              }
-            }}
-          >
-            What&apos;s current
+          <Button type="submit" disabled={busy} className={styles.primary}>
+            {busy ? "찾는 중…" : "AI로 찾아서 추가"}
           </Button>
         </div>
       </form>
-      {status ? <p className={styles.status}>{status}</p> : null}
 
-      {result?.candidates?.length ? (
-        <div className={styles.candidates}>
-          {result.candidates.map((item) => {
-            const state = local[item.id] || "pending";
-            const isTrend = "en" in item;
-            return (
-              <article key={item.id} className={styles.candidate}>
-                <p className={styles.meta}>
-                  {isTrend
-                    ? `${(item as TrendCandidate).category} · ${(item as TrendCandidate).logDate}`
-                    : `${(item as ResearchCandidate).year}`}
-                  {state !== "pending" ? ` · ${state}` : ""}
-                </p>
-                <h3>
-                  {isTrend
-                    ? `${(item as TrendCandidate).en}${(item as TrendCandidate).ko ? ` · ${(item as TrendCandidate).ko}` : ""}`
-                    : (item as ResearchCandidate).title}
-                </h3>
-                {isTrend ? (
-                  <>
-                    <p className={styles.body}>{(item as TrendCandidate).what}</p>
-                    <p className={styles.body}>
-                      When: {(item as TrendCandidate).when} — Skip:{" "}
-                      {(item as TrendCandidate).skip}
-                    </p>
-                  </>
-                ) : (
-                  <ul className={styles.implications}>
-                    {(item as ResearchCandidate).implications.map((line) => (
-                      <li key={line}>{line}</li>
+      {toast ? (
+        <p className={styles.toast} role="status" aria-live="polite">
+          {toast}
+        </p>
+      ) : null}
+
+      {history.length ? (
+        <div className={styles.history}>
+          <h3>추가 기록</h3>
+          <ul>
+            {history.map((h) => (
+              <li key={h.at}>
+                <span className={styles.when}>
+                  {new Date(h.at).toLocaleString()}
+                  {h.mode ? ` · ${h.mode}` : ""}
+                  {h.provider ? ` · ${h.provider}` : ""}
+                </span>
+                {h.error ? (
+                  <p className={styles.err}>{h.error}</p>
+                ) : h.added.length ? (
+                  <ul className={styles.added}>
+                    {h.added.map((a) => (
+                      <li key={a.id}>
+                        <code>{a.id}</code> — {a.label}
+                      </li>
                     ))}
                   </ul>
-                )}
-                {state === "pending" ? (
-                  <div className={styles.row}>
-                    <Button
-                      type="button"
-                      disabled={busy}
-                      onClick={() => accept(item)}
-                    >
-                      Accept
-                    </Button>
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      disabled={busy}
-                      onClick={() => reject(item.id)}
-                    >
-                      Reject
-                    </Button>
-                  </div>
-                ) : state === "accepted" ? (
-                  <p className={styles.accepted}>Catalog에 추가됨</p>
                 ) : (
-                  <p className={styles.rejected}>Skipped</p>
+                  <p className={styles.empty}>새 항목 없음</p>
                 )}
-              </article>
-            );
-          })}
+              </li>
+            ))}
+          </ul>
         </div>
       ) : null}
     </section>

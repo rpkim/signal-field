@@ -19,7 +19,7 @@ const links = [
     href: "/compose",
     kicker: "Tools",
     title: "Compose",
-    desc: "Mix research, references, color, type, density — export a kit.",
+    desc: "Richer theme space (color · type · density) + kit zip export.",
   },
   {
     href: "/recommend",
@@ -31,13 +31,13 @@ const links = [
     href: "/trends",
     kicker: "Canon",
     title: "Trends",
-    desc: "Current visual trends mapped to research and refs.",
+    desc: "AI로 찾아서 추가 — one button discovers trends for your concept.",
   },
   {
     href: "/research",
     kicker: "Canon",
     title: "Research",
-    desc: "Pillars that constrain Compose — WCAG, roles, deference.",
+    desc: "AI로 찾아서 추가 — one button discovers research pillars.",
   },
   {
     href: "/kits/precise-quiet",

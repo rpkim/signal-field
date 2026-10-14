@@ -27,7 +27,8 @@ export async function readAdditions(
     const data = JSON.parse(raw) as AdditionsFile<
       TrendCandidate | ResearchCandidate
     >;
-    return data.items ?? [];
+    if (axis === "trends") return (data.items ?? []) as TrendCandidate[];
+    return (data.items ?? []) as ResearchCandidate[];
   } catch {
     return [];
   }

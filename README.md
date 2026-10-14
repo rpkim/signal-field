@@ -30,6 +30,7 @@ Implement UI using design.md §1–§4 — do not invent a parallel system.
 | --- | --- |
 | New UI | Brief → `/recommend` → `/compose` → Download zip → wire CSS in target repo |
 | Existing product | Same as New UI — apply `design.md` + kit (that is the rebrand) |
+| Discover trends/research | `/trends` or `/research` → **AI로 찾아서 추가** (auto-add) → Compose 업데이트 반영 |
 | Reload mix | Compose Save → `/doc` Load → re-export zip |
 
 ### CSS import order
@@ -57,6 +58,10 @@ Open http://127.0.0.1:3000
 | `ANTHROPIC_API_KEY` | Fallback if OpenAI unset |
 
 Without keys, Discover still runs **offline** (topic + URLs/notes → schema).
+
+## Theme options
+
+Compose catalogs: **30** colors · **12** type pairings · **8** densities · **14** presets.
 
 ## Routes
 

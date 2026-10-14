@@ -55,6 +55,76 @@
       "fallbacks": "\"Segoe UI\", \"Helvetica Neue\", sans-serif",
       "rationale": "Sharp ops/fintech order — not for the guidelines shell default.",
       "trackingDisplay": "-0.03em"
+    },
+    {
+      "id": "manrope-source",
+      "name": "Manrope + Source Sans 3",
+      "display": "Manrope",
+      "body": "Source Sans 3",
+      "google": "family=Source+Sans+3:wght@400;500;600&family=Manrope:wght@600;700",
+      "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", sans-serif",
+      "rationale": "Geometric display clarity for product marketing heroes.",
+      "trackingDisplay": "-0.025em"
+    },
+    {
+      "id": "dm-sans",
+      "name": "DM Sans",
+      "display": "DM Sans",
+      "body": "DM Sans",
+      "google": "family=DM+Sans:wght@400;500;600;700",
+      "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", sans-serif",
+      "rationale": "Friendly geometric single-family for soft product UIs.",
+      "trackingDisplay": "-0.02em"
+    },
+    {
+      "id": "libre-source",
+      "name": "Libre Franklin + Source Sans 3",
+      "display": "Libre Franklin",
+      "body": "Source Sans 3",
+      "google": "family=Source+Sans+3:wght@400;500;600&family=Libre+Franklin:wght@600;700",
+      "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", sans-serif",
+      "rationale": "Franklin-adjacent authority without novelty display fonts.",
+      "trackingDisplay": "-0.015em"
+    },
+    {
+      "id": "work-sans",
+      "name": "Work Sans",
+      "display": "Work Sans",
+      "body": "Work Sans",
+      "google": "family=Work+Sans:wght@400;500;600;700",
+      "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", sans-serif",
+      "rationale": "Slightly humanist UI face for education and content tools.",
+      "trackingDisplay": "-0.01em"
+    },
+    {
+      "id": "sora-inter-avoid",
+      "name": "Sora + Source Sans 3",
+      "display": "Sora",
+      "body": "Source Sans 3",
+      "google": "family=Source+Sans+3:wght@400;500;600&family=Sora:wght@600;700",
+      "fallbacks": "\"Segoe UI\", \"Helvetica Neue\", sans-serif",
+      "rationale": "Tech display with restraint — body stays Source; never Inter as expressive face.",
+      "trackingDisplay": "-0.03em"
+    },
+    {
+      "id": "public-sans",
+      "name": "Public Sans",
+      "display": "Public Sans",
+      "body": "Public Sans",
+      "google": "family=Public+Sans:wght@400;500;600;700",
+      "fallbacks": "\"Helvetica Neue\", \"Segoe UI\", sans-serif",
+      "rationale": "Civic/utility clarity aligned with clear-ink density.",
+      "trackingDisplay": "-0.01em"
+    },
+    {
+      "id": "schibsted-source",
+      "name": "Schibsted Grotesk + Source Sans 3",
+      "display": "Schibsted Grotesk",
+      "body": "Source Sans 3",
+      "google": "family=Source+Sans+3:wght@400;500;600&family=Schibsted+Grotesk:wght@600;700",
+      "fallbacks": "\"Segoe UI\", sans-serif",
+      "rationale": "Editorial grotesk display for day-mist editorial mixes.",
+      "trackingDisplay": "-0.02em"
     }
   ]
 }

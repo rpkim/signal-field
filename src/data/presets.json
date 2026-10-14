@@ -4,7 +4,7 @@
     {
       "id": "precise-quiet",
       "name": "Precise quiet tech",
-      "ko": "\uc815\ubc00\u00b7\uace0\uc694",
+      "ko": "정밀·고요",
       "mix": {
         "research": [
           "wcag-22",
@@ -22,7 +22,7 @@
     {
       "id": "day-editorial",
       "name": "Day editorial",
-      "ko": "\ubc1d\uc740 \ud3b8\uc9d1",
+      "ko": "밝은 편집",
       "mix": {
         "research": [
           "fluid-type",
@@ -40,7 +40,7 @@
     {
       "id": "warm-commerce",
       "name": "Warm commerce",
-      "ko": "\ub530\ub73b\ud55c \ucee4\uba38\uc2a4",
+      "ko": "따뜻한 커머스",
       "mix": {
         "research": [
           "m3-roles",
@@ -57,7 +57,7 @@
     {
       "id": "utility-clear",
       "name": "Utility clear",
-      "ko": "\uc720\ud2f8\u00b7\uc811\uadfc\uc131",
+      "ko": "유틸·접근성",
       "mix": {
         "research": [
           "wcag-22",
@@ -75,7 +75,7 @@
     {
       "id": "soft-product",
       "name": "Soft product",
-      "ko": "\uc18c\ud504\ud2b8 \uc81c\ud488",
+      "ko": "소프트 제품",
       "mix": {
         "research": [
           "apple-deference",
@@ -92,7 +92,7 @@
     {
       "id": "ink-ledger",
       "name": "Ink ledger",
-      "ko": "\uc789\ud06c\u00b7\uc7a5\ubd80",
+      "ko": "잉크·장부",
       "mix": {
         "research": [
           "wcag-22",
@@ -105,6 +105,145 @@
         "color": "ledger-slate",
         "type": "grotesk-source",
         "density": "compact"
+      }
+    },
+    {
+      "id": "harbor-ops",
+      "name": "Harbor ops",
+      "ko": "하버 옵스",
+      "mix": {
+        "research": [
+          "wcag-22",
+          "m3-roles"
+        ],
+        "references": [
+          "atlassian",
+          "ibm-lang"
+        ],
+        "color": "harbor-navy",
+        "type": "grotesk-source",
+        "density": "compact"
+      }
+    },
+    {
+      "id": "clinic-calm",
+      "name": "Clinic calm",
+      "ko": "클리닉 캄",
+      "mix": {
+        "research": [
+          "wcag-22",
+          "apple-deference"
+        ],
+        "references": [
+          "govuk"
+        ],
+        "color": "mint-clinic",
+        "type": "plex",
+        "density": "comfortable"
+      }
+    },
+    {
+      "id": "grid-analytics",
+      "name": "Grid analytics",
+      "ko": "그리드 애널리틱스",
+      "mix": {
+        "research": [
+          "wcag-22",
+          "m3-roles",
+          "fluid-type"
+        ],
+        "references": [
+          "ibm-lang"
+        ],
+        "color": "cobalt-grid",
+        "type": "sora-inter-avoid",
+        "density": "tight"
+      }
+    },
+    {
+      "id": "desk-notes",
+      "name": "Desk notes",
+      "ko": "데스크 노트",
+      "mix": {
+        "research": [
+          "fluid-type",
+          "content-plain"
+        ],
+        "references": [
+          "brandnew"
+        ],
+        "color": "olive-desk",
+        "type": "work-sans",
+        "density": "airy"
+      }
+    },
+    {
+      "id": "civic-clear",
+      "name": "Civic clear",
+      "ko": "시빅 클리어",
+      "mix": {
+        "research": [
+          "wcag-22",
+          "content-plain"
+        ],
+        "references": [
+          "govuk"
+        ],
+        "color": "clear-ink",
+        "type": "public-sans",
+        "density": "a11y-large"
+      }
+    },
+    {
+      "id": "dusk-media",
+      "name": "Dusk media",
+      "ko": "더스크 미디어",
+      "mix": {
+        "research": [
+          "apple-deference",
+          "fluid-type"
+        ],
+        "references": [
+          "awwwards"
+        ],
+        "color": "plum-dusk",
+        "type": "dm-sans",
+        "density": "comfortable"
+      }
+    },
+    {
+      "id": "steel-infra",
+      "name": "Steel infra",
+      "ko": "스틸 인프라",
+      "mix": {
+        "research": [
+          "wcag-22",
+          "m3-roles"
+        ],
+        "references": [
+          "atlassian"
+        ],
+        "color": "steel-fog",
+        "type": "manrope-source",
+        "density": "compact"
+      }
+    },
+    {
+      "id": "paper-press",
+      "name": "Paper press",
+      "ko": "페이퍼 프레스",
+      "mix": {
+        "research": [
+          "fluid-type",
+          "content-plain"
+        ],
+        "references": [
+          "awwwards",
+          "brandnew"
+        ],
+        "color": "paper-ochre",
+        "type": "schibsted-source",
+        "density": "editorial"
       }
     }
   ]

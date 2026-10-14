@@ -10,7 +10,13 @@
       "feeling": "Precise tech quiet",
       "when": "Default product chrome — paper field, graphite ink, one teal",
       "a11y": "Teal as accent only; body uses ink on paper (AA intent)",
-      "swatches": ["#12141a", "#f6f7f8", "#0f766e", "#14b8a6", "#e8eaee"],
+      "swatches": [
+        "#12141a",
+        "#f6f7f8",
+        "#0f766e",
+        "#14b8a6",
+        "#e8eaee"
+      ],
       "roles": {
         "--color-ink": "#12141a",
         "--color-ink-soft": "#5c6370",
@@ -34,7 +40,13 @@
       "feeling": "Light editorial day",
       "when": "Daytime docs-adjacent and editorial landings",
       "a11y": "Ink on cool mist field; deepened teal for links",
-      "swatches": ["#142033", "#f0f5fa", "#0e7f7a", "#1aaea5", "#1a2b40"],
+      "swatches": [
+        "#142033",
+        "#f0f5fa",
+        "#0e7f7a",
+        "#1aaea5",
+        "#1a2b40"
+      ],
       "roles": {
         "--color-ink": "#142033",
         "--color-ink-soft": "#3a4d66",
@@ -58,7 +70,13 @@
       "feeling": "Warm commerce",
       "when": "Product detail, catalog, checkout accents",
       "a11y": "Copper on stone; avoid cream+terracotta+serif kits — geometric type still",
-      "swatches": ["#1a1410", "#ebe4da", "#c45c2a", "#e07a45", "#1f1814"],
+      "swatches": [
+        "#1a1410",
+        "#ebe4da",
+        "#c45c2a",
+        "#e07a45",
+        "#1f1814"
+      ],
       "roles": {
         "--color-ink": "#1a1410",
         "--color-ink-soft": "#4a3f36",
@@ -82,7 +100,13 @@
       "feeling": "Utility / a11y",
       "when": "Admin, settings, dense tools",
       "a11y": "Near black/white; focus blue ring for maximum visibility",
-      "swatches": ["#000000", "#ffffff", "#00665f", "#0066cc", "#1a1a1a"],
+      "swatches": [
+        "#000000",
+        "#ffffff",
+        "#00665f",
+        "#0066cc",
+        "#1a1a1a"
+      ],
       "roles": {
         "--color-ink": "#000000",
         "--color-ink-soft": "#1a1a1a",
@@ -106,7 +130,13 @@
       "feeling": "Soft product",
       "when": "Consumer apps, onboarding, gentle product UI",
       "a11y": "Sage on cool green-gray field; not cream pastel",
-      "swatches": ["#1c2430", "#eef3f0", "#3d8f7a", "#5bb89e", "#1e2b28"],
+      "swatches": [
+        "#1c2430",
+        "#eef3f0",
+        "#3d8f7a",
+        "#5bb89e",
+        "#1e2b28"
+      ],
       "roles": {
         "--color-ink": "#1c2430",
         "--color-ink-soft": "#4a5568",
@@ -130,7 +160,13 @@
       "feeling": "Ink ledger / fintech",
       "when": "Dashboards, ledgers, ops tools",
       "a11y": "Slate blue accent on cool gray field; dense UI friendly",
-      "swatches": ["#0d1520", "#e6ebf1", "#2b6cb0", "#4299e1", "#0c121c"],
+      "swatches": [
+        "#0d1520",
+        "#e6ebf1",
+        "#2b6cb0",
+        "#4299e1",
+        "#0c121c"
+      ],
       "roles": {
         "--color-ink": "#0d1520",
         "--color-ink-soft": "#3d4a5c",
@@ -154,7 +190,13 @@
       "feeling": "Grounded nature-tech",
       "when": "Climate, outdoor, wellness-adjacent product (restrained)",
       "a11y": "Deep pine ink; moss signal on pale sage-gray — not neon green",
-      "swatches": ["#122018", "#e8eee8", "#2f6b4f", "#4a9a72", "#0f1a14"],
+      "swatches": [
+        "#122018",
+        "#e8eee8",
+        "#2f6b4f",
+        "#4a9a72",
+        "#0f1a14"
+      ],
       "roles": {
         "--color-ink": "#122018",
         "--color-ink-soft": "#3a4f42",
@@ -178,7 +220,13 @@
       "feeling": "Deep maritime calm",
       "when": "Travel, marine, data platforms wanting cool gravity",
       "a11y": "Navy ink; sea accent; chalk on deep navy for inverse bands",
-      "swatches": ["#0a1628", "#e6eef6", "#1a6f8f", "#2e9bb8", "#071018"],
+      "swatches": [
+        "#0a1628",
+        "#e6eef6",
+        "#1a6f8f",
+        "#2e9bb8",
+        "#071018"
+      ],
       "roles": {
         "--color-ink": "#0a1628",
         "--color-ink-soft": "#33485f",
@@ -202,7 +250,13 @@
       "feeling": "Near-mono ink system",
       "when": "Portfolios, photography, typography-led sites",
       "a11y": "Graphite accent is dark gray — rely on weight/space; status colors untouched",
-      "swatches": ["#111111", "#f2f2f2", "#333333", "#666666", "#000000"],
+      "swatches": [
+        "#111111",
+        "#f2f2f2",
+        "#333333",
+        "#666666",
+        "#000000"
+      ],
       "roles": {
         "--color-ink": "#111111",
         "--color-ink-soft": "#555555",
@@ -226,7 +280,13 @@
       "feeling": "Neutral mineral calm",
       "when": "Architecture, material, quiet B2B without terracotta cliché",
       "a11y": "Cool stone field (not #F4F1EA cream); ink brown-black; olive-stone accent",
-      "swatches": ["#1c1916", "#e9e6e1", "#6b654f", "#8a8368", "#161411"],
+      "swatches": [
+        "#1c1916",
+        "#e9e6e1",
+        "#6b654f",
+        "#8a8368",
+        "#161411"
+      ],
       "roles": {
         "--color-ink": "#1c1916",
         "--color-ink-soft": "#5a534a",
@@ -250,7 +310,13 @@
       "feeling": "Electric but restrained",
       "when": "Launch moments, energy brands — accent sparingly",
       "a11y": "Amber volt on cool charcoal field (not purple neon); use signal only for actions",
-      "swatches": ["#10141c", "#e8ebf0", "#d97706", "#f59e0b", "#0c0f14"],
+      "swatches": [
+        "#10141c",
+        "#e8ebf0",
+        "#d97706",
+        "#f59e0b",
+        "#0c0f14"
+      ],
       "roles": {
         "--color-ink": "#10141c",
         "--color-ink-soft": "#3d4554",
@@ -274,7 +340,13 @@
       "feeling": "Soft product pastel (cool)",
       "when": "Beauty/wellness soft UI without cream-terracotta stack",
       "a11y": "Dusty rose accent on cool gray-lavender field — not hot pink or purple brand kits",
-      "swatches": ["#1f1a1c", "#f0ebef", "#a35d6f", "#c47a8a", "#161214"],
+      "swatches": [
+        "#1f1a1c",
+        "#f0ebef",
+        "#a35d6f",
+        "#c47a8a",
+        "#161214"
+      ],
       "roles": {
         "--color-ink": "#1f1a1c",
         "--color-ink-soft": "#5a4e52",
@@ -298,7 +370,13 @@
       "feeling": "Cold high-key precision",
       "when": "Analytics, medical-adjacent calm, winter product stories",
       "a11y": "Near-white field; cyan-steel signal; strong ink for type",
-      "swatches": ["#0e1a22", "#f2f7fa", "#0e7490", "#22a0bd", "#0a1218"],
+      "swatches": [
+        "#0e1a22",
+        "#f2f7fa",
+        "#0e7490",
+        "#22a0bd",
+        "#0a1218"
+      ],
       "roles": {
         "--color-ink": "#0e1a22",
         "--color-ink-soft": "#3d5563",
@@ -322,7 +400,13 @@
       "feeling": "Dark-first brand plane",
       "when": "Night marketing bands, immersive product demos",
       "a11y": "Chalk text on carbon; teal signal; do not use for long-form light reading",
-      "swatches": ["#f3f6fa", "#121820", "#14b8a6", "#2dd4bf", "#0a0e14"],
+      "swatches": [
+        "#f3f6fa",
+        "#121820",
+        "#14b8a6",
+        "#2dd4bf",
+        "#0a0e14"
+      ],
       "roles": {
         "--color-ink": "#e8eef4",
         "--color-ink-soft": "#9aadc0",
@@ -337,6 +421,486 @@
         "--color-ok": "#34d399",
         "--color-warn": "#fbbf24",
         "--color-danger": "#f87171"
+      }
+    },
+    {
+      "id": "harbor-navy",
+      "name": "Harbor navy",
+      "ko": "하버 네이비",
+      "feeling": "Port authority calm",
+      "when": "Ops dashboards, logistics, maritime B2B",
+      "a11y": "Navy ink; cobalt signal on cool gray — not purple",
+      "swatches": [
+        "#0c1524",
+        "#e7eef6",
+        "#1e4d8c",
+        "#3b7dd8",
+        "#08101a"
+      ],
+      "roles": {
+        "--color-ink": "#0c1524",
+        "--color-ink-soft": "#3a4d66",
+        "--color-chalk": "#f4f7fb",
+        "--color-field": "#e7eef6",
+        "--color-field-mid": "#c5d3e4",
+        "--color-field-deep": "#08101a",
+        "--color-signal": "#1e4d8c",
+        "--color-signal-bright": "#3b7dd8",
+        "--color-signal-deep": "#143663",
+        "--color-focus": "#3b7dd8",
+        "--color-ok": "#2f9e6b",
+        "--color-warn": "#c9851a",
+        "--color-danger": "#c23b3b"
+      }
+    },
+    {
+      "id": "clay-umber",
+      "name": "Clay umber",
+      "ko": "클레이 엄버",
+      "feeling": "Earthy product quiet",
+      "when": "Maker tools, craft commerce, material brands",
+      "a11y": "Umber accent on cool stone (avoid cream-terracotta stack)",
+      "swatches": [
+        "#1a1612",
+        "#ebe6df",
+        "#8b5a2b",
+        "#b07942",
+        "#12100d"
+      ],
+      "roles": {
+        "--color-ink": "#1a1612",
+        "--color-ink-soft": "#5a4e42",
+        "--color-chalk": "#faf7f3",
+        "--color-field": "#ebe6df",
+        "--color-field-mid": "#d2c9bc",
+        "--color-field-deep": "#12100d",
+        "--color-signal": "#8b5a2b",
+        "--color-signal-bright": "#b07942",
+        "--color-signal-deep": "#5c3a1a",
+        "--color-focus": "#b07942",
+        "--color-ok": "#2f9e6b",
+        "--color-warn": "#c9851a",
+        "--color-danger": "#c23b3b"
+      }
+    },
+    {
+      "id": "violet-slate",
+      "name": "Violet slate",
+      "ko": "바이올렛 슬레이트",
+      "feeling": "Cool violet restraint",
+      "when": "Creative tools when a cool violet is required — never brand purple kits",
+      "a11y": "Desaturated violet on cool field; one accent only",
+      "swatches": [
+        "#16141c",
+        "#eceaf2",
+        "#5b4b8a",
+        "#7a6aad",
+        "#100e14"
+      ],
+      "roles": {
+        "--color-ink": "#16141c",
+        "--color-ink-soft": "#4a4658",
+        "--color-chalk": "#f6f5f9",
+        "--color-field": "#eceaf2",
+        "--color-field-mid": "#d0ccd9",
+        "--color-field-deep": "#100e14",
+        "--color-signal": "#5b4b8a",
+        "--color-signal-bright": "#7a6aad",
+        "--color-signal-deep": "#3f3463",
+        "--color-focus": "#7a6aad",
+        "--color-ok": "#2f9e6b",
+        "--color-warn": "#c9851a",
+        "--color-danger": "#c23b3b"
+      }
+    },
+    {
+      "id": "citrus-leaf",
+      "name": "Citrus leaf",
+      "ko": "시트러스 리프",
+      "feeling": "Bright utility green",
+      "when": "Productivity, notes, light ops — restrained citrus",
+      "a11y": "Leaf green on cool gray-green; never neon SaaS",
+      "swatches": [
+        "#141a14",
+        "#eaf1e8",
+        "#4f7a28",
+        "#6f9e3a",
+        "#0e140e"
+      ],
+      "roles": {
+        "--color-ink": "#141a14",
+        "--color-ink-soft": "#3f4d3f",
+        "--color-chalk": "#f7faf6",
+        "--color-field": "#eaf1e8",
+        "--color-field-mid": "#c9d8c6",
+        "--color-field-deep": "#0e140e",
+        "--color-signal": "#4f7a28",
+        "--color-signal-bright": "#6f9e3a",
+        "--color-signal-deep": "#35541a",
+        "--color-focus": "#6f9e3a",
+        "--color-ok": "#2f9e6b",
+        "--color-warn": "#c9851a",
+        "--color-danger": "#c23b3b"
+      }
+    },
+    {
+      "id": "indigo-ink",
+      "name": "Indigo ink",
+      "ko": "인디고 잉크",
+      "feeling": "Document authority",
+      "when": "Docs products, knowledge bases, legal-adjacent",
+      "a11y": "Indigo accent; paper field; high reading contrast",
+      "swatches": [
+        "#12141f",
+        "#eceef6",
+        "#3949ab",
+        "#5c6bc0",
+        "#0c0e16"
+      ],
+      "roles": {
+        "--color-ink": "#12141f",
+        "--color-ink-soft": "#3d4258",
+        "--color-chalk": "#f7f8fc",
+        "--color-field": "#eceef6",
+        "--color-field-mid": "#cdd1e0",
+        "--color-field-deep": "#0c0e16",
+        "--color-signal": "#3949ab",
+        "--color-signal-bright": "#5c6bc0",
+        "--color-signal-deep": "#283593",
+        "--color-focus": "#5c6bc0",
+        "--color-ok": "#2f9e6b",
+        "--color-warn": "#c9851a",
+        "--color-danger": "#c23b3b"
+      }
+    },
+    {
+      "id": "coral-quiet",
+      "name": "Coral quiet",
+      "ko": "코랄 콰이어트",
+      "feeling": "Warm action without kitsch",
+      "when": "CTA-forward consumer when copper feels too retail",
+      "a11y": "Muted coral on cool stone; not hot pink or terracotta cream",
+      "swatches": [
+        "#1a1414",
+        "#f0e9e7",
+        "#c45c5c",
+        "#e07a7a",
+        "#140f0f"
+      ],
+      "roles": {
+        "--color-ink": "#1a1414",
+        "--color-ink-soft": "#5a4545",
+        "--color-chalk": "#faf6f5",
+        "--color-field": "#f0e9e7",
+        "--color-field-mid": "#d9ccc8",
+        "--color-field-deep": "#140f0f",
+        "--color-signal": "#c45c5c",
+        "--color-signal-bright": "#e07a7a",
+        "--color-signal-deep": "#8f3f3f",
+        "--color-focus": "#e07a7a",
+        "--color-ok": "#2f9e6b",
+        "--color-warn": "#c9851a",
+        "--color-danger": "#c23b3b"
+      }
+    },
+    {
+      "id": "steel-fog",
+      "name": "Steel fog",
+      "ko": "스틸 포그",
+      "feeling": "Industrial cool",
+      "when": "Hardware, IoT, infrastructure consoles",
+      "a11y": "Steel blue-gray signal; fog field; dense UI friendly",
+      "swatches": [
+        "#12161c",
+        "#e8ecf0",
+        "#4a667a",
+        "#6b8499",
+        "#0c1014"
+      ],
+      "roles": {
+        "--color-ink": "#12161c",
+        "--color-ink-soft": "#4a5563",
+        "--color-chalk": "#f5f7f9",
+        "--color-field": "#e8ecf0",
+        "--color-field-mid": "#c8d0d9",
+        "--color-field-deep": "#0c1014",
+        "--color-signal": "#4a667a",
+        "--color-signal-bright": "#6b8499",
+        "--color-signal-deep": "#334858",
+        "--color-focus": "#6b8499",
+        "--color-ok": "#2f9e6b",
+        "--color-warn": "#c9851a",
+        "--color-danger": "#c23b3b"
+      }
+    },
+    {
+      "id": "plum-dusk",
+      "name": "Plum dusk",
+      "ko": "플럼 더스크",
+      "feeling": "Evening soft product",
+      "when": "Lifestyle evenings, media light chrome",
+      "a11y": "Dusty plum — not neon purple gradients",
+      "swatches": [
+        "#1a1418",
+        "#efe9ed",
+        "#7a4a66",
+        "#9a6a86",
+        "#120e11"
+      ],
+      "roles": {
+        "--color-ink": "#1a1418",
+        "--color-ink-soft": "#564850",
+        "--color-chalk": "#f9f6f8",
+        "--color-field": "#efe9ed",
+        "--color-field-mid": "#d6ccd2",
+        "--color-field-deep": "#120e11",
+        "--color-signal": "#7a4a66",
+        "--color-signal-bright": "#9a6a86",
+        "--color-signal-deep": "#563348",
+        "--color-focus": "#9a6a86",
+        "--color-ok": "#2f9e6b",
+        "--color-warn": "#c9851a",
+        "--color-danger": "#c23b3b"
+      }
+    },
+    {
+      "id": "bronze-rail",
+      "name": "Bronze rail",
+      "ko": "브론즈 레일",
+      "feeling": "Quiet luxury metal",
+      "when": "Premium B2B, membership, finance-adjacent warmth",
+      "a11y": "Bronze on cool gray (not gold glow / cream)",
+      "swatches": [
+        "#161412",
+        "#ebe7e1",
+        "#8a6a3e",
+        "#b08a52",
+        "#100e0c"
+      ],
+      "roles": {
+        "--color-ink": "#161412",
+        "--color-ink-soft": "#524a42",
+        "--color-chalk": "#f8f6f3",
+        "--color-field": "#ebe7e1",
+        "--color-field-mid": "#d0c9bf",
+        "--color-field-deep": "#100e0c",
+        "--color-signal": "#8a6a3e",
+        "--color-signal-bright": "#b08a52",
+        "--color-signal-deep": "#5c4628",
+        "--color-focus": "#b08a52",
+        "--color-ok": "#2f9e6b",
+        "--color-warn": "#c9851a",
+        "--color-danger": "#c23b3b"
+      }
+    },
+    {
+      "id": "mint-clinic",
+      "name": "Mint clinic",
+      "ko": "민트 클리닉",
+      "feeling": "Clinical calm",
+      "when": "Health, wellness admin, care ops",
+      "a11y": "Cool mint; high ink contrast; no pastel candy",
+      "swatches": [
+        "#121c1a",
+        "#e6f2ee",
+        "#2a8f7a",
+        "#3fb89a",
+        "#0c1412"
+      ],
+      "roles": {
+        "--color-ink": "#121c1a",
+        "--color-ink-soft": "#3d5550",
+        "--color-chalk": "#f5faf8",
+        "--color-field": "#e6f2ee",
+        "--color-field-mid": "#c4ddd4",
+        "--color-field-deep": "#0c1412",
+        "--color-signal": "#2a8f7a",
+        "--color-signal-bright": "#3fb89a",
+        "--color-signal-deep": "#1c6356",
+        "--color-focus": "#3fb89a",
+        "--color-ok": "#2f9e6b",
+        "--color-warn": "#c9851a",
+        "--color-danger": "#c23b3b"
+      }
+    },
+    {
+      "id": "paper-ochre",
+      "name": "Paper ochre",
+      "ko": "페이퍼 오커",
+      "feeling": "Print-adjacent day",
+      "when": "Publishing tools, editorial product chrome",
+      "a11y": "Ochre accent on cool paper-gray — avoid warm cream bias",
+      "swatches": [
+        "#1a1712",
+        "#f0ebe3",
+        "#9a7b2e",
+        "#c4a03a",
+        "#12100c"
+      ],
+      "roles": {
+        "--color-ink": "#1a1712",
+        "--color-ink-soft": "#554c3e",
+        "--color-chalk": "#faf8f4",
+        "--color-field": "#f0ebe3",
+        "--color-field-mid": "#d8d0c2",
+        "--color-field-deep": "#12100c",
+        "--color-signal": "#9a7b2e",
+        "--color-signal-bright": "#c4a03a",
+        "--color-signal-deep": "#6b5420",
+        "--color-focus": "#c4a03a",
+        "--color-ok": "#2f9e6b",
+        "--color-warn": "#c9851a",
+        "--color-danger": "#c23b3b"
+      }
+    },
+    {
+      "id": "cobalt-grid",
+      "name": "Cobalt grid",
+      "ko": "코발트 그리드",
+      "feeling": "Data grid precision",
+      "when": "Analytics tables, dense admin",
+      "a11y": "Cobalt on cool field; status colors separate",
+      "swatches": [
+        "#0e1520",
+        "#e4ebf3",
+        "#2563a8",
+        "#3b82c4",
+        "#0a1018"
+      ],
+      "roles": {
+        "--color-ink": "#0e1520",
+        "--color-ink-soft": "#3a4a5c",
+        "--color-chalk": "#f4f7fb",
+        "--color-field": "#e4ebf3",
+        "--color-field-mid": "#c2d0e0",
+        "--color-field-deep": "#0a1018",
+        "--color-signal": "#2563a8",
+        "--color-signal-bright": "#3b82c4",
+        "--color-signal-deep": "#1a4574",
+        "--color-focus": "#3b82c4",
+        "--color-ok": "#2f9e6b",
+        "--color-warn": "#c9851a",
+        "--color-danger": "#c23b3b"
+      }
+    },
+    {
+      "id": "olive-desk",
+      "name": "Olive desk",
+      "ko": "올리브 데스크",
+      "feeling": "Quiet desk green",
+      "when": "Productivity suites, note apps",
+      "a11y": "Olive signal; stone-green field; restrained",
+      "swatches": [
+        "#161812",
+        "#eceee6",
+        "#6b7340",
+        "#8a9358",
+        "#10120c"
+      ],
+      "roles": {
+        "--color-ink": "#161812",
+        "--color-ink-soft": "#4a4f3e",
+        "--color-chalk": "#f7f8f4",
+        "--color-field": "#eceee6",
+        "--color-field-mid": "#d0d4c4",
+        "--color-field-deep": "#10120c",
+        "--color-signal": "#6b7340",
+        "--color-signal-bright": "#8a9358",
+        "--color-signal-deep": "#484e2a",
+        "--color-focus": "#8a9358",
+        "--color-ok": "#2f9e6b",
+        "--color-warn": "#c9851a",
+        "--color-danger": "#c23b3b"
+      }
+    },
+    {
+      "id": "rust-signal",
+      "name": "Rust signal",
+      "ko": "러스트 시그널",
+      "feeling": "Industrial warm accent",
+      "when": "Logistics, warehouse, field tools",
+      "a11y": "Rust on cool gray; not terracotta cream kits",
+      "swatches": [
+        "#181412",
+        "#ebe6e2",
+        "#a84828",
+        "#c86440",
+        "#120e0c"
+      ],
+      "roles": {
+        "--color-ink": "#181412",
+        "--color-ink-soft": "#5a4a42",
+        "--color-chalk": "#f8f5f3",
+        "--color-field": "#ebe6e2",
+        "--color-field-mid": "#d2c8c2",
+        "--color-field-deep": "#120e0c",
+        "--color-signal": "#a84828",
+        "--color-signal-bright": "#c86440",
+        "--color-signal-deep": "#7a3018",
+        "--color-focus": "#c86440",
+        "--color-ok": "#2f9e6b",
+        "--color-warn": "#c9851a",
+        "--color-danger": "#c23b3b"
+      }
+    },
+    {
+      "id": "sky-quiet",
+      "name": "Sky quiet",
+      "ko": "스카이 콰이어트",
+      "feeling": "Open daylight UI",
+      "when": "Onboarding, education light chrome",
+      "a11y": "Soft sky blue; strong ink; no purple gradient sky",
+      "swatches": [
+        "#121820",
+        "#e8f1f6",
+        "#3a7ea8",
+        "#5a9ec4",
+        "#0c1218"
+      ],
+      "roles": {
+        "--color-ink": "#121820",
+        "--color-ink-soft": "#3d4f5f",
+        "--color-chalk": "#f6fafc",
+        "--color-field": "#e8f1f6",
+        "--color-field-mid": "#c5d8e4",
+        "--color-field-deep": "#0c1218",
+        "--color-signal": "#3a7ea8",
+        "--color-signal-bright": "#5a9ec4",
+        "--color-signal-deep": "#285870",
+        "--color-focus": "#5a9ec4",
+        "--color-ok": "#2f9e6b",
+        "--color-warn": "#c9851a",
+        "--color-danger": "#c23b3b"
+      }
+    },
+    {
+      "id": "charcoal-lime",
+      "name": "Charcoal lime",
+      "ko": "차콜 라임",
+      "feeling": "Ops contrast accent",
+      "when": "Monitoring, SRE-lite dashboards — accent sparingly",
+      "a11y": "Lime only for signal; charcoal field mid",
+      "swatches": [
+        "#121412",
+        "#e6eae4",
+        "#6a8f1a",
+        "#8ab82a",
+        "#0c0e0c"
+      ],
+      "roles": {
+        "--color-ink": "#121412",
+        "--color-ink-soft": "#4a524a",
+        "--color-chalk": "#f5f7f4",
+        "--color-field": "#e6eae4",
+        "--color-field-mid": "#c8d0c4",
+        "--color-field-deep": "#0c0e0c",
+        "--color-signal": "#6a8f1a",
+        "--color-signal-bright": "#8ab82a",
+        "--color-signal-deep": "#4a6412",
+        "--color-focus": "#8ab82a",
+        "--color-ok": "#2f9e6b",
+        "--color-warn": "#c9851a",
+        "--color-danger": "#c23b3b"
       }
     }
   ]

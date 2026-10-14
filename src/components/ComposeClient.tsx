@@ -20,7 +20,7 @@ import styles from "./ComposeClient.module.css";
 
 const colorItems = colors.items as ColorItem[];
 const typeItems = typeData.items as TypeItem[];
-const densityItems = density.items as DensityItem[];
+const densityItems = density.items as unknown as DensityItem[];
 
 type ResearchItem = {
   id: string;
@@ -64,7 +64,7 @@ export function ComposeClient() {
 
   useEffect(() => {
     let cancelled = false;
-    (async () => {
+    async function loadCatalogs() {
       const [resR, resT] = await Promise.all([
         fetch("/api/catalog?axis=research").then((r) => r.json()),
         fetch("/api/catalog?axis=trends").then((r) => r.json()),
@@ -88,9 +88,15 @@ export function ComposeClient() {
             .map((i: TrendItem) => i.id)
         );
       }
-    })();
+    }
+    loadCatalogs();
+    const onFocus = () => {
+      void loadCatalogs();
+    };
+    window.addEventListener("focus", onFocus);
     return () => {
       cancelled = true;
+      window.removeEventListener("focus", onFocus);
     };
   }, []);
 

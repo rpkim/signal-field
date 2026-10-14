@@ -4,7 +4,9 @@ import Link from "next/link";
 import { useEffect, useId, useState } from "react";
 import styles from "./SiteNav.module.css";
 
-const primary = [
+type NavItem = { href: string; label: string; group?: string };
+
+const primary: NavItem[] = [
   { href: "/", label: "Home" },
   { href: "/foundations", label: "Foundations" },
   { href: "/components", label: "Components" },
@@ -13,7 +15,7 @@ const primary = [
   { href: "/trends", label: "Trends", group: "canon" },
   { href: "/research", label: "Research", group: "canon" },
   { href: "/doc", label: "Doc", group: "doc" },
-] as const;
+];
 
 export function SiteNav({ current }: { current?: string }) {
   const [open, setOpen] = useState(false);
