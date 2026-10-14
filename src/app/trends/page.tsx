@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
+import { DiscoverPanel } from "@/components/DiscoverPanel";
 import { PageHeader } from "@/components/PageHeader";
-import trends from "@/data/trends.json";
+import { getTrendsCatalog } from "@/lib/discover/catalog";
 import styles from "@/styles/pages.module.css";
 
 export const metadata: Metadata = { title: "Trends" };
+export const dynamic = "force-dynamic";
 
-export default function TrendsPage() {
+export default async function TrendsPage() {
+  const trends = await getTrendsCatalog();
   const cats = Object.fromEntries(
     trends.categories.map((c) => [c.id, c.en])
   );
@@ -17,10 +20,12 @@ export default function TrendsPage() {
       <PageHeader eyebrow="Canon" title="Trends">
         <p>
           Friendly index of current visual trends. Canonical append-only log
-          remains in{" "}
-          <Link href="/doc">design.md §9</Link>.
+          remains in <Link href="/doc">design.md §9</Link>. AI additions persist
+          under <code>content/additions/trends.json</code>.
         </p>
       </PageHeader>
+
+      <DiscoverPanel axis="trends" />
 
       <ul className={styles.listPlain}>
         {trends.items.map((item) => (

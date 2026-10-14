@@ -12,7 +12,8 @@ export default function FoundationsPage() {
       <PageHeader eyebrow="Guide" title="Foundations">
         <p>
           Tokens first: paper field, graphite ink, one teal signal. Type is IBM
-          Plex Sans with Mono for code — weight and space carry hierarchy.
+          Plex Sans with Mono for code — weight, space, and responsive layout
+          carry hierarchy.
         </p>
       </PageHeader>
 
@@ -79,6 +80,76 @@ export default function FoundationsPage() {
           modest (<code>--radius-md</code>). Section rhythm uses large vertical
           steps from the space scale.
         </p>
+      </section>
+
+      <section className={styles.section} id="responsive">
+        <h2>Responsive / layout</h2>
+        <p>
+          First-class foundation — not a polish pass. Product shell and exported
+          kits must work from 320px up. Breakpoint tokens ship in kits.
+        </p>
+        <div className={styles.tableWrap}>
+          <table className={styles.spec}>
+            <thead>
+              <tr>
+                <th>Token</th>
+                <th>Value</th>
+                <th>Intent</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <code>--bp-sm</code>
+                </td>
+                <td>40rem / 640</td>
+                <td>Nav collapse · tools stack</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>--bp-md</code>
+                </td>
+                <td>48rem / 768</td>
+                <td>Tablet single column</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>--bp-lg</code>
+                </td>
+                <td>60rem / 960</td>
+                <td>Compose specimen side-by-side</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>--bp-xl</code>
+                </td>
+                <td>75rem / 1200</td>
+                <td>Wide content max</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>--touch-min</code>
+                </td>
+                <td>44px</td>
+                <td>Minimum hit target</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ul>
+          <li>
+            <strong>Must</strong> collapse primary nav below <code>--bp-lg</code>{" "}
+            (no overflowing link row).
+          </li>
+          <li>
+            <strong>Must</strong> stack Compose specimen below controls on narrow
+            viewports.
+          </li>
+          <li>
+            <strong>Never</strong> treat mobile as an afterthought or rely on
+            whole-page horizontal scroll.
+          </li>
+        </ul>
       </section>
 
       <section className={styles.section}>

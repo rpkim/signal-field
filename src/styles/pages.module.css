@@ -1,18 +1,20 @@
 .brand {
   margin: 0 0 var(--space-5);
-  font-size: clamp(2.5rem, 4vw + 1rem, 3.5rem);
+  font-size: clamp(2.25rem, 8vw + 0.5rem, 3.5rem);
   font-weight: 500;
   letter-spacing: var(--tracking-display);
   line-height: 1.05;
+  overflow-wrap: anywhere;
 }
 
 .lede {
   margin: 0 0 var(--space-7);
-  max-width: 28rem;
-  font-size: clamp(1.25rem, 2vw + 0.75rem, 1.65rem);
+  max-width: min(28rem, 100%);
+  font-size: clamp(1.15rem, 3.5vw + 0.65rem, 1.65rem);
   font-weight: 400;
   line-height: 1.45;
   color: var(--color-ink);
+  overflow-wrap: break-word;
 }
 
 .section {
@@ -34,7 +36,15 @@
 
 .tableWrap {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin: var(--space-4) 0;
+  max-width: 100%;
+}
+
+@media (max-width: 39.99rem) {
+  .spec {
+    min-width: 28rem;
+  }
 }
 
 .spec {
@@ -167,19 +177,72 @@
 }
 
 .prose {
-  max-width: 42rem;
+  max-width: 48rem;
   font-size: var(--text-sm);
   line-height: 1.7;
   color: var(--color-ink-soft);
-  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 
 .prose h1,
 .prose h2,
-.prose h3 {
+.prose h3,
+.prose h4 {
   color: var(--color-ink);
   font-weight: 500;
   letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin: 2rem 0 0.75rem;
+}
+
+.prose h1 {
+  font-size: var(--text-xl);
+  margin-top: 0;
+}
+
+.prose h2 {
+  font-size: var(--text-lg);
+  border-top: 1px solid var(--color-hairline);
+  padding-top: 1.5rem;
+}
+
+.prose p,
+.prose li {
+  max-width: var(--measure);
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+  margin: 1rem 0;
+  display: block;
+  overflow-x: auto;
+}
+
+.prose th,
+.prose td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.5rem 0.75rem 0.5rem 0;
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+
+.prose pre {
+  overflow-x: auto;
+  padding: var(--space-4);
+  border: 1px solid var(--color-hairline);
+  background: var(--color-chalk);
+  font-size: var(--text-xs);
+}
+
+.prose a {
+  color: var(--color-ink);
 }
 
 .listPlain {

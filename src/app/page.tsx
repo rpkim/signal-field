@@ -7,7 +7,7 @@ const links = [
     href: "/foundations",
     kicker: "Guide",
     title: "Foundations",
-    desc: "Color roles, type, space, motion, accessibility.",
+    desc: "Color roles, type, space, responsive layout, motion, accessibility.",
   },
   {
     href: "/components",
@@ -64,40 +64,28 @@ export default function HomePage() {
 
       <section className={styles.section} aria-labelledby="meta">
         <h2 id="meta">Meta</h2>
-        <div className={styles.tableWrap}>
-          <table className={styles.spec}>
-            <thead>
-              <tr>
-                <th>Principle</th>
-                <th>Meaning</th>
-                <th>Never</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <strong>Clarity</strong>
-                </td>
-                <td>Content and action legible at a glance</td>
-                <td>Low-contrast icons as sole affordance</td>
-              </tr>
-              <tr>
-                <td>
-                  <strong>Deference</strong>
-                </td>
-                <td>Chrome yields to content</td>
-                <td>Chrome that outranks the work</td>
-              </tr>
-              <tr>
-                <td>
-                  <strong>Depth</strong>
-                </td>
-                <td>Hierarchy via space and type</td>
-                <td>Glow stacks and badge clutter</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <ul className={styles.listPlain}>
+          <li>
+            <strong>Clarity</strong>
+            <p style={{ margin: "0.35rem 0 0" }}>
+              Content and action legible at a glance. Never: low-contrast icons
+              as sole affordance.
+            </p>
+          </li>
+          <li>
+            <strong>Deference</strong>
+            <p style={{ margin: "0.35rem 0 0" }}>
+              Chrome yields to content. Never: chrome that outranks the work.
+            </p>
+          </li>
+          <li>
+            <strong>Depth</strong>
+            <p style={{ margin: "0.35rem 0 0" }}>
+              Hierarchy via space and type. Never: glow stacks and badge
+              clutter.
+            </p>
+          </li>
+        </ul>
       </section>
 
       <nav className={styles.homeGrid} aria-label="Sections">

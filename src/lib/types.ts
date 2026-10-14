@@ -4,6 +4,14 @@ export type MixState = {
   color: string;
   type: string;
   density: string;
+  trends?: string[];
+};
+
+export type SavedMix = {
+  id: string;
+  name: string;
+  createdAt: string;
+  mix: MixState;
 };
 
 export type ColorItem = {

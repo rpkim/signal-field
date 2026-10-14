@@ -2,8 +2,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.5rem;
-  min-width: 2.5rem;
+  min-height: var(--touch-min, 2.5rem);
+  min-width: var(--touch-min, 2.5rem);
   padding: 0.55rem 1rem;
   border-radius: var(--radius-md);
   font: inherit;

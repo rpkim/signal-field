@@ -1,6 +1,13 @@
 .header {
-  max-width: 40rem;
+  max-width: min(40rem, 100%);
   margin-bottom: var(--space-8);
+  min-width: 0;
+}
+
+.header :global(p),
+.lede {
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .eyebrow {

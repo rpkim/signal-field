@@ -1,21 +1,27 @@
 import type { Metadata } from "next";
 import { AppShell } from "@/components/AppShell";
+import { DiscoverPanel } from "@/components/DiscoverPanel";
 import { PageHeader } from "@/components/PageHeader";
+import { getResearchCatalog } from "@/lib/discover/catalog";
 import references from "@/data/references.json";
-import research from "@/data/research.json";
 import styles from "@/styles/pages.module.css";
 
 export const metadata: Metadata = { title: "Research" };
+export const dynamic = "force-dynamic";
 
-export default function ResearchPage() {
+export default async function ResearchPage() {
+  const research = await getResearchCatalog();
+
   return (
     <AppShell current="/research">
       <PageHeader eyebrow="Canon" title="Research">
         <p>
-          Pillars that constrain Compose. Pair with reference sites — steal
-          systems, not skins.
+          Pillars that constrain Compose. AI additions persist under{" "}
+          <code>content/additions/research.json</code> and appear in the mixer.
         </p>
       </PageHeader>
+
+      <DiscoverPanel axis="research" />
 
       <section className={styles.section}>
         <h2>Pillars</h2>
@@ -23,7 +29,7 @@ export default function ResearchPage() {
           {research.items.map((item) => (
             <li key={item.id}>
               <span className={styles.meta}>
-                {item.year}
+                {"year" in item ? item.year : ""}
                 {item.source ? " · source" : ""}
               </span>
               <strong>{item.title}</strong>

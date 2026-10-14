@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import "@/styles/globals.css";
 
@@ -23,6 +23,12 @@ export const metadata: Metadata = {
   },
   description:
     "Quiet product design system — guidelines, compose, recommend, rebrand.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({

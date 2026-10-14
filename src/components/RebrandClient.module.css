@@ -3,7 +3,7 @@
   gap: var(--space-8);
 }
 
-@media (min-width: 960px) {
+@media (min-width: 60rem) {
   .layout {
     grid-template-columns: 1fr 1fr;
     align-items: start;
