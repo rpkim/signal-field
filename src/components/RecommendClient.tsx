@@ -24,7 +24,7 @@ export function RecommendClient() {
         <Field
           id="brief"
           label="Service brief"
-          hint="Product type, audience, density, any rebrand URL."
+          hint="Product type, audience, density, tone (new or existing)."
         >
           <textarea
             id="brief"
@@ -67,8 +67,9 @@ export function RecommendClient() {
 
       {result.rebrand ? (
         <p className={styles.note}>
-          Brief looks like a rebrand — also try{" "}
-          <Link href="/rebrand">Rebrand</Link> to analyze existing CSS.
+          Existing product brief — applying Signal Field (
+          <Link href="/doc">design.md</Link> + Compose kit) is the rebrand.
+          Open the primary mix in Compose and Download kit.
         </p>
       ) : null}
     </div>

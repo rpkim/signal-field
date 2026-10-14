@@ -7,7 +7,7 @@ Staff design guideline for UI work in this Project. Normative language: **must**
 | System | Signal Field |
 | Status | Canonical |
 | Example demo brand | Northline Studio (thin sample identity only — not a product brand) |
-| Product app (Next.js) | [`rpkim/signal-field`](https://github.com/rpkim/signal-field) · routes `/`, `/compose`, `/recommend`, `/rebrand`, `/trends`, `/research`, `/doc` |
+| Product app (Next.js) | [`rpkim/signal-field`](https://github.com/rpkim/signal-field) · routes `/`, `/compose`, `/recommend`, `/trends`, `/research`, `/doc` |
 | Usage playbook | [`USAGE.md`](./USAGE.md) (humans + agents) |
 | Legacy static proof | `docs/theme-example/` (superseded for tools by the Next app) |
 | Brand kits (export) | `docs/brand-kits/<kit-id>/` |
@@ -17,8 +17,8 @@ Staff design guideline for UI work in this Project. Normative language: **must**
 **How agents use this document**
 1. Read §1 Philosophy and apply the checklist. Full playbook: [`USAGE.md`](./USAGE.md).
 2. Given a **service / product brief**, run the recommend path (§1.5): read [`recommend-map.md`](./recommend-map.md) + `brand-options/*`, return **1 primary mix + 2 alts** with rationale — or open the Next app `/recommend`.
-3. If the brief is a **rebrand** of something live (URL and/or existing CSS), also follow [`rebrand.md`](./rebrand.md) / Next `/rebrand` — analyze → map → hook → preview — then export.
-4. **Compose** the chosen mix (§1.4) in Next `/compose` (deep-link from Recommend / Rebrand / Doc saved mixes) — or load a preset — then export `DESIGN.md` + CSS; default starting mix ≈ `precise-quiet`.
+3. If the brief is an **existing product**, still use Recommend → Compose → kit export. Applying `design.md` + kit CSS **is** the rebrand (no separate Rebrand menu).
+4. **Compose** the chosen mix (§1.4) in Next `/compose` (deep-link from Recommend / Doc saved mixes) — or load a preset — then export `DESIGN.md` + CSS; default starting mix ≈ `precise-quiet`.
 5. Optionally align appearance (§8) with the color recipe chosen.
 6. Build with foundations (§2, including Responsive §2.4) and component specs (§4).
 7. Map to platform (§7). Browse Trends via Next `/trends` + `brand-options/trends.json`; append the technical log (§9) only when asked for fashion — never rewrite core principles.
@@ -119,8 +119,8 @@ Numbered principles for Signal Field. Each includes meaning, do, don’t, and an
 
 Branding is first-class. **Apply by composing options** (research × references × color × type × density) → **export a portable kit**. Mood words alone are not enough.
 
-**Recommend UI:** Next `/recommend` (new service brief → ranked mixes)  
-**Rebrand UI:** Next `/rebrand` · workflow [`rebrand.md`](./rebrand.md) (existing URL/CSS → analyze → hook → preview)  
+**Recommend UI:** Next `/recommend` (service brief → ranked mixes; new or existing)  
+**Existing product:** same path — apply `design.md` + Compose kit (that is the rebrand)  
 **Primary compose UI:** Next `/compose` (Save → load from `/doc`)  
 **Option catalogs:** `docs/brand-options/` (also `src/data/` in the Next app)  
 **Trends (friendly):** Next `/trends` · `brand-options/trends.json` · `docs/trends/README.md`  
@@ -156,10 +156,10 @@ Branding is first-class. **Apply by composing options** (research × references 
 When the user describes a **service / product** (KO or EN):
 
 1. Read [`recommend-map.md`](./recommend-map.md) and score domain keywords against the brief.
-2. If brief is **rebrand / URL / existing CSS**, open [`rebrand.md`](./rebrand.md) path in parallel (analyze current look; complement or intentional contrast).
+2. New or existing product: same recommend path. For existing UIs, the handoff is still `design.md` + kit — applying it is the rebrand.
 3. Return **primary + 2 alternatives** with: kit id *or* composed option ids (`color` · `type` · `density` · `research` · `references`), trend tags, and a short why (color/type/feeling).
-4. Point humans to Apply: `/compose?color=…&type=…&density=…` (optional `preset=`, `research=`, `references=`, `save=`) or `/rebrand`.
-5. Export from Compose → download or `brand-kits/_generated/<slug>/` (plus `rebrand-hook.css` when restyling live CSS).
+4. Point humans to Apply: `/compose?color=…&type=…&density=…` (optional `preset=`, `research=`, `references=`, `save=`).
+5. Export from Compose → download kit zip or `brand-kits/_generated/<slug>/`.
 
 UI heuristics live in the Next app `src/lib/recommend.ts` (and legacy `theme-example/recommend.js`) and must stay aligned with `recommend-map.md`.
 
@@ -333,12 +333,12 @@ Export kits **should** include these tokens in `tokens.css`. Media queries **sho
 - **Must** trap focus sensibly in the open mobile panel; Escape closes.
 - **Never** hide the only path to Compose/Recommend behind “more” without a visible control.
 
-#### Tool layouts (Compose / Recommend / Rebrand / Discover)
+#### Tool layouts (Compose / Recommend / Discover)
 
 | Viewport | Compose | Other tools |
 | --- | --- | --- |
-| `< --bp-lg` | Controls full width; **live specimen stacks below** | Single column; iframes full width |
-| `≥ --bp-lg` | Controls + sticky specimen (~22rem) | Optional two-up (e.g. rebrand frames) |
+| `< --bp-lg` | Controls full width; **live specimen stacks below** | Single column |
+| `≥ --bp-lg` | Controls + sticky specimen (~22rem) | Specimens / lists as needed |
 
 - **Must** avoid horizontal crush: no forced side-by-side tables of options on compact.
 - **Should** keep Save / Sync / Download actions in a wrapping toolbar with ≥ 44px targets.
@@ -701,8 +701,8 @@ When adding a trend: update `trends.json` **and** prepend a dated entry here.
 
 - [ ] Principles P1–P10 considered; meta clarity/deference/depth hold
 - [ ] If service brief given: recommend-map scored → primary + 2 alts with rationale
-- [ ] If rebrand: CSS analyzed (authorized), hook generated, preview checked (`rebrand.md`)
-- [ ] Mix composed (or preset / recommend / rebrand apply); option ids cited in exported `DESIGN.md`
+- [ ] If existing product: same apply path — `design.md` + kit wired; no parallel system
+- [ ] Mix composed (or preset / recommend); option ids cited in exported `DESIGN.md`
 - [ ] Portable files exported / `_generated/<slug>/` path recorded
 - [ ] Color **roles** used correctly (signal ≠ body text ≠ status)
 - [ ] Type roles match chosen type option (default IBM Plex Sans (`plex`) when applicable)

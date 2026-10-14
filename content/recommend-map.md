@@ -4,7 +4,7 @@ Agents: given a **service / product brief**, read this map + `brand-options/*.js
 
 UI: `theme-example/recommend.html` (same heuristics in `recommend.js`).
 
-**New service vs rebrand:** greenfield briefs stay on this map → Compose. If the brief says rebrand / existing CSS / includes a URL, also use [`rebrand.md`](./rebrand.md) and `theme-example/rebrand.html` (analyze → hook → preview). Recommend still ranks mixes; Rebrand applies them as override CSS onto the live look.
+**New or existing:** both stay on this map → Compose → kit export. Applying `design.md` + kit CSS to an existing UI **is** the rebrand (no separate Rebrand menu in the product app).
 
 ## Domains → primary mix
 

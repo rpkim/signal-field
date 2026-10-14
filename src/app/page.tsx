@@ -28,12 +28,6 @@ const links = [
     desc: "Describe a service; get a ranked theme mix.",
   },
   {
-    href: "/rebrand",
-    kicker: "Tools",
-    title: "Rebrand",
-    desc: "Analyze existing CSS, generate a hook, preview before/after.",
-  },
-  {
     href: "/trends",
     kicker: "Canon",
     title: "Trends",

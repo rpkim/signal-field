@@ -49,11 +49,13 @@ Implement UI using design.md §1–§4 checklist — do not invent a parallel de
 
 ---
 
-## Path 2 — Rebrand existing
+## Path 2 — Existing product (apply kit = rebrand)
 
-1. Paste CSS or use Harbor Desk fixture on **`/rebrand`** → Analyze + hook.
-2. Download **`rebrand-hook.css`** and drop into their app after base styles (or preview iframes).
-3. Optionally Compose a full mix → Save to Doc → Download kit zip for the long-term system.
+No separate Rebrand tool in the product menu. Applying Signal Field **is** the rebrand:
+
+1. Same as Path 1: brief → **`/recommend`** → **`/compose`** → **Download kit (zip)**.
+2. Give the agent **`design.md` + `tokens.css` + `theme.css`** (and the service brief).
+3. Agent restyles the existing UI against `design.md` §1–§4 using the kit — do not invent a parallel system.
 
 ---
 
@@ -85,7 +87,6 @@ Implement UI using design.md §1–§4 checklist — do not invent a parallel de
 | `/doc` | Full `design.md` + saved mixes |
 | `/recommend` | Brief → ranked themes |
 | `/compose` | Mix + Save + Sync + **Download kit (zip)** |
-| `/rebrand` | Analyze CSS → hook |
 | `/trends` `/research` | Canon + AI search & add |
 
 Dev: `npm run dev -- -H 127.0.0.1 -p 3000` · Optional AI: see `.env.example`.

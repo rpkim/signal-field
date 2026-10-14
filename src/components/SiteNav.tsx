@@ -10,7 +10,6 @@ const primary = [
   { href: "/components", label: "Components" },
   { href: "/compose", label: "Compose", group: "tools" },
   { href: "/recommend", label: "Recommend", group: "tools" },
-  { href: "/rebrand", label: "Rebrand", group: "tools" },
   { href: "/trends", label: "Trends", group: "canon" },
   { href: "/research", label: "Research", group: "canon" },
   { href: "/doc", label: "Doc", group: "doc" },

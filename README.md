@@ -29,7 +29,7 @@ Implement UI using design.md §1–§4 — do not invent a parallel system.
 | Goal | Steps |
 | --- | --- |
 | New UI | Brief → `/recommend` → `/compose` → Download zip → wire CSS in target repo |
-| Rebrand | `/rebrand` → hook CSS → optional full kit zip |
+| Existing product | Same as New UI — apply `design.md` + kit (that is the rebrand) |
 | Reload mix | Compose Save → `/doc` Load → re-export zip |
 
 ### CSS import order
@@ -60,7 +60,7 @@ Without keys, Discover still runs **offline** (topic + URLs/notes → schema).
 
 ## Routes
 
-`/` · `/foundations` · `/components` · `/compose` · `/recommend` · `/rebrand` · `/trends` · `/research` · `/kits/precise-quiet` · `/doc`
+`/` · `/foundations` · `/components` · `/compose` · `/recommend` · `/trends` · `/research` · `/kits/precise-quiet` · `/doc`
 
 ## Persistence
 
