@@ -124,7 +124,7 @@ const en = {
     "Color roles, type, space, responsive layout, motion, and accessibility norms.",
   "components.title": "Components",
   "components.lede":
-    "Buttons, fields, and focus — states before decoration.",
+    "Twenty-two specs — buttons through segmented controls. States before decoration; jump the index to any specimen.",
   "saved.title": "Saved mixes",
   "saved.empty": "No saved mixes yet — Save from Compose.",
   "saved.load": "Load in Compose",
@@ -253,7 +253,8 @@ const ko: Record<MessageKey, string> = {
   "foundations.lede":
     "컬러 역할, 타이포, 여백, 반응형, 모션, 접근성 규범.",
   "components.title": "컴포넌트",
-  "components.lede": "버튼·필드·포커스 — 장식보다 상태.",
+  "components.lede":
+    "스페시멘 22종 — 버튼부터 세그먼트까지. 장식보다 상태; 인덱스로 바로 이동.",
   "saved.title": "저장된 믹스",
   "saved.empty": "저장된 믹스 없음 — Compose에서 저장하세요.",
   "saved.load": "Compose에서 열기",
