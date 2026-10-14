@@ -1,16 +1,16 @@
-import { promises as fs } from "fs";
-import path from "path";
+import {
+  allCatalogIds,
+  deleteCatalogItem,
+  insertResearchDb,
+  insertTrendDb,
+  listResearchFromDb,
+  listTrendsFromDb,
+} from "@/lib/db";
 import type {
   DiscoverAxis,
   ResearchCandidate,
   TrendCandidate,
 } from "./types";
-
-type AdditionsFile<T> = { items: T[] };
-
-function additionsPath(axis: DiscoverAxis) {
-  return path.join(process.cwd(), "content", "additions", `${axis}.json`);
-}
 
 export async function readAdditions(
   axis: "trends"
@@ -21,17 +21,10 @@ export async function readAdditions(
 export async function readAdditions(
   axis: DiscoverAxis
 ): Promise<TrendCandidate[] | ResearchCandidate[]> {
-  const file = additionsPath(axis);
-  try {
-    const raw = await fs.readFile(file, "utf8");
-    const data = JSON.parse(raw) as AdditionsFile<
-      TrendCandidate | ResearchCandidate
-    >;
-    if (axis === "trends") return (data.items ?? []) as TrendCandidate[];
-    return (data.items ?? []) as ResearchCandidate[];
-  } catch {
-    return [];
+  if (axis === "trends") {
+    return listTrendsFromDb().filter((i) => i.origin === "ai");
   }
+  return listResearchFromDb().filter((i) => i.origin === "ai");
 }
 
 export async function appendAddition(
@@ -46,31 +39,31 @@ export async function appendAddition(
   axis: DiscoverAxis,
   item: TrendCandidate | ResearchCandidate
 ) {
-  const file = additionsPath(axis);
-  const existing = (await readAdditions(axis as "trends")) as (
-    | TrendCandidate
-    | ResearchCandidate
-  )[];
-  if (existing.some((x) => x.id === item.id)) {
+  const ids = allCatalogIds(axis);
+  if (ids.has(item.id)) {
     throw new Error(`Item already exists: ${item.id}`);
   }
-  const next = [...existing, item];
-  await fs.mkdir(path.dirname(file), { recursive: true });
-  await fs.writeFile(
-    file,
-    JSON.stringify({ items: next }, null, 2) + "\n",
-    "utf8"
-  );
-  return next;
+  if (axis === "trends") {
+    insertTrendDb(item as TrendCandidate, "ai");
+    return readAdditions("trends");
+  }
+  insertResearchDb(item as ResearchCandidate, "ai");
+  return readAdditions("research");
+}
+
+export async function removeAddition(axis: DiscoverAxis, id: string) {
+  return deleteCatalogItem(axis, id);
 }
 
 export function slugify(input: string) {
-  return input
-    .toLowerCase()
-    .normalize("NFKD")
-    .replace(/[^\w\s-]/g, "")
-    .trim()
-    .replace(/[\s_]+/g, "-")
-    .replace(/-+/g, "-")
-    .slice(0, 48) || `item-${Date.now().toString(36)}`;
+  return (
+    input
+      .toLowerCase()
+      .normalize("NFKD")
+      .replace(/[^\w\s-]/g, "")
+      .trim()
+      .replace(/[\s_]+/g, "-")
+      .replace(/-+/g, "-")
+      .slice(0, 48) || `item-${Date.now().toString(36)}`
+  );
 }

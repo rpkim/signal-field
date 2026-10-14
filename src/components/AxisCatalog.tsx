@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { useState } from "react";
 import { useLocale } from "@/i18n/LocaleProvider";
-import type { DiscoverAxis } from "@/lib/discover/types";
 import styles from "./AxisCatalog.module.css";
 
 export type ResearchCatalogItem = {
@@ -12,6 +11,8 @@ export type ResearchCatalogItem = {
   source?: string;
   implications?: string[];
   ruleDeltas?: Record<string, string>;
+  prompt?: string;
+  origin?: string;
 };
 
 export type TrendCatalogItem = {
@@ -23,6 +24,8 @@ export type TrendCatalogItem = {
   when: string;
   skip: string;
   logDate?: string;
+  prompt?: string;
+  origin?: string;
 };
 
 type TrendCategory = { id: string; en: string; ko: string };
@@ -31,20 +34,41 @@ type Props =
   | {
       axis: "research";
       items: ResearchCatalogItem[];
-      baseIds: string[];
       categories?: never;
     }
   | {
       axis: "trends";
       items: TrendCatalogItem[];
-      baseIds: string[];
       categories: TrendCategory[];
     };
 
 export function AxisCatalog(props: Props) {
   const { locale, t } = useLocale();
-  const { axis, items, baseIds } = props;
-  const base = new Set(baseIds);
+  const { axis, items } = props;
+  const [copied, setCopied] = useState<string | null>(null);
+
+  async function copyPrompt(id: string, prompt: string) {
+    try {
+      await navigator.clipboard.writeText(prompt);
+      setCopied(id);
+      window.setTimeout(() => setCopied((c) => (c === id ? null : c)), 1600);
+    } catch {
+      setCopied(null);
+    }
+  }
+
+  function CopyBtn({ id, prompt }: { id: string; prompt: string }) {
+    if (!prompt) return null;
+    return (
+      <button
+        type="button"
+        className={styles.copy}
+        onClick={() => void copyPrompt(id, prompt)}
+      >
+        {copied === id ? t("catalog.copied") : t("catalog.copyPrompt")}
+      </button>
+    );
+  }
 
   return (
     <section className={styles.root} aria-labelledby={`${axis}-catalog-heading`}>
@@ -58,9 +82,6 @@ export function AxisCatalog(props: Props) {
           {axis === "research"
             ? t("catalog.researchIntro")
             : t("catalog.trendsIntro")}
-          {" — "}
-          <Link href="/compose">{t("nav.compose")}</Link>
-          {t("catalog.applySuffix")}
         </p>
       </header>
 
@@ -71,7 +92,7 @@ export function AxisCatalog(props: Props) {
               <div className={styles.cardTop}>
                 <h3>
                   {item.title}
-                  {!base.has(item.id) ? (
+                  {item.origin === "ai" ? (
                     <span className={styles.badgeNew}>{t("catalog.new")}</span>
                   ) : null}
                 </h3>
@@ -95,12 +116,7 @@ export function AxisCatalog(props: Props) {
                 </ul>
               ) : null}
               <p className={styles.actions}>
-                <Link
-                  href={`/compose?research=${encodeURIComponent(item.id)}`}
-                  className={styles.apply}
-                >
-                  {t("catalog.useInCompose")}
-                </Link>
+                <CopyBtn id={item.id} prompt={item.prompt || ""} />
               </p>
             </li>
           ))}
@@ -121,7 +137,7 @@ export function AxisCatalog(props: Props) {
                       <div className={styles.cardTop}>
                         <h3>
                           {locale === "ko" ? item.ko || item.en : item.en}
-                          {!base.has(item.id) ? (
+                          {item.origin === "ai" ? (
                             <span className={styles.badgeNew}>
                               {t("catalog.new")}
                             </span>
@@ -139,12 +155,7 @@ export function AxisCatalog(props: Props) {
                         </span>
                       </p>
                       <p className={styles.actions}>
-                        <Link
-                          href={`/compose?trends=${encodeURIComponent(item.id)}`}
-                          className={styles.apply}
-                        >
-                          {t("catalog.useInCompose")}
-                        </Link>
+                        <CopyBtn id={item.id} prompt={item.prompt || ""} />
                       </p>
                     </li>
                   ))}
@@ -157,5 +168,3 @@ export function AxisCatalog(props: Props) {
     </section>
   );
 }
-
-export type { DiscoverAxis };

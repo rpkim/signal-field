@@ -8,7 +8,7 @@ import type { DiscoverAxis } from "@/lib/discover/types";
 import { Button } from "./Button";
 import styles from "./DiscoverPanel.module.css";
 
-type Props = { axis: DiscoverAxis };
+type Props = { axis: DiscoverAxis; onAdded?: () => void };
 
 type HistoryEntry = {
   at: string;
@@ -19,7 +19,7 @@ type HistoryEntry = {
   error?: string;
 };
 
-export function DiscoverPanel({ axis }: Props) {
+export function DiscoverPanel({ axis, onAdded }: Props) {
   const { t } = useLocale();
   const router = useRouter();
   const [topic, setTopic] = useState("");
@@ -76,6 +76,7 @@ export function DiscoverPanel({ axis }: Props) {
         );
       } else {
         setToast(t("discover.toast.added", { n: added.length }));
+        onAdded?.();
       }
       router.refresh();
     } catch (err) {

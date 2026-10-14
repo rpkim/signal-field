@@ -1,8 +1,12 @@
 import { NextResponse } from "next/server";
+import { isAdminRequest } from "@/lib/adminAuth";
 import { proposeDiscover } from "@/lib/discover/propose";
 import type { DiscoverAxis } from "@/lib/discover/types";
 
 export async function POST(req: Request) {
+  if (!(await isAdminRequest())) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   try {
     const body = (await req.json()) as {
       axis?: DiscoverAxis;

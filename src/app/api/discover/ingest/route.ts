@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
+import { isAdminRequest } from "@/lib/adminAuth";
+import { allCatalogIds } from "@/lib/db";
 import { proposeDiscover } from "@/lib/discover/propose";
-import { appendAddition, readAdditions } from "@/lib/discover/store";
+import { appendAddition } from "@/lib/discover/store";
 import type {
   DiscoverAxis,
   ResearchCandidate,
@@ -8,6 +10,9 @@ import type {
 } from "@/lib/discover/types";
 
 export async function POST(req: Request) {
+  if (!(await isAdminRequest())) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   try {
     const body = (await req.json()) as {
       axis?: DiscoverAxis;
@@ -27,12 +32,7 @@ export async function POST(req: Request) {
       notes: body.notes,
     });
 
-    const existing =
-      body.axis === "trends"
-        ? await readAdditions("trends")
-        : await readAdditions("research");
-    const existingIds = new Set(existing.map((x) => x.id));
-
+    const existingIds = allCatalogIds(body.axis);
     const added: Array<{ id: string; label: string }> = [];
     const skipped: Array<{ id: string; reason: string }> = [];
 

@@ -46,9 +46,9 @@ const en = {
     "Richer theme space (color · type · density) + kit zip export.",
   "home.recommend.desc": "Describe a service; get a ranked theme mix.",
   "home.trends.desc":
-    "Browse the trend catalog used in Compose — then find more with AI.",
+    "Read-only trend catalog — copy prompts; manage AI adds in Admin.",
   "home.research.desc":
-    "Browse research pillars used in Compose — then find more with AI.",
+    "Read-only research pillars — copy prompts; manage AI adds in Admin.",
   "home.kit.desc": "Default brand kit specimen — IBM Plex, signal teal.",
   "page.tools": "Tools",
   "page.guide": "Guide",
@@ -102,20 +102,24 @@ const en = {
     "Added {n} · apply in Compose with 「Apply updates」",
   "trends.title": "Trends",
   "trends.lede":
-    "The same trend catalog Compose mixes — browse here, apply in Compose, or find more with AI below.",
+    "Read-only catalog of trends used in Compose. Copy a concept prompt for agents — AI adds live under /admin.",
   "research.title": "Research",
   "research.lede":
-    "The same research pillars Compose mixes — browse here, apply in Compose, or find more with AI below.",
+    "Read-only catalog of research pillars used in Compose. Copy a concept prompt for agents — AI adds live under /admin.",
   "catalog.researchHeading": "Research pillars",
   "catalog.trendsHeading": "Trend catalog",
-  "catalog.researchIntro": "Core pillars available in Compose",
-  "catalog.trendsIntro": "Secondary fashion tags available in Compose",
+  "catalog.researchIntro":
+    "Read-only. Copy the prompt for a pillar to paste into an agent brief.",
+  "catalog.trendsIntro":
+    "Read-only. Copy the prompt for a trend to paste into an agent brief.",
   "catalog.applySuffix": ".",
   "catalog.new": "New",
   "catalog.source": "Source",
   "catalog.when": "When",
   "catalog.skip": "Skip",
   "catalog.useInCompose": "Use in Compose →",
+  "catalog.copyPrompt": "Copy prompt",
+  "catalog.copied": "Copied",
   "doc.title": "design.md",
   "doc.eyebrow": "Canon",
   "doc.introEn":
@@ -188,9 +192,9 @@ const ko: Record<MessageKey, string> = {
     "풍부한 테마 공간(컬러·타입·밀도) + 키트 zip 내보내기.",
   "home.recommend.desc": "서비스를 설명하면 순위가 매겨진 테마 믹스.",
   "home.trends.desc":
-    "Compose와 같은 트렌드 카탈로그 — 보고, 적용하고, AI로 더 찾기.",
+    "읽기 전용 트렌드 카탈로그 — 프롬프트 복사; AI 추가는 Admin.",
   "home.research.desc":
-    "Compose와 같은 리서치 필러 — 보고, 적용하고, AI로 더 찾기.",
+    "읽기 전용 리서치 필러 — 프롬프트 복사; AI 추가는 Admin.",
   "home.kit.desc": "기본 브랜드 키트 표본 — IBM Plex, 시그널 틸.",
   "page.tools": "도구",
   "page.guide": "가이드",
@@ -244,20 +248,24 @@ const ko: Record<MessageKey, string> = {
     "추가됨 {n}건 · Compose에서 「업데이트 반영」으로 믹서에 반영",
   "trends.title": "트렌드",
   "trends.lede":
-    "Compose에서 쓰는 트렌드 카탈로그입니다. 여기서 보고 Compose에 적용하거나, 아래에서 AI로 더 찾으세요.",
+    "Compose에서 쓰는 트렌드 카탈로그(읽기 전용). 컨셉 프롬프트를 복사하세요. AI 추가는 /admin.",
   "research.title": "리서치",
   "research.lede":
-    "Compose에서 쓰는 리서치 필러입니다. 여기서 보고 Compose에 적용하거나, 아래에서 AI로 더 찾으세요.",
+    "Compose에서 쓰는 리서치 필러(읽기 전용). 컨셉 프롬프트를 복사하세요. AI 추가는 /admin.",
   "catalog.researchHeading": "리서치 필러",
   "catalog.trendsHeading": "트렌드 카탈로그",
-  "catalog.researchIntro": "Compose에서 고를 수 있는 핵심 필러",
-  "catalog.trendsIntro": "Compose에서 고를 수 있는 부가 트렌드 태그",
+  "catalog.researchIntro":
+    "읽기 전용. 필러 프롬프트를 복사해 에이전트 브리프에 붙여넣으세요.",
+  "catalog.trendsIntro":
+    "읽기 전용. 트렌드 프롬프트를 복사해 에이전트 브리프에 붙여넣으세요.",
   "catalog.applySuffix": "에서 적용.",
   "catalog.new": "신규",
   "catalog.source": "출처",
   "catalog.when": "언제",
   "catalog.skip": "스킵",
   "catalog.useInCompose": "Compose에서 사용 →",
+  "catalog.copyPrompt": "프롬프트 복사",
+  "catalog.copied": "복사됨",
   "doc.title": "design.md",
   "doc.eyebrow": "캐논",
   "doc.introEn":
