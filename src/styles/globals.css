@@ -18,11 +18,11 @@ body {
   font-weight: 400;
   line-height: var(--leading-body);
   color: var(--color-ink);
-  background:
-    radial-gradient(120% 80% at 0% 0%, rgb(15 118 110 / 0.05), transparent 50%),
-    radial-gradient(90% 60% at 100% 0%, rgb(18 20 26 / 0.04), transparent 45%),
-    linear-gradient(180deg, #f8f9fa 0%, var(--color-field) 40%, #eef0f3 100%);
+  background: var(--page-atmosphere);
   -webkit-font-smoothing: antialiased;
+  transition:
+    background var(--dur-2) var(--ease-out),
+    color var(--dur-2) var(--ease-out);
 }
 
 body::before {
@@ -31,8 +31,35 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.035;
+  opacity: var(--grain-opacity);
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  transition: opacity var(--dur-2) var(--ease-out);
+}
+
+html[data-surface="glass"] body::after {
+  content: "";
+  position: fixed;
+  inset: -10% -5%;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(40% 30% at 20% 15%, rgb(255 255 255 / 0.55), transparent 70%),
+    radial-gradient(35% 28% at 80% 25%, rgb(61 207 191 / 0.2), transparent 70%);
+  filter: blur(28px);
+  opacity: 0.85;
+}
+
+/* Compose live mix: Liquid Glass paints product chrome, not just the specimen. */
+html[data-surface="glass"] button,
+html[data-surface="glass"] input,
+html[data-surface="glass"] select,
+html[data-surface="glass"] textarea {
+  border-radius: var(--radius-md);
+}
+
+html[data-surface="glass"] button:not(:disabled) {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 body > * {

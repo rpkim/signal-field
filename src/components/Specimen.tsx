@@ -6,6 +6,7 @@ type Props = {
   title?: string;
   meta?: string;
   swatches?: string[];
+  surface?: string;
 };
 
 export function Specimen({
@@ -13,14 +14,21 @@ export function Specimen({
   title = "Specimen",
   meta,
   swatches = [],
+  surface = "solid",
 }: Props) {
   return (
-    <article className={styles.root} style={style} aria-label="Live specimen">
+    <article
+      className={styles.root}
+      style={style}
+      data-surface={surface}
+      aria-label="Live specimen"
+    >
       <p className={styles.mark}>{title}</p>
       <h2 className={styles.display}>Signal Field</h2>
       <p className={styles.body}>
-        Quiet product chrome. One accent, graphite ink, paper field — hierarchy
-        from type and space, not badges.
+        {surface === "glass"
+          ? "Liquid glass chrome: translucent material, soft blur, content ahead of decoration."
+          : "Quiet product chrome. One accent, graphite ink, paper field — hierarchy from type and space, not badges."}
       </p>
       {swatches.length ? (
         <div className={styles.swatches} aria-hidden>

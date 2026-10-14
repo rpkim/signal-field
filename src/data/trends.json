@@ -58,7 +58,11 @@
       "skip": "Guidelines docs, Clearline/utility, print.",
       "research": ["apple-deference"],
       "refs": ["awwwards"],
-      "logDate": "2026-06-21"
+      "logDate": "2026-06-21",
+      "tokenDeltas": {
+        "--grain-opacity": "0.07",
+        "--page-atmosphere": "radial-gradient(100% 70% at 0% 0%, rgb(18 20 26 / 0.06), transparent 50%), linear-gradient(180deg, #eef1f5 0%, #e2e7ee 100%)"
+      }
     },
     {
       "id": "kinetic-lockups",

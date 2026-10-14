@@ -1,24 +1,28 @@
+import { mergeMixTokens, type ResearchLike, type TrendLike } from "./mergeMixTokens";
 import type { ColorItem, DensityItem, MixState, TypeItem } from "./types";
 
 export function buildTokensCss(
   mix: MixState,
   color: ColorItem,
   type: TypeItem,
-  density: DensityItem
+  density: DensityItem,
+  researchItems: ResearchLike[] = [],
+  trendItems: TrendLike[] = []
 ) {
-  const roles = { ...color.roles, ...density.tokens };
+  const merged = mergeMixTokens({
+    mix,
+    color,
+    type,
+    density,
+    researchItems,
+    trendItems,
+  });
   const lines = [
-    `/* Signal Field mix · color=${mix.color} type=${mix.type} density=${mix.density} */`,
+    `/* Signal Field mix · color=${mix.color} type=${mix.type} density=${mix.density} research=${mix.research.join(",") || "—"} */`,
     type.google
       ? `@import url("https://fonts.googleapis.com/css2?${type.google}&display=swap");`
       : null,
     `:root {`,
-    `  --font-display: "${type.display}", ${type.fallbacks};`,
-    `  --font-body: "${type.body}", ${type.fallbacks};`,
-    type.mono
-      ? `  --font-mono: "${type.mono}", ui-monospace, Menlo, monospace;`
-      : `  --font-mono: ui-monospace, Menlo, monospace;`,
-    `  --tracking-display: ${type.trackingDisplay};`,
     `  --bp-sm: 40rem; /* 640 — compact */`,
     `  --bp-md: 48rem; /* 768 — tablet */`,
     `  --bp-lg: 60rem; /* 960 — tools two-column */`,
@@ -39,10 +43,16 @@ export function buildTokensCss(
     `  --leading-body: 1.6;`,
     `  --radius-sm: 0.25rem;`,
     `  --radius-md: 0.375rem;`,
+    `  --radius-lg: 1.25rem;`,
     `  --elev-focus: 0 0 0 2px #fff, 0 0 0 4px var(--color-focus, #0f766e);`,
     `  --color-hairline: rgb(18 20 26 / 0.1);`,
+    `  --grain-opacity: 0.035;`,
+    `  --specimen-surface: var(--color-field);`,
+    `  --specimen-blur: 0px;`,
+    `  --nav-surface: color-mix(in srgb, var(--color-field) 94%, transparent);`,
+    `  --nav-blur: 10px;`,
   ].filter(Boolean) as string[];
-  Object.entries(roles).forEach(([k, v]) => {
+  Object.entries(merged).forEach(([k, v]) => {
     lines.push(`  ${k}: ${v};`);
   });
   lines.push(`}`);
