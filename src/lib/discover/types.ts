@@ -13,6 +13,7 @@ export type TrendCandidate = {
   logDate: string;
   sources?: string[];
   rationale?: string;
+  tokenDeltas?: Record<string, string>;
 };
 
 export type ResearchCandidate = {

@@ -1,10 +1,38 @@
 .root {
+  position: relative;
   border: 1px solid var(--color-hairline);
-  background: var(--color-field);
+  background: var(--specimen-surface, var(--color-field));
   color: var(--color-ink);
   padding: var(--space-6);
   display: grid;
   gap: var(--space-5);
+  border-radius: var(--radius-lg, var(--radius-md));
+  box-shadow: var(--elev-2, none);
+  backdrop-filter: blur(var(--specimen-blur, 0px));
+  -webkit-backdrop-filter: blur(var(--specimen-blur, 0px));
+  overflow: hidden;
+  transition:
+    background var(--dur-2, 320ms) var(--ease-out, ease),
+    box-shadow var(--dur-2, 320ms) var(--ease-out, ease),
+    border-color var(--dur-1, 160ms) ease,
+    border-radius var(--dur-2, 320ms) ease;
+}
+
+.root[data-surface="glass"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(
+    --specimen-tint,
+    linear-gradient(155deg, rgb(255 255 255 / 0.55), rgb(255 255 255 / 0.12))
+  );
+  z-index: 0;
+}
+
+.root > * {
+  position: relative;
+  z-index: 1;
 }
 
 .mark {
@@ -19,7 +47,7 @@
 .display {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 2.5vw + 1rem, 2.5rem);
+  font-size: var(--text-hero, clamp(1.75rem, 2.5vw + 1rem, 2.5rem));
   font-weight: 500;
   letter-spacing: var(--tracking-display);
   line-height: 1.1;
@@ -31,13 +59,15 @@
   font-size: var(--text-base);
   line-height: var(--leading-body);
   color: var(--color-ink-soft);
-  max-width: 28rem;
+  max-width: var(--measure, 28rem);
 }
 
 .swatches {
   display: flex;
   height: 2.25rem;
   border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-sm, 0.25rem);
+  overflow: hidden;
 }
 
 .swatches i {
@@ -55,7 +85,7 @@
 .primary {
   display: inline-flex;
   align-items: center;
-  min-height: 2.5rem;
+  min-height: var(--touch-min, 2.5rem);
   padding: 0.55rem 1rem;
   background: var(--color-ink);
   color: var(--color-chalk);
@@ -69,14 +99,15 @@
 .ghost {
   display: inline-flex;
   align-items: center;
-  min-height: 2.5rem;
+  min-height: var(--touch-min, 2.5rem);
   padding: 0.55rem 1rem;
-  background: transparent;
+  background: color-mix(in srgb, var(--color-chalk) 55%, transparent);
   color: var(--color-ink);
   border: 1px solid var(--color-hairline);
   border-radius: var(--radius-md);
   font: inherit;
   font-size: var(--text-sm);
+  backdrop-filter: blur(calc(var(--specimen-blur, 0px) * 0.4));
 }
 
 .field {
@@ -90,13 +121,14 @@
 }
 
 .field input {
-  min-height: 2.5rem;
+  min-height: var(--touch-min, 2.5rem);
   padding: 0.55rem 0.75rem;
   border: 1px solid var(--color-hairline);
   border-radius: var(--radius-md);
   font: inherit;
-  background: var(--color-chalk);
+  background: color-mix(in srgb, var(--color-chalk) 72%, transparent);
   color: var(--color-ink);
+  backdrop-filter: blur(calc(var(--specimen-blur, 0px) * 0.35));
 }
 
 .meta {
@@ -104,4 +136,5 @@
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--color-ink-soft);
+  overflow-wrap: anywhere;
 }

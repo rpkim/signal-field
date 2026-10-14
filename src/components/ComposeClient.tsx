@@ -13,6 +13,12 @@ import type { SyncSuggestion } from "@/lib/discover/syncPropose";
 import { applySuggestions } from "@/lib/discover/syncPropose";
 import type { TrendCandidate } from "@/lib/discover/types";
 import { downloadBlob } from "@/lib/exportKit";
+import {
+  mergeMixTokens,
+  researchSurfaceMode,
+  type ResearchLike,
+  type TrendLike,
+} from "@/lib/mergeMixTokens";
 import type { ColorItem, DensityItem, MixState, TypeItem } from "@/lib/types";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { Button } from "./Button";
@@ -28,13 +34,12 @@ const recommendedTypeId =
   typeItems.find((item) => item.recommended)?.id ||
   "plex";
 
-type ResearchItem = {
-  id: string;
+type ResearchItem = ResearchLike & {
   title: string;
   implications?: string[];
 };
 
-type TrendItem = TrendCandidate;
+type TrendItem = TrendCandidate & TrendLike;
 
 const DEFAULT: MixState = {
   research: ["wcag-22", "m3-roles"],
@@ -57,7 +62,7 @@ export function ComposeClient() {
   const [saveName, setSaveName] = useState("");
   const [status, setStatus] = useState("");
   const [researchItems, setResearchItems] = useState<ResearchItem[]>(
-    baseResearch.items as ResearchItem[]
+    baseResearch.items as unknown as ResearchItem[]
   );
   const [trendItems, setTrendItems] = useState<TrendItem[]>(
     baseTrends.items as TrendItem[]
@@ -149,7 +154,12 @@ export function ComposeClient() {
       if (res) next.research = res.split(",").filter(Boolean);
       if (refs) next.references = refs.split(",").filter(Boolean);
       if (trends) next.trends = trends.split(",").filter(Boolean);
-      if (!cancelled) setMix(next);
+      if (!cancelled) {
+        setMix(next);
+        if (color || type || dens || res || refs || trends || !preset) {
+          if (!preset) setPresetId(null);
+        }
+      }
     })();
     return () => {
       cancelled = true;
@@ -164,20 +174,58 @@ export function ComposeClient() {
     additionResearchIds.filter((id) => !mix.research.includes(id)).length +
     additionTrendIds.filter((id) => !(mix.trends || []).includes(id)).length;
 
+  const mixTokens = useMemo(
+    () =>
+      mergeMixTokens({
+        mix,
+        color,
+        type,
+        density: dens,
+        researchItems,
+        trendItems,
+      }),
+    [mix, color, type, dens, researchItems, trendItems]
+  );
+
+  const surfaceMode = researchSurfaceMode(mix.research);
+
   const specimenStyle = useMemo(() => {
-    const roles = { ...color.roles, ...dens.tokens } as Record<string, string>;
     return {
-      ...roles,
-      ["--font-display" as string]: `"${type.display}", ${type.fallbacks}`,
-      ["--font-body" as string]: `"${type.body}", ${type.fallbacks}`,
-      ["--font-mono" as string]: type.mono
-        ? `"${type.mono}", ui-monospace, Menlo, monospace`
-        : "ui-monospace, Menlo, monospace",
-      ["--tracking-display" as string]: type.trackingDisplay,
-      background: roles["--color-field"],
-      color: roles["--color-ink"],
+      ...mixTokens,
+      color: mixTokens["--color-ink"],
     } as React.CSSProperties;
-  }, [color, dens, type]);
+  }, [mixTokens]);
+
+  // Live-apply mix to the document (same idea as legacy compose.js) so research
+  // pillars like Liquid Glass change real chrome, not only the specimen card.
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const root = document.documentElement;
+    const previous = new Map<string, string>();
+    for (const [key, value] of Object.entries(mixTokens)) {
+      if (!key.startsWith("--")) continue;
+      previous.set(key, root.style.getPropertyValue(key));
+      root.style.setProperty(key, value);
+    }
+    const prevMix = root.dataset.composeMix;
+    const prevSurface = root.dataset.surface;
+    const prevResearch = root.dataset.research;
+    root.dataset.composeMix = "1";
+    root.dataset.surface = surfaceMode;
+    root.dataset.research = mix.research.join(" ");
+    return () => {
+      for (const [key, value] of previous) {
+        if (value) root.style.setProperty(key, value);
+        else root.style.removeProperty(key);
+      }
+      if (prevMix === undefined) delete root.dataset.composeMix;
+      else root.dataset.composeMix = prevMix;
+      if (prevSurface === undefined) delete root.dataset.surface;
+      else root.dataset.surface = prevSurface;
+      if (prevResearch === undefined) delete root.dataset.research;
+      else root.dataset.research = prevResearch;
+    };
+  }, [mixTokens, mix.research, surfaceMode]);
 
   // Load Google Fonts only for the selected type option (Compose specimen preview).
   useEffect(() => {
@@ -573,12 +621,26 @@ export function ComposeClient() {
         </div>
 
         <aside className={styles.side}>
-          <Specimen
-            style={specimenStyle}
-            title="Live mix"
-            meta={`${mix.color} · ${mix.type} · ${mix.density}${(mix.trends || []).length ? ` · ${mix.trends!.length} trends` : ""}`}
-            swatches={color.swatches}
-          />
+          <div
+            className={styles.stage}
+            data-surface={surfaceMode}
+            style={
+              {
+                ...mixTokens,
+                background:
+                  mixTokens["--page-atmosphere"] ||
+                  mixTokens["--color-field"],
+              } as React.CSSProperties
+            }
+          >
+            <Specimen
+              style={specimenStyle}
+              surface={surfaceMode}
+              title="Live mix"
+              meta={`${mix.research.join(" · ") || "no research"} · ${mix.color} · ${mix.type} · ${mix.density}${(mix.trends || []).length ? ` · ${mix.trends!.length} trends` : ""}`}
+              swatches={color.swatches}
+            />
+          </div>
           <div className={styles.exportRow}>
             <Button type="button" disabled={busy} onClick={exportKit}>
               Download kit (zip)

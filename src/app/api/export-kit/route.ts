@@ -4,6 +4,8 @@ import { NextResponse } from "next/server";
 import JSZip from "jszip";
 import colors from "@/data/colors.json";
 import density from "@/data/density.json";
+import research from "@/data/research.json";
+import trends from "@/data/trends.json";
 import typeData from "@/data/type.json";
 import {
   buildKitDesignMd,
@@ -11,6 +13,7 @@ import {
   buildThemeCss,
   buildTokensCss,
 } from "@/lib/exportKit";
+import type { ResearchLike, TrendLike } from "@/lib/mergeMixTokens";
 import type { ColorItem, DensityItem, MixState, TypeItem } from "@/lib/types";
 
 function byId<T extends { id: string }>(list: T[], id: string) {
@@ -42,7 +45,17 @@ export async function POST(req: Request) {
     // Primary three
     zip.file("SIGNAL-FIELD-design.md", systemDesign);
     zip.file("design.md", systemDesign); // alias for the name users ask for
-    zip.file("tokens.css", buildTokensCss(mix, color, type, dens));
+    zip.file(
+      "tokens.css",
+      buildTokensCss(
+        mix,
+        color,
+        type,
+        dens,
+        research.items as unknown as ResearchLike[],
+        trends.items as unknown as TrendLike[]
+      )
+    );
     zip.file("theme.css", buildThemeCss());
     // Extras
     zip.file("DESIGN.md", buildKitDesignMd(mix, color, type, dens));

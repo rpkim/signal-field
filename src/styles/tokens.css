@@ -51,6 +51,21 @@
 
   --radius-sm: 0.25rem;
   --radius-md: 0.375rem;
+  --radius-lg: 1.25rem;
+  --elev-1: 0 1px 0 color-mix(in srgb, var(--color-ink) 6%, transparent);
+  --elev-2: none;
   --elev-focus: 0 0 0 2px var(--color-chalk), 0 0 0 4px var(--color-focus);
   --touch-min: 44px;
+  --grain-opacity: 0.035;
+  --specimen-surface: var(--color-field);
+  --specimen-blur: 0px;
+  --nav-surface: color-mix(in srgb, var(--color-field) 94%, transparent);
+  --nav-blur: 10px;
+  --page-atmosphere:
+    radial-gradient(120% 80% at 0% 0%, rgb(15 118 110 / 0.05), transparent 50%),
+    radial-gradient(90% 60% at 100% 0%, rgb(18 20 26 / 0.04), transparent 45%),
+    linear-gradient(180deg, #f8f9fa 0%, var(--color-field) 40%, #eef0f3 100%);
+  --dur-1: 160ms;
+  --dur-2: 320ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }

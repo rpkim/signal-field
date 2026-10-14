@@ -12,6 +12,14 @@
   min-width: 0;
 }
 
+.stage {
+  padding: var(--space-5);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-lg, var(--radius-md));
+  min-width: 0;
+  transition: background var(--dur-2, 320ms) var(--ease-out, ease);
+}
+
 @media (min-width: 60rem) {
   .layout {
     grid-template-columns: minmax(0, 1fr) minmax(16rem, 22rem);
@@ -73,6 +81,29 @@
 .chip[aria-pressed="true"] {
   box-shadow: inset 2px 0 0 var(--color-ink);
   padding-left: 0.85rem;
+}
+
+:global(html[data-surface="glass"]) .chip {
+  border-bottom-color: rgb(255 255 255 / 0.35);
+}
+
+:global(html[data-surface="glass"]) .chip[aria-pressed="true"] {
+  background: rgb(255 255 255 / 0.35);
+  box-shadow: inset 2px 0 0 var(--color-signal), var(--elev-1, none);
+  border-radius: var(--radius-md);
+  margin: 0.15rem 0;
+  padding-left: 0.85rem;
+  backdrop-filter: blur(14px);
+}
+
+:global(html[data-surface="glass"]) .preset {
+  background: rgb(255 255 255 / 0.38);
+  border-color: rgb(255 255 255 / 0.5);
+  backdrop-filter: blur(12px);
+}
+
+:global(html[data-surface="glass"]) .axis {
+  border-bottom-color: rgb(255 255 255 / 0.35);
 }
 
 .chip strong {
