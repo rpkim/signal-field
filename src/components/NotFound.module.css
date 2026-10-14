@@ -1,0 +1,122 @@
+.panel {
+  max-width: 36rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(3rem, 8vw, 5rem);
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.code {
+  display: inline-block;
+  margin-right: 0.5rem;
+  color: var(--color-signal);
+  font-variant-numeric: tabular-nums;
+}
+
+.title {
+  margin: 0 0 var(--space-4);
+  font-size: clamp(2rem, 5vw + 0.75rem, 3rem);
+  font-weight: 500;
+  letter-spacing: var(--tracking-display);
+  line-height: 1.1;
+}
+
+.lede {
+  margin: 0 0 var(--space-6);
+  max-width: 28rem;
+  font-size: clamp(1.05rem, 2vw + 0.7rem, 1.25rem);
+  line-height: 1.5;
+  color: var(--color-ink-soft);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-7);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-min, 2.5rem);
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.primary {
+  background: var(--color-ink);
+  color: var(--color-chalk);
+}
+
+.primary:hover {
+  background: var(--color-signal-deep);
+}
+
+.ghost {
+  background: transparent;
+  border-color: var(--color-hairline);
+  color: var(--color-ink);
+}
+
+.ghost:hover {
+  border-color: var(--color-ink);
+}
+
+.paths {
+  border-top: 1px solid var(--color-hairline);
+  padding-top: var(--space-5);
+}
+
+.paths p {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.paths ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.paths li {
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.paths a {
+  display: block;
+  padding: var(--space-3) 0;
+  text-decoration: none;
+  color: var(--color-ink);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.paths a:hover {
+  color: var(--color-signal-deep);
+}
+
+.paths span {
+  display: block;
+  margin-top: 0.2rem;
+  font-weight: 400;
+  color: var(--color-ink-soft);
+  font-size: var(--text-xs);
+}

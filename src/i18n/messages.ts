@@ -128,6 +128,13 @@ const en = {
   "saved.title": "Saved mixes",
   "saved.empty": "No saved mixes yet — Save from Compose.",
   "saved.load": "Load in Compose",
+  "notfound.eyebrow": "404",
+  "notfound.title": "Page not found",
+  "notfound.lede":
+    "This path isn’t in Signal Field. Head home, open Compose, or read the guidelines.",
+  "notfound.home": "Back home",
+  "notfound.compose": "Open Compose",
+  "notfound.doc": "Read design.md",
 } as const;
 
 const ko: Record<MessageKey, string> = {
@@ -250,6 +257,13 @@ const ko: Record<MessageKey, string> = {
   "saved.title": "저장된 믹스",
   "saved.empty": "저장된 믹스 없음 — Compose에서 저장하세요.",
   "saved.load": "Compose에서 열기",
+  "notfound.eyebrow": "404",
+  "notfound.title": "페이지를 찾을 수 없습니다",
+  "notfound.lede":
+    "Signal Field에 없는 경로입니다. 홈으로 가거나 Compose·가이드라인을 열어보세요.",
+  "notfound.home": "홈으로",
+  "notfound.compose": "Compose 열기",
+  "notfound.doc": "design.md 읽기",
 };
 
 
