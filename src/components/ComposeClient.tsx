@@ -55,7 +55,7 @@ function byId<T extends { id: string }>(list: T[], id: string) {
 }
 
 export function ComposeClient() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const params = useSearchParams();
   const [mix, setMix] = useState<MixState>(DEFAULT);
   const [presetId, setPresetId] = useState<string | null>("precise-quiet");
@@ -491,7 +491,7 @@ export function ComposeClient() {
                   onClick={() => toggleMulti("trends", item.id, 3)}
                 >
                   <strong>
-                    {item.en}
+                    {locale === "ko" ? item.ko || item.en : item.en}
                     {additionTrendIds.includes(item.id) ? (
                       <span className={styles.badgeNew}>new</span>
                     ) : null}
@@ -544,7 +544,7 @@ export function ComposeClient() {
                   <span>
                     <strong>
                       {item.name}
-                      {item.ko ? (
+                      {locale === "ko" && item.ko ? (
                         <span className={styles.ko}>{item.ko}</span>
                       ) : null}
                     </strong>
@@ -579,7 +579,7 @@ export function ComposeClient() {
                 >
                   <strong>
                     {item.name}
-                    {item.ko ? (
+                    {locale === "ko" && item.ko ? (
                       <span className={styles.ko}>{item.ko}</span>
                     ) : null}
                     {item.recommended || item.id === recommendedTypeId ? (
@@ -610,7 +610,7 @@ export function ComposeClient() {
                 >
                   <strong>
                     {item.name}
-                    {item.ko ? (
+                    {locale === "ko" && item.ko ? (
                       <span className={styles.ko}>{item.ko}</span>
                     ) : null}
                   </strong>
