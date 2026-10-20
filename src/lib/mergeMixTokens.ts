@@ -12,7 +12,7 @@ export type TrendLike = {
 
 export type ReferenceLike = {
   id: string;
-  tokenDeltas?: Record<string, string>;
+  tokenDeltas?: { [key: string]: string | undefined };
 };
 
 /** Merge color + density + research, then reference leans, then trend deltas. */

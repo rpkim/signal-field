@@ -17,7 +17,6 @@ import { downloadBlob } from "@/lib/exportKit";
 import {
   mergeMixTokens,
   researchSurfaceMode,
-  type ReferenceLike,
   type ResearchLike,
   type TrendLike,
 } from "@/lib/mergeMixTokens";
@@ -233,7 +232,7 @@ export function ComposeClient() {
         type,
         density: dens,
         researchItems,
-        referenceItems: references.items as ReferenceLike[],
+        referenceItems: references.items,
         trendItems,
       }),
     [mix, color, type, dens, researchItems, trendItems]
