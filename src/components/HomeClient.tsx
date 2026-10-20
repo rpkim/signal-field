@@ -30,12 +30,6 @@ const links: Array<{
     desc: "home.compose.desc",
   },
   {
-    href: "/recommend",
-    kicker: "home.kicker.tools",
-    titleKey: "nav.recommend",
-    desc: "home.recommend.desc",
-  },
-  {
     href: "/trends",
     kicker: "home.kicker.canon",
     titleKey: "nav.trends",

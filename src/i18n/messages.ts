@@ -15,6 +15,7 @@ const en = {
   "nav.trends": "Trends",
   "nav.research": "Research",
   "nav.doc": "Doc",
+  "nav.admin": "Admin",
   "nav.menu": "Menu",
   "nav.close": "Close",
   "nav.primary": "Primary",
@@ -102,10 +103,10 @@ const en = {
     "Added {n} · apply in Compose with 「Apply updates」",
   "trends.title": "Trends",
   "trends.lede":
-    "The same trend catalog Compose mixes — browse here, apply in Compose, or find more with AI below.",
+    "The same trend catalog Compose mixes. Browse here, apply in Compose, or manage items in Admin.",
   "research.title": "Research",
   "research.lede":
-    "The same research pillars Compose mixes — browse here, apply in Compose, or find more with AI below.",
+    "The same research pillars Compose mixes. Browse here, apply in Compose, or manage items in Admin.",
   "catalog.researchHeading": "Research pillars",
   "catalog.trendsHeading": "Trend catalog",
   "catalog.researchIntro": "Core pillars available in Compose",
@@ -157,6 +158,7 @@ const ko: Record<MessageKey, string> = {
   "nav.trends": "트렌드",
   "nav.research": "리서치",
   "nav.doc": "문서",
+  "nav.admin": "관리",
   "nav.menu": "메뉴",
   "nav.close": "닫기",
   "nav.primary": "주요 메뉴",
@@ -244,10 +246,10 @@ const ko: Record<MessageKey, string> = {
     "추가됨 {n}건 · Compose에서 「업데이트 반영」으로 믹서에 반영",
   "trends.title": "트렌드",
   "trends.lede":
-    "Compose에서 쓰는 트렌드 카탈로그입니다. 여기서 보고 Compose에 적용하거나, 아래에서 AI로 더 찾으세요.",
+    "Compose에서 쓰는 트렌드 카탈로그입니다. 여기서 보거나 Compose에 적용하고, 항목은 관리에서 고칩니다.",
   "research.title": "리서치",
   "research.lede":
-    "Compose에서 쓰는 리서치 필러입니다. 여기서 보고 Compose에 적용하거나, 아래에서 AI로 더 찾으세요.",
+    "Compose에서 쓰는 리서치 필러입니다. 여기서 보거나 Compose에 적용하고, 항목은 관리에서 고칩니다.",
   "catalog.researchHeading": "리서치 필러",
   "catalog.trendsHeading": "트렌드 카탈로그",
   "catalog.researchIntro": "Compose에서 고를 수 있는 핵심 필러",

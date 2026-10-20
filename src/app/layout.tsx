@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s · Signal Field",
   },
   description:
-    "Quiet product design system — guidelines, compose, recommend, themes.",
+    "Quiet product design system — guidelines, compose, research, trends.",
 };
 
 export const viewport: Viewport = {

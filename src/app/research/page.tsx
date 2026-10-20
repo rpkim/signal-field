@@ -6,7 +6,6 @@ import {
 } from "@/components/AxisCatalog";
 import { DiscoverPanel } from "@/components/DiscoverPanel";
 import { PageChrome } from "@/components/PageChrome";
-import baseResearch from "@/data/research.json";
 import { getResearchCatalog } from "@/lib/discover/catalog";
 
 export const metadata: Metadata = { title: "Research" };
@@ -14,7 +13,9 @@ export const dynamic = "force-dynamic";
 
 export default async function ResearchPage() {
   const catalog = await getResearchCatalog();
-  const baseIds = baseResearch.items.map((i) => i.id);
+  const baseIds = catalog.items
+    .filter((item) => item.origin === "seed")
+    .map((item) => item.id);
 
   return (
     <AppShell current="/research">
@@ -28,7 +29,7 @@ export default async function ResearchPage() {
         items={catalog.items as ResearchCatalogItem[]}
         baseIds={baseIds}
       />
-      <DiscoverPanel axis="research" />
+      <DiscoverPanel />
     </AppShell>
   );
 }

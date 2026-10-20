@@ -14,7 +14,6 @@ const primary: NavItem[] = [
   { href: "/foundations", labelKey: "nav.foundations" },
   { href: "/components", labelKey: "nav.components" },
   { href: "/compose", labelKey: "nav.compose", group: "tools" },
-  { href: "/recommend", labelKey: "nav.recommend", group: "tools" },
   { href: "/trends", labelKey: "nav.trends", group: "canon" },
   { href: "/research", labelKey: "nav.research", group: "canon" },
   { href: "/doc", labelKey: "nav.doc", group: "doc" },

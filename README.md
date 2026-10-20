@@ -2,7 +2,7 @@
 
 Quiet product design system — Next.js App Router guidelines + brand tools.
 
-**Repo:** https://github.com/rpkim/signal-field (private)
+**Repo:** https://github.com/rpkim/signal-field
 
 ## How to use (start here)
 
@@ -28,9 +28,9 @@ Implement UI using design.md §1–§4 — do not invent a parallel system.
 
 | Goal | Steps |
 | --- | --- |
-| New UI | Brief → `/recommend` → `/compose` → Download zip → wire CSS in target repo |
-| Existing product | Same as New UI — apply `design.md` + kit (that is the rebrand) |
-| Discover trends/research | `/trends` or `/research` → **AI로 찾아서 추가** (auto-add) → Compose 업데이트 반영 |
+| New UI | Brief → `/compose` → Download zip → wire CSS in the target repo |
+| Existing product | `/rebrand`, then the same kit export |
+| Trends and research | Read `/trends` or `/research`. Add items at `/admin` (not in the nav): Find lists drafts, Add saves them |
 | Reload mix | Compose Save → `/doc` Load → re-export zip |
 
 ### CSS import order
@@ -51,7 +51,7 @@ Implement UI using design.md §1–§4 — do not invent a parallel system.
 ```bash
 git clone https://github.com/rpkim/signal-field.git
 cd signal-field
-cp .env.example .env.local   # optional OPENAI_API_KEY / ANTHROPIC_API_KEY
+cp .env.example .env.local   # GEMINI_API_KEY and ADMIN_PASSWORD; never commit this file
 npm install
 npm run dev -- -H 127.0.0.1 -p 3000
 ```
@@ -60,10 +60,13 @@ Open http://127.0.0.1:3000
 
 | Env | Purpose |
 | --- | --- |
-| `OPENAI_API_KEY` | AI propose on `/trends` `/research` |
-| `ANTHROPIC_API_KEY` | Fallback if OpenAI unset |
+| `GEMINI_API_KEY` | Admin Find. Without it, drafts stay offline |
+| `GEMINI_MODEL` | Optional. Default `gemini-2.5-flash` |
+| `ADMIN_PASSWORD` | Required to open `/admin`. Set it only in `.env.local` |
+| `OPENAI_API_KEY` | Optional fallback if Gemini is unset |
+| `ANTHROPIC_API_KEY` | Optional fallback if OpenAI is unset |
 
-Without keys, Discover still runs **offline** (topic + URLs/notes → schema).
+Find never writes by itself. An item, including its resource links, is saved when you choose Add. Restart the dev server after changing `.env.local`.
 
 ## Theme options
 
@@ -71,12 +74,12 @@ Compose catalogs: **30** colors · **25** type pairings (default/recommended: `p
 
 ## Routes
 
-`/` · `/foundations` · `/components` · `/compose` · `/recommend` · `/trends` · `/research` · `/kits/precise-quiet` · `/doc`
+`/` · `/foundations` · `/components` · `/compose` · `/rebrand` · `/trends` · `/research` · `/kits/precise-quiet` · `/doc` · `/admin` (unlisted)
 
 ## Persistence
 
 | Path | Contents |
 | --- | --- |
-| `content/design.md` | Canonical guidelines (sync from store `docs/design.md`) |
-| `content/additions/*.json` | Accepted AI/offline Trends/Research |
+| `content/design.md` | Canonical guidelines (rendered at `/doc`) |
+| `data/signal-field.sqlite` | Local trends and research catalog. Gitignored |
 | `content/saved-mixes.json` | Compose Save → Doc Load |

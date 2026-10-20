@@ -21,6 +21,7 @@ export type ResearchCandidate = {
   title: string;
   year: number;
   source: string;
+  sources?: string[];
   implications: string[];
   ruleDeltas?: Record<string, string>;
   rationale?: string;

@@ -7,7 +7,7 @@ Staff design guideline for UI work in this Project. Normative language: **must**
 | System | Signal Field |
 | Status | Canonical |
 | Example demo brand | Northline Studio (thin sample identity only — not a product brand) |
-| Product app (Next.js) | [`rpkim/signal-field`](https://github.com/rpkim/signal-field) · routes `/`, `/compose`, `/recommend`, `/trends` (AI button), `/research` (AI button), `/doc` |
+| Product app (Next.js) | [`rpkim/signal-field`](https://github.com/rpkim/signal-field) · routes `/`, `/compose`, `/trends`, `/research`, `/doc` |
 | Usage playbook | [`USAGE.md`](./USAGE.md) (humans + agents) |
 | Legacy static proof | `docs/theme-example/` (superseded for tools by the Next app) |
 | Brand kits (export) | `docs/brand-kits/<kit-id>/` |
@@ -16,7 +16,7 @@ Staff design guideline for UI work in this Project. Normative language: **must**
 
 **How agents use this document**
 1. Read §1 Philosophy and apply the checklist. Full playbook: [`USAGE.md`](./USAGE.md).
-2. Given a **service / product brief**, run the recommend path (§1.5): read [`recommend-map.md`](./recommend-map.md) + `brand-options/*`, return **1 primary mix + 2 alts** with rationale — or open the Next app `/recommend`.
+2. Given a **service / product brief**, run the recommend path (§1.5): read [`recommend-map.md`](./recommend-map.md) + `brand-options/*`, return **1 primary mix + 2 alts** with rationale, then open `/compose`.
 3. If the brief is an **existing product**, still use Recommend → Compose → kit export. Applying `design.md` + kit CSS **is** the rebrand (no separate Rebrand menu).
 4. **Compose** the chosen mix (§1.4) in Next `/compose` (deep-link from Recommend / Doc saved mixes) — or load a preset — then export `DESIGN.md` + CSS; default starting mix ≈ `precise-quiet`.
 5. Optionally align appearance (§8) with the color recipe chosen.
@@ -119,7 +119,6 @@ Numbered principles for Signal Field. Each includes meaning, do, don’t, and an
 
 Branding is first-class. **Apply by composing options** (research × references × color × type × density) → **export a portable kit**. Mood words alone are not enough.
 
-**Recommend UI:** Next `/recommend` (service brief → ranked mixes; new or existing)  
 **Existing product:** same path — apply `design.md` + Compose kit (that is the rebrand)  
 **Primary compose UI:** Next `/compose` (expanded color/type/density; Save → `/doc`)  
 **Option catalogs:** `src/data/` (colors · type · density · presets) synced from store `docs/brand-options/`  

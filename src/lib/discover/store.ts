@@ -34,6 +34,42 @@ export async function readAdditions(
   }
 }
 
+type CatalogItem = TrendCandidate | ResearchCandidate;
+
+async function writeItems(axis: DiscoverAxis, items: CatalogItem[]) {
+  const file = additionsPath(axis);
+  await fs.mkdir(path.dirname(file), { recursive: true });
+  await fs.writeFile(file, JSON.stringify({ items }, null, 2) + "\n", "utf8");
+}
+
+export async function removeAddition(axis: DiscoverAxis, id: string) {
+  const existing = (await readAdditions(axis as "trends")) as CatalogItem[];
+  if (!existing.some((item) => item.id === id)) {
+    throw new Error(`Item not in additions: ${id}`);
+  }
+  const next = existing.filter((item) => item.id !== id);
+  await writeItems(axis, next);
+  return next;
+}
+
+export async function replaceAddition(
+  axis: "trends",
+  item: TrendCandidate
+): Promise<TrendCandidate[]>;
+export async function replaceAddition(
+  axis: "research",
+  item: ResearchCandidate
+): Promise<ResearchCandidate[]>;
+export async function replaceAddition(axis: DiscoverAxis, item: CatalogItem) {
+  const existing = (await readAdditions(axis as "trends")) as CatalogItem[];
+  const index = existing.findIndex((entry) => entry.id === item.id);
+  if (index < 0) throw new Error(`Item not in additions: ${item.id}`);
+  const next = existing.slice();
+  next[index] = item;
+  await writeItems(axis, next);
+  return next;
+}
+
 export async function appendAddition(
   axis: "trends",
   item: TrendCandidate
@@ -42,25 +78,13 @@ export async function appendAddition(
   axis: "research",
   item: ResearchCandidate
 ): Promise<ResearchCandidate[]>;
-export async function appendAddition(
-  axis: DiscoverAxis,
-  item: TrendCandidate | ResearchCandidate
-) {
-  const file = additionsPath(axis);
-  const existing = (await readAdditions(axis as "trends")) as (
-    | TrendCandidate
-    | ResearchCandidate
-  )[];
-  if (existing.some((x) => x.id === item.id)) {
+export async function appendAddition(axis: DiscoverAxis, item: CatalogItem) {
+  const existing = (await readAdditions(axis as "trends")) as CatalogItem[];
+  if (existing.some((entry) => entry.id === item.id)) {
     throw new Error(`Item already exists: ${item.id}`);
   }
   const next = [...existing, item];
-  await fs.mkdir(path.dirname(file), { recursive: true });
-  await fs.writeFile(
-    file,
-    JSON.stringify({ items: next }, null, 2) + "\n",
-    "utf8"
-  );
+  await writeItems(axis, next);
   return next;
 }
 

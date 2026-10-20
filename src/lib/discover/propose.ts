@@ -147,6 +147,41 @@ function offlineResearch(
   ];
 }
 
+async function callGemini(system: string, user: string) {
+  const key = process.env.GEMINI_API_KEY;
+  if (!key) return null;
+  const model = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+  const res = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
+    {
+      method: "POST",
+      headers: {
+        "x-goog-api-key": key,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        systemInstruction: { parts: [{ text: system }] },
+        contents: [{ role: "user", parts: [{ text: user }] }],
+        generationConfig: {
+          temperature: 0.4,
+          responseMimeType: "application/json",
+        },
+      }),
+    }
+  );
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Gemini error ${res.status}: ${err.slice(0, 200)}`);
+  }
+  const data = (await res.json()) as {
+    candidates?: { content?: { parts?: { text?: string }[] } }[];
+  };
+  return (
+    data.candidates?.[0]?.content?.parts?.map((part) => part.text || "").join("") ||
+    null
+  );
+}
+
 async function callOpenAI(system: string, user: string) {
   const key = process.env.OPENAI_API_KEY;
   if (!key) return null;
@@ -211,6 +246,19 @@ function parseAiJson(raw: string) {
   return JSON.parse(body) as { candidates?: unknown[] };
 }
 
+function cleanUrls(value: unknown) {
+  const list = Array.isArray(value) ? value : [];
+  const urls: string[] = [];
+  for (const entry of list) {
+    const record = entry as { url?: unknown };
+    let url = String(typeof entry === "string" ? entry : record?.url || "").trim();
+    if (/^www\./i.test(url)) url = `https://${url}`;
+    if (!/^https?:\/\//i.test(url) || urls.includes(url)) continue;
+    urls.push(url);
+  }
+  return urls.slice(0, 6);
+}
+
 function normalizeTrends(raw: unknown[], sources: string[]): TrendCandidate[] {
   return raw.slice(0, 4).map((item, i) => {
     const o = item as Record<string, unknown>;
@@ -230,9 +278,7 @@ function normalizeTrends(raw: unknown[], sources: string[]): TrendCandidate[] {
         : ["apple-deference"],
       refs: Array.isArray(o.refs) ? (o.refs as string[]).slice(0, 2) : [],
       logDate: String(o.logDate || today()),
-      sources: Array.isArray(o.sources)
-        ? (o.sources as string[])
-        : sources,
+      sources: cleanUrls(o.sources).length ? cleanUrls(o.sources) : cleanUrls(sources),
       rationale: String(o.rationale || "AI propose"),
     };
   });
@@ -245,11 +291,13 @@ function normalizeResearch(
   return raw.slice(0, 4).map((item, i) => {
     const o = item as Record<string, unknown>;
     const title = String(o.title || `Research ${i + 1}`);
+    const found = cleanUrls([o.source, ...(Array.isArray(o.sources) ? o.sources : []), ...sources]);
     return {
       id: slugify(String(o.id || title)),
       title,
       year: Number(o.year) || new Date().getFullYear(),
-      source: String(o.source || sources[i] || sources[0] || ""),
+      source: found[0] || "",
+      sources: found,
       implications: Array.isArray(o.implications)
         ? (o.implications as string[]).slice(0, 5)
         : [String(o.what || title)],
@@ -274,8 +322,8 @@ export async function proposeDiscover(input: {
 
   const system =
     input.axis === "trends"
-      ? `You are a design director for Signal Field (quiet product UI: paper/graphite, one accent, IBM Plex, no SaaS card farms). Return JSON: {"candidates":[{id,category,en,ko,what,when,skip,research,refs,logDate,sources,rationale}]}. category one of type|color|motion|layout|platform|a11y. research ids like wcag-22,m3-roles,apple-deference,fluid-type,content-plain. 2-3 candidates. Korean ko short.`
-      : `You are a design director for Signal Field. Return JSON: {"candidates":[{id,title,year,source,implications,ruleDeltas,rationale}]}. implications: 2-4 concrete bullets for product UI. 2-3 candidates. Prefer durable research pillars over fashion.`;
+      ? `You are a design director for Signal Field (quiet product UI: paper/graphite, one accent, IBM Plex, no SaaS card farms). Return JSON: {"candidates":[{id,category,en,ko,what,when,skip,research,refs,logDate,sources,rationale}]}. category one of type|color|motion|layout|platform|a11y. research ids like wcag-22,m3-roles,apple-deference,fluid-type,content-plain. sources: 2-4 real https URLs of the spec, article, or design-system page this trend comes from. Do not invent URLs. 2-3 candidates. Korean ko short.`
+      : `You are a design director for Signal Field. Return JSON: {"candidates":[{id,title,year,source,sources,implications,ruleDeltas,rationale}]}. source is the primary https URL. sources is 1-4 real related https URLs, including source. Do not invent URLs. implications: 2-4 concrete bullets for product UI. 2-3 candidates. Prefer durable research pillars over fashion.`;
 
   const user = JSON.stringify({
     topic: topic || "what’s current in product/UI design craft",
@@ -285,16 +333,20 @@ export async function proposeDiscover(input: {
   });
 
   try {
-    const ai =
-      (await callOpenAI(system, user)) || (await callAnthropic(system, user));
-    if (ai) {
+    let provider: string | undefined;
+    let ai = await callGemini(system, user);
+    if (ai) provider = "gemini";
+    if (!ai) {
+      ai = await callOpenAI(system, user);
+      if (ai) provider = "openai";
+    }
+    if (!ai) {
+      ai = await callAnthropic(system, user);
+      if (ai) provider = "anthropic";
+    }
+    if (ai && provider) {
       const parsed = parseAiJson(ai);
       const list = Array.isArray(parsed.candidates) ? parsed.candidates : [];
-      const provider = process.env.OPENAI_API_KEY
-        ? "openai"
-        : process.env.ANTHROPIC_API_KEY
-          ? "anthropic"
-          : undefined;
       if (input.axis === "trends") {
         return {
           mode: "ai",
@@ -339,13 +391,13 @@ export async function proposeDiscover(input: {
       mode: "offline",
       axis: "trends",
       candidates: offlineTrends(topic, notes, sources),
-      note: "No OPENAI_API_KEY / ANTHROPIC_API_KEY — offline propose from topic, notes, and URLs.",
+      note: "No GEMINI_API_KEY — offline drafts from the topic, notes, and URLs.",
     };
   }
   return {
     mode: "offline",
     axis: "research",
     candidates: offlineResearch(topic, notes, sources),
-    note: "No OPENAI_API_KEY / ANTHROPIC_API_KEY — offline propose from topic, notes, and URLs.",
+    note: "No GEMINI_API_KEY — offline drafts from the topic, notes, and URLs.",
   };
 }

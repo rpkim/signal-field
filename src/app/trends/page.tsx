@@ -11,7 +11,9 @@ export const dynamic = "force-dynamic";
 
 export default async function TrendsPage() {
   const catalog = await getTrendsCatalog();
-  const baseIds = baseTrends.items.map((i) => i.id);
+  const baseIds = catalog.items
+    .filter((item) => item.origin === "seed")
+    .map((item) => item.id);
 
   return (
     <AppShell current="/trends">
@@ -26,7 +28,7 @@ export default async function TrendsPage() {
         baseIds={baseIds}
         categories={baseTrends.categories}
       />
-      <DiscoverPanel axis="trends" />
+      <DiscoverPanel />
     </AppShell>
   );
 }
