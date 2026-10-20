@@ -5,7 +5,9 @@ import baseResearch from "@/data/research.json";
 import baseTrends from "@/data/trends.json";
 import type { ResearchCandidate, TrendCandidate } from "./discover/types";
 
-const DB_DIR = path.join(process.cwd(), "data");
+const DB_DIR = process.env.VERCEL
+  ? path.join("/tmp", "signal-field")
+  : path.join(process.cwd(), "data");
 const DB_PATH = path.join(DB_DIR, "signal-field.sqlite");
 
 export type StoredResearch = ResearchCandidate & { origin: string };
