@@ -1,15 +1,53 @@
 "use client";
 
 import Link from "next/link";
+import references from "@/data/references.json";
 import { useLocale } from "@/i18n/LocaleProvider";
 import type { DiscoverAxis } from "@/lib/discover/types";
 import styles from "./AxisCatalog.module.css";
+
+const referenceLinks = new Map(
+  references.items.map((item) => [item.id, { href: item.url, label: item.title }])
+);
+
+function linkLabel(href: string) {
+  try {
+    const url = new URL(href);
+    const path = url.pathname === "/" ? "" : url.pathname.replace(/\/$/, "");
+    return `${url.hostname.replace(/^www\./, "")}${path}`;
+  } catch {
+    return href;
+  }
+}
+
+function sourceLinks(item: { sources?: string[]; refs?: string[] }) {
+  const hrefs = [
+    ...(item.sources || []),
+    ...(item.refs || []).flatMap((id) => {
+      const ref = referenceLinks.get(id);
+      return ref ? [ref.href] : [];
+    }),
+  ];
+  const seen = new Set<string>();
+  return hrefs
+    .map((href) => href.trim())
+    .filter((href) => {
+      if (!/^https?:\/\//i.test(href) || seen.has(href)) return false;
+      seen.add(href);
+      return true;
+    })
+    .map((href) => {
+      const named = [...referenceLinks.values()].find((ref) => ref.href === href);
+      return { href, label: named?.label || linkLabel(href) };
+    });
+}
 
 export type ResearchCatalogItem = {
   id: string;
   title: string;
   year?: number;
   source?: string;
+  sources?: string[];
   implications?: string[];
   ruleDeltas?: Record<string, string>;
 };
@@ -23,6 +61,8 @@ export type TrendCatalogItem = {
   when: string;
   skip: string;
   logDate?: string;
+  sources?: string[];
+  refs?: string[];
 };
 
 type TrendCategory = { id: string; en: string; ko: string };
@@ -66,7 +106,14 @@ export function AxisCatalog(props: Props) {
 
       {axis === "research" ? (
         <ul className={styles.list}>
-          {items.map((item) => (
+          {items
+            .slice()
+            .sort((a, b) => (b.year || 0) - (a.year || 0) || a.title.localeCompare(b.title))
+            .map((item) => {
+              const links = sourceLinks({
+                sources: item.sources?.length ? item.sources : item.source ? [item.source] : [],
+              });
+              return (
             <li key={item.id} className={styles.card}>
               <div className={styles.cardTop}>
                 <h3>
@@ -77,15 +124,21 @@ export function AxisCatalog(props: Props) {
                 </h3>
                 <code className={styles.id}>{item.id}</code>
               </div>
-              {item.year || item.source ? (
+              {item.year || links.length ? (
                 <p className={styles.meta}>
                   {item.year ? <span>{item.year}</span> : null}
-                  {item.source ? (
-                    <a href={item.source} target="_blank" rel="noreferrer">
-                      {t("catalog.source")}
-                    </a>
-                  ) : null}
                 </p>
+              ) : null}
+              {links.length ? (
+                <ul className={styles.sources}>
+                  {links.map((link) => (
+                    <li key={link.href}>
+                      <a href={link.href} target="_blank" rel="noreferrer">
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               ) : null}
               {item.implications?.length ? (
                 <ul className={styles.bullets}>
@@ -103,12 +156,16 @@ export function AxisCatalog(props: Props) {
                 </Link>
               </p>
             </li>
-          ))}
+              );
+            })}
         </ul>
       ) : (
         <div className={styles.trendGroups}>
           {props.categories.map((cat) => {
-            const group = items.filter((i) => i.category === cat.id);
+            const group = items
+              .filter((i) => i.category === cat.id)
+              .slice()
+              .sort((a, b) => (b.logDate || "").localeCompare(a.logDate || ""));
             if (!group.length) return null;
             return (
               <section key={cat.id} className={styles.group}>
@@ -131,6 +188,11 @@ export function AxisCatalog(props: Props) {
                       </div>
                       <p className={styles.what}>{item.what}</p>
                       <p className={styles.meta}>
+                        {item.logDate ? (
+                          <span>
+                            {t("catalog.logged")}: <time dateTime={item.logDate}>{item.logDate}</time>
+                          </span>
+                        ) : null}
                         <span>
                           {t("catalog.when")}: {item.when}
                         </span>
@@ -138,6 +200,17 @@ export function AxisCatalog(props: Props) {
                           {t("catalog.skip")}: {item.skip}
                         </span>
                       </p>
+                      {sourceLinks(item).length ? (
+                        <ul className={styles.sources}>
+                          {sourceLinks(item).map((link) => (
+                            <li key={link.href}>
+                              <a href={link.href} target="_blank" rel="noreferrer">
+                                {link.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
                       <p className={styles.actions}>
                         <Link
                           href={`/compose?trends=${encodeURIComponent(item.id)}`}

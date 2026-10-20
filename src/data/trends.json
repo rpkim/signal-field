@@ -46,6 +46,7 @@
       "skip": "Never skip unless a Trend explicitly overrides (rare).",
       "research": ["m3-roles"],
       "refs": ["ibm-lang"],
+      "sources": ["https://www.ibm.com/design/language/"],
       "logDate": "2026-02-08"
     },
     {
@@ -58,6 +59,7 @@
       "skip": "Guidelines docs, Clearline/utility, print.",
       "research": ["apple-deference"],
       "refs": ["awwwards"],
+      "sources": ["https://www.awwwards.com/"],
       "logDate": "2026-06-21",
       "tokenDeltas": {
         "--grain-opacity": "0.07",
@@ -74,6 +76,7 @@
       "skip": "Admin, forms, reduced-motion users.",
       "research": ["wcag-22"],
       "refs": [],
+      "sources": ["https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"],
       "logDate": "2026-04-10"
     },
     {
@@ -86,6 +89,10 @@
       "skip": "Lifestyle marketing that needs soft atmosphere.",
       "research": ["wcag-22"],
       "refs": ["govuk"],
+      "sources": [
+        "https://www.w3.org/TR/WCAG22/",
+        "https://design-system.service.gov.uk/"
+      ],
       "logDate": "2026-08-02",
       "suggestMix": {
         "color": "clear-ink",
@@ -103,10 +110,11 @@
       "skip": "Fintech ledgers; clinical/admin tools.",
       "research": ["content-plain"],
       "refs": ["polaris"],
+      "sources": ["https://polaris.shopify.com/"],
       "logDate": "2026-09-18",
       "suggestMix": {
         "color": "kiln-copper",
-        "type": "outfit-figtree",
+        "type": "outfit-source",
         "density": "comfortable"
       }
     },
@@ -132,6 +140,7 @@
       "skip": "Never for web body text.",
       "research": ["fluid-type"],
       "refs": [],
+      "sources": ["https://developer.mozilla.org/en-US/docs/Web/CSS/clamp"],
       "logDate": "2026-10-13"
     },
     {
@@ -144,6 +153,7 @@
       "skip": "Rare immersive marketing experiments only.",
       "research": ["apple-deference"],
       "refs": [],
+      "sources": ["https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass"],
       "logDate": "2026-10-13"
     },
     {
@@ -156,7 +166,97 @@
       "skip": "Campaign microsites (use marketing hero budget).",
       "research": ["content-plain"],
       "refs": ["govuk"],
+      "sources": ["https://design-system.service.gov.uk/"],
       "logDate": "2026-10-13"
+    },
+    {
+      "id": "oklch-color-mix",
+      "category": "color",
+      "en": "OKLCH color-mix tokens",
+      "ko": "OKLCH · color-mix 토큰",
+      "what": "Derive hover and surface steps with color-mix() in oklch. Keep one accent and cap chroma so interface text stays quiet.",
+      "when": "Token palettes and theme switches in current browsers.",
+      "skip": "Print and forced-colors, where system colors take over.",
+      "research": ["m3-roles", "wcag-22"],
+      "refs": [],
+      "sources": [
+        "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/color-mix",
+        "https://mui.com/material-ui/customization/css-theme-variables/native-color/"
+      ],
+      "logDate": "2026-10-19"
+    },
+    {
+      "id": "native-popover",
+      "category": "platform",
+      "en": "Native popover and dialog",
+      "ko": "네이티브 팝오버·다이얼로그",
+      "what": "Use the Popover API and dialog for menus and confirmations instead of custom layered chrome.",
+      "when": "Menus, tooltips, and confirmations in product UI.",
+      "skip": "Marketing hero experiments.",
+      "research": ["wcag-22", "content-plain"],
+      "refs": [],
+      "sources": [
+        "https://web.dev/blog/popover-baseline",
+        "https://web.dev/blog/interop-2026"
+      ],
+      "logDate": "2026-10-19"
+    },
+    {
+      "id": "restrained-view-transitions",
+      "category": "motion",
+      "en": "Restrained view transitions",
+      "ko": "절제된 뷰 트랜지션",
+      "what": "Cross-fade a route or state change. Honor prefers-reduced-motion, and keep forms instant.",
+      "when": "Same-document navigation in a product shell.",
+      "skip": "Admin tables, reduced-motion, and anything that must stay immediate.",
+      "research": ["wcag-22"],
+      "refs": [],
+      "sources": [
+        "https://www.w3.org/TR/css-view-transitions-1/",
+        "https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using",
+        "https://web.dev/blog/interop-2026"
+      ],
+      "logDate": "2026-10-19",
+      "tokenDeltas": {
+        "--motion-policy": "respect-reduced"
+      }
+    },
+    {
+      "id": "container-queries",
+      "category": "layout",
+      "en": "Container queries for components",
+      "ko": "컴포넌트 컨테이너 쿼리",
+      "what": "Size a component from its container, not the viewport, so cards and toolbars reflow inside a shell.",
+      "when": "Cards, side panels, and embedded previews.",
+      "skip": "Page-level marketing grids that are honestly sized to the viewport.",
+      "research": ["fluid-type"],
+      "refs": [],
+      "sources": [
+        "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries",
+        "https://web.dev/blog/interop-2026"
+      ],
+      "logDate": "2026-10-19"
+    },
+    {
+      "id": "user-contrast",
+      "category": "a11y",
+      "en": "User contrast preferences",
+      "ko": "사용자 대비 설정",
+      "what": "Honor prefers-contrast and forced-colors. Do not paint a second brand accent over a high-contrast theme.",
+      "when": "Every product surface that ships color.",
+      "skip": "Never for web UI.",
+      "research": ["wcag-22"],
+      "refs": ["govuk"],
+      "sources": [
+        "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-contrast",
+        "https://www.w3.org/TR/WCAG22/"
+      ],
+      "logDate": "2026-10-19",
+      "suggestMix": {
+        "color": "clear-ink",
+        "type": "plex",
+        "density": "a11y-large"
+      }
     }
   ]
 }

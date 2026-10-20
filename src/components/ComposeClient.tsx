@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import { useSearchParams } from "next/navigation";
 import colors from "@/data/colors.json";
 import density from "@/data/density.json";
@@ -16,6 +17,7 @@ import { downloadBlob } from "@/lib/exportKit";
 import {
   mergeMixTokens,
   researchSurfaceMode,
+  type ReferenceLike,
   type ResearchLike,
   type TrendLike,
 } from "@/lib/mergeMixTokens";
@@ -36,6 +38,7 @@ const recommendedTypeId =
 
 type ResearchItem = ResearchLike & {
   title: string;
+  year?: number;
   implications?: string[];
 };
 
@@ -52,6 +55,24 @@ const DEFAULT: MixState = {
 
 function byId<T extends { id: string }>(list: T[], id: string) {
   return list.find((x) => x.id === id) ?? list[0];
+}
+
+function suggestedFields(ids: string[], items: TrendItem[]) {
+  const patch: Partial<Pick<MixState, "color" | "type" | "density">> = {};
+  for (const id of ids) {
+    const suggestion = items.find((item) => item.id === id)?.suggestMix;
+    if (!suggestion) continue;
+    if (suggestion.color && colorItems.some((item) => item.id === suggestion.color)) {
+      patch.color = suggestion.color;
+    }
+    if (suggestion.type && typeItems.some((item) => item.id === suggestion.type)) {
+      patch.type = suggestion.type;
+    }
+    if (suggestion.density && densityItems.some((item) => item.id === suggestion.density)) {
+      patch.density = suggestion.density;
+    }
+  }
+  return patch;
 }
 
 export function ComposeClient() {
@@ -73,6 +94,30 @@ export function ComposeClient() {
   const [suggestions, setSuggestions] = useState<SyncSuggestion[]>([]);
   const [picked, setPicked] = useState<Record<string, boolean>>({});
   const [busy, setBusy] = useState(false);
+  const mixRef = useRef(mix);
+  mixRef.current = mix;
+
+  function updateMix(updater: (prev: MixState) => MixState) {
+    const prev = mixRef.current;
+    const next = updater(prev);
+    const motion =
+      (next.trends || []).includes("restrained-view-transitions") ||
+      (prev.trends || []).includes("restrained-view-transitions");
+    const reduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (motion && !reduced && typeof document !== "undefined" && document.startViewTransition) {
+      document.startViewTransition(() => {
+        flushSync(() => {
+          mixRef.current = next;
+          setMix(next);
+        });
+      });
+      return;
+    }
+    mixRef.current = next;
+    setMix(next);
+  }
 
   useEffect(() => {
     let cancelled = false;
@@ -153,7 +198,13 @@ export function ComposeClient() {
       if (dens) next.density = dens;
       if (res) next.research = res.split(",").filter(Boolean);
       if (refs) next.references = refs.split(",").filter(Boolean);
-      if (trends) next.trends = trends.split(",").filter(Boolean);
+      if (trends) {
+        next.trends = trends.split(",").filter(Boolean);
+        const patch = suggestedFields(next.trends, baseTrends.items as TrendItem[]);
+        if (!color && patch.color) next.color = patch.color;
+        if (!type && patch.type) next.type = patch.type;
+        if (!dens && patch.density) next.density = patch.density;
+      }
       if (!cancelled) {
         setMix(next);
         if (color || type || dens || res || refs || trends || !preset) {
@@ -182,6 +233,7 @@ export function ComposeClient() {
         type,
         density: dens,
         researchItems,
+        referenceItems: references.items as ReferenceLike[],
         trendItems,
       }),
     [mix, color, type, dens, researchItems, trendItems]
@@ -213,6 +265,9 @@ export function ComposeClient() {
     root.dataset.composeMix = "1";
     root.dataset.surface = surfaceMode;
     root.dataset.research = mix.research.join(" ");
+    const prevMotion = root.dataset.motion;
+    if (mixTokens["--motion-policy"]) root.dataset.motion = mixTokens["--motion-policy"];
+    else delete root.dataset.motion;
     return () => {
       for (const [key, value] of previous) {
         if (value) root.style.setProperty(key, value);
@@ -224,6 +279,8 @@ export function ComposeClient() {
       else root.dataset.surface = prevSurface;
       if (prevResearch === undefined) delete root.dataset.research;
       else root.dataset.research = prevResearch;
+      if (prevMotion === undefined) delete root.dataset.motion;
+      else root.dataset.motion = prevMotion;
     };
   }, [mixTokens, mix.research, surfaceMode]);
 
@@ -250,7 +307,7 @@ export function ComposeClient() {
     max: number
   ) {
     setPresetId(null);
-    setMix((prev) => {
+    updateMix((prev) => {
       const arr = [...(prev[axis] || [])];
       const i = arr.indexOf(id);
       if (i >= 0) arr.splice(i, 1);
@@ -258,20 +315,22 @@ export function ComposeClient() {
         if (arr.length >= max) arr.shift();
         arr.push(id);
       }
-      return { ...prev, [axis]: arr };
+      const patch =
+        axis === "trends" && i < 0 ? suggestedFields([id], trendItems) : {};
+      return { ...prev, [axis]: arr, ...patch };
     });
   }
 
   function setOne(axis: "color" | "type" | "density", id: string) {
     setPresetId(null);
-    setMix((prev) => ({ ...prev, [axis]: id }));
+    updateMix((prev) => ({ ...prev, [axis]: id }));
   }
 
   function applyPreset(id: string) {
     const found = presets.items.find((p) => p.id === id);
     if (!found) return;
     setPresetId(id);
-    setMix({ ...found.mix, trends: [] });
+    updateMix(() => ({ ...found.mix, trends: [] }));
   }
 
   async function exportKit() {
@@ -456,7 +515,12 @@ export function ComposeClient() {
             hint={`Select up to ${baseResearch.max}`}
           >
             <div className={styles.optGrid}>
-              {researchItems.map((item) => (
+              {[...researchItems]
+                .sort(
+                  (a, b) =>
+                    (b.year || 0) - (a.year || 0) || a.title.localeCompare(b.title)
+                )
+                .map((item) => (
                 <button
                   key={item.id}
                   type="button"
@@ -467,6 +531,7 @@ export function ComposeClient() {
                   }
                 >
                   <strong>
+                    {item.year ? <span className={styles.year}>{item.year}</span> : null}
                     {item.title}
                     {additionResearchIds.includes(item.id) ? (
                       <span className={styles.badgeNew}>new</span>
@@ -637,7 +702,9 @@ export function ComposeClient() {
               style={specimenStyle}
               surface={surfaceMode}
               title="Live mix"
-              meta={`${mix.research.join(" · ") || "no research"} · ${mix.color} · ${mix.type} · ${mix.density}${(mix.trends || []).length ? ` · ${mix.trends!.length} trends` : ""}`}
+              trends={mix.trends || []}
+              references={mix.references || []}
+              meta={`${mix.research.join(" · ") || "no research"} · ${mix.color} · ${mix.type} · ${mix.density}${(mix.trends || []).length ? ` · ${(mix.trends || []).join(" · ")}` : ""}`}
               swatches={color.swatches}
             />
           </div>

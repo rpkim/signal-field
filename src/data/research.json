@@ -111,6 +111,190 @@
         "--elev-2": "none",
         "--page-atmosphere": "linear-gradient(180deg, #f4f4f4 0%, #ececec 100%)"
       }
+    },
+    {
+      "id": "eaa-2025",
+      "title": "European Accessibility Act in force",
+      "year": 2025,
+      "source": "https://accessible-eu-centre.ec.europa.eu/content-corner/news/new-era-inclusion-begins-eaa-enters-force-2025-06-27_en",
+      "sources": [
+        "https://accessible-eu-centre.ec.europa.eu/content-corner/news/new-era-inclusion-begins-eaa-enters-force-2025-06-27_en",
+        "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/disability/european-accessibility-act-eaa_en"
+      ],
+      "implications": [
+        "From 28 June 2025, covered products and services need an accessible interface",
+        "Banking, transport, and commerce flows keep labels and status in text",
+        "Targets stay large enough for a pointer and a finger"
+      ],
+      "ruleDeltas": {
+        "--touch-min": "48px",
+        "--a11y-target-min": "44px",
+        "--grain-opacity": "0",
+        "--elev-2": "none",
+        "--elev-focus": "0 0 0 2px var(--color-chalk), 0 0 0 5px var(--color-focus)",
+        "--page-atmosphere": "linear-gradient(180deg, #f7f8f8 0%, #eef0f2 100%)"
+      }
+    },
+    {
+      "id": "iso-40500-2025",
+      "title": "ISO/IEC 40500:2025 (WCAG 2.2)",
+      "year": 2025,
+      "source": "https://www.w3.org/WAI/standards-guidelines/wcag/",
+      "sources": ["https://www.w3.org/WAI/standards-guidelines/wcag/"],
+      "implications": [
+        "ISO/IEC 40500:2025 matches the October 2023 WCAG 2.2 text",
+        "Use the latest WCAG recommendation when a policy allows it",
+        "Focus, target size, and reduced motion stay in the floor"
+      ],
+      "ruleDeltas": {
+        "--text-base": "1.0625rem",
+        "--measure": "36rem",
+        "--elev-focus": "0 0 0 2px var(--color-chalk), 0 0 0 5px var(--color-focus)",
+        "--motion-policy": "respect-reduced"
+      }
+    },
+    {
+      "id": "popover-baseline-2025",
+      "title": "Popover API is Baseline",
+      "year": 2025,
+      "source": "https://web.dev/blog/popover-baseline",
+      "sources": ["https://web.dev/blog/popover-baseline"],
+      "implications": [
+        "Menus and confirmations can use the native popover",
+        "Light dismiss has to work, including on iOS",
+        "Skip custom layered chrome for a simple disclosure"
+      ],
+      "ruleDeltas": {
+        "--radius-md": "0.5rem",
+        "--radius-lg": "0.75rem",
+        "--elev-2": "none",
+        "--specimen-blur": "0px",
+        "--nav-blur": "0px"
+      }
+    },
+    {
+      "id": "view-transitions-2025",
+      "title": "Same-document view transitions are Baseline",
+      "year": 2025,
+      "source": "https://web.dev/blog/same-document-view-transitions-are-now-baseline-newly-available",
+      "sources": [
+        "https://web.dev/blog/same-document-view-transitions-are-now-baseline-newly-available"
+      ],
+      "implications": [
+        "Cross-fade a state change inside one document",
+        "Keep the change short",
+        "Reduced motion gets no choreography"
+      ],
+      "ruleDeltas": {
+        "--dur-1": "120ms",
+        "--dur-2": "180ms",
+        "--motion-policy": "respect-reduced",
+        "--grain-opacity": "0"
+      }
+    },
+    {
+      "id": "anchor-position-2025",
+      "title": "CSS anchor positioning (Interop 2025)",
+      "year": 2025,
+      "source": "https://web.dev/blog/interop-2025",
+      "sources": [
+        "https://web.dev/blog/interop-2025",
+        "https://www.w3.org/TR/css-anchor-position-1/"
+      ],
+      "implications": [
+        "Attach a menu or note to the control that opened it",
+        "Prefer the platform over a positioning library",
+        "Keep the anchored layer quiet: one hairline, no stack of shadows"
+      ],
+      "ruleDeltas": {
+        "--elev-1": "none",
+        "--elev-2": "none",
+        "--color-hairline": "color-mix(in srgb, var(--color-ink) 18%, transparent)",
+        "--radius-md": "0.375rem"
+      }
+    },
+    {
+      "id": "m3-expressive-2025",
+      "title": "Material 3 Expressive research",
+      "year": 2025,
+      "source": "https://design.google/library/expressive-material-design-google-research",
+      "sources": [
+        "https://design.google/library/expressive-material-design-google-research"
+      ],
+      "implications": [
+        "Emotion can mark one hero moment; it does not restyle the whole product",
+        "Utilitarian UI stays on the calmer motion scheme",
+        "One accent still carries the action"
+      ],
+      "ruleDeltas": {
+        "--dur-1": "140ms",
+        "--dur-2": "220ms",
+        "--radius-md": "0.75rem",
+        "--elev-2": "none",
+        "--grain-opacity": "0"
+      }
+    },
+    {
+      "id": "en-301-549-2026",
+      "title": "EN 301 549 moves to WCAG 2.2",
+      "year": 2026,
+      "source": "https://accessible-eu-centre.ec.europa.eu/content-corner/news/european-accessibility-standard-en-301-549-has-been-updated-2026-09-07_en",
+      "sources": [
+        "https://accessible-eu-centre.ec.europa.eu/content-corner/news/european-accessibility-standard-en-301-549-has-been-updated-2026-09-07_en"
+      ],
+      "implications": [
+        "The September 2026 text points European ICT work at WCAG 2.2",
+        "Focus must stay visible and targets stay at least 24px, preferably 44",
+        "Treat it as the direction, and keep checking the legal citation date"
+      ],
+      "ruleDeltas": {
+        "--touch-min": "48px",
+        "--text-base": "1.0625rem",
+        "--grain-opacity": "0",
+        "--specimen-blur": "0px",
+        "--elev-focus": "0 0 0 3px var(--color-chalk), 0 0 0 6px var(--color-focus)",
+        "--page-atmosphere": "linear-gradient(180deg, #f5f6f7 0%, #e7eaee 100%)"
+      }
+    },
+    {
+      "id": "interop-2026",
+      "title": "Interop 2026 UI platform",
+      "year": 2026,
+      "source": "https://web.dev/blog/interop-2026",
+      "sources": ["https://web.dev/blog/interop-2026"],
+      "implications": [
+        "Dialogs close from a declared action, including a click outside",
+        "Style open dialogs and popovers with :open",
+        "Cross-document view transitions stay progressive"
+      ],
+      "ruleDeltas": {
+        "--motion-policy": "respect-reduced",
+        "--dur-2": "180ms",
+        "--radius-md": "0.5rem",
+        "--elev-2": "none"
+      }
+    },
+    {
+      "id": "baseline-lh-2026",
+      "title": "Baseline 2026: :open and line-height units",
+      "year": 2026,
+      "source": "https://web.dev/blog/baseline-digest-may-2026",
+      "sources": [
+        "https://web.dev/blog/baseline-digest-may-2026",
+        "https://developer.mozilla.org/en-US/docs/Web/CSS/:open",
+        "https://developer.mozilla.org/en-US/docs/Web/CSS/length"
+      ],
+      "implications": [
+        "Open dialogs and details can be styled with :open",
+        "lh and rlh size chrome to the line of text",
+        "Vertical rhythm follows the root line, not a one-off pixel"
+      ],
+      "ruleDeltas": {
+        "--leading-body": "1.5",
+        "--text-base": "1rem",
+        "--text-sm": "0.875rem",
+        "--touch-min": "44px"
+      }
     }
   ]
 }

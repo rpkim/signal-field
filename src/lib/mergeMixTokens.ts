@@ -10,17 +10,30 @@ export type TrendLike = {
   tokenDeltas?: Record<string, string>;
 };
 
-/** Merge color + density + research ruleDeltas (+ optional trend deltas) into CSS vars. */
+export type ReferenceLike = {
+  id: string;
+  tokenDeltas?: Record<string, string>;
+};
+
+/** Merge color + density + research, then reference leans, then trend deltas. */
 export function mergeMixTokens(opts: {
   mix: MixState;
   color: ColorItem;
   type: TypeItem;
   density: DensityItem;
   researchItems?: ResearchLike[];
+  referenceItems?: ReferenceLike[];
   trendItems?: TrendLike[];
 }): Record<string, string> {
-  const { mix, color, type, density, researchItems = [], trendItems = [] } =
-    opts;
+  const {
+    mix,
+    color,
+    type,
+    density,
+    researchItems = [],
+    referenceItems = [],
+    trendItems = [],
+  } = opts;
 
   const vars: Record<string, string> = {
     ...color.roles,
@@ -37,6 +50,14 @@ export function mergeMixTokens(opts: {
     const item = researchItems.find((r) => r.id === id);
     if (!item?.ruleDeltas) continue;
     for (const [k, v] of Object.entries(item.ruleDeltas)) {
+      if (k.startsWith("--") && typeof v === "string") vars[k] = v;
+    }
+  }
+
+  for (const id of mix.references || []) {
+    const item = referenceItems.find((r) => r.id === id);
+    if (!item?.tokenDeltas) continue;
+    for (const [k, v] of Object.entries(item.tokenDeltas)) {
       if (k.startsWith("--") && typeof v === "string") vars[k] = v;
     }
   }

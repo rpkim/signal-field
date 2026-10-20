@@ -14,6 +14,7 @@ export type TrendCandidate = {
   sources?: string[];
   rationale?: string;
   tokenDeltas?: Record<string, string>;
+  suggestMix?: { color?: string; type?: string; density?: string };
 };
 
 export type ResearchCandidate = {

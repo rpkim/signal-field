@@ -158,12 +158,70 @@ function seedIfNeeded(db: DatabaseSync) {
   ).run(...baseTrends.items.map((item) => item.id));
 }
 
+function syncBaseResearch(db: DatabaseSync) {
+  const now = new Date().toISOString();
+  const insert = db.prepare(`
+    INSERT OR IGNORE INTO research_items
+    (id, title, year, source, sources_json, implications_json, rule_deltas_json, rationale, origin, created_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'seed', ?)
+  `);
+  for (const item of baseResearch.items) {
+    const sources = JSON.stringify(item.sources ?? (item.source ? [item.source] : []));
+    insert.run(
+      item.id,
+      item.title,
+      item.year ?? null,
+      item.source ?? null,
+      sources,
+      JSON.stringify(item.implications ?? []),
+      item.ruleDeltas ? JSON.stringify(item.ruleDeltas) : null,
+      null,
+      now
+    );
+  }
+}
+
+function syncBaseTrends(db: DatabaseSync) {
+  const now = new Date().toISOString();
+  const insert = db.prepare(`
+    INSERT OR IGNORE INTO trend_items
+    (id, category, en, ko, what, when_text, skip, research_json, refs_json, log_date, sources_json, rationale, origin, created_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'seed', ?)
+  `);
+  const fillSources = db.prepare(
+    `UPDATE trend_items
+     SET sources_json = ?, log_date = COALESCE(log_date, ?)
+     WHERE id = ? AND (sources_json IS NULL OR sources_json IN ('null', '[]'))`
+  );
+  for (const item of baseTrends.items) {
+    const sources = JSON.stringify(item.sources ?? []);
+    insert.run(
+      item.id,
+      item.category,
+      item.en,
+      item.ko,
+      item.what,
+      item.when,
+      item.skip,
+      JSON.stringify(item.research ?? []),
+      JSON.stringify(item.refs ?? []),
+      item.logDate ?? null,
+      sources,
+      null,
+      now
+    );
+    fillSources.run(sources, item.logDate ?? null, item.id);
+  }
+}
+
 export function getDb() {
   if (!dbSingleton) {
     if (!existsSync(DB_DIR)) mkdirSync(DB_DIR, { recursive: true });
     const db = new DatabaseSync(DB_PATH);
     ensureSchema(db);
     seedIfNeeded(db);
+    syncBaseResearch(db);
+    syncBaseTrends(db);
     dbSingleton = db;
   }
   return dbSingleton;

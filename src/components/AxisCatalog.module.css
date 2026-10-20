@@ -95,6 +95,30 @@
   color: var(--color-signal);
 }
 
+.sources {
+  list-style: none;
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.sources a {
+  color: var(--color-ink);
+  font-size: var(--text-sm);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.sources a:hover {
+  color: var(--color-signal-deep);
+}
+
+.sources a:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
+}
+
 .bullets {
   margin: 0 0 var(--space-4);
   padding-left: 1.1rem;

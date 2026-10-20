@@ -1,10 +1,29 @@
 # Signal Field
 
-Quiet product design system — Next.js App Router guidelines + brand tools.
+Signal Field is a quiet design system for product screens. You choose the research and the look, watch a live example, and download a small kit when that mix is ready to build with.
 
 **Repo:** https://github.com/rpkim/signal-field
 
-## How to use (start here)
+## What it is for
+
+A product screen gets harder to use when color, type, and cards all compete with the content. Signal Field keeps one accent, one type pairing, and chrome that stays behind the work.
+
+You do the choosing in the app. Research pillars carry a year, so a 2026 source and a 2023 source are easy to tell apart before you turn one on. Trends change the example on the right: a menu, a type scale, a quieter button, a grain on the page. The guidelines behind those choices are on Doc.
+
+## How to use it
+
+1. Open **Compose**.
+2. Pick up to three **research** pillars. Newer years are listed first.
+3. Add **trends** when you want that idea to show up in the example.
+4. Set **color**, **type**, and **density**, or start from a preset such as Precise quiet.
+5. When the example looks right, choose **Download kit**. That zip is what you hand to whoever builds the screen.
+6. Read the full lists on **Trends** and **Research**. New items are added on **Admin** (`/admin`, not in the menu). A search shows a draft first, and it is saved when you press Add.
+
+Saved mixes can be loaded again from Doc.
+
+## Implementation
+
+The sections below are for setup, agents, and the files in the repo.
 
 **One-line answer:** give implementing agents **`design.md` + exported `tokens.css` + `theme.css`**.  
 Compose **Download kit (zip)** packs those three in one click (plus kit `DESIGN.md` / `mix.json`).

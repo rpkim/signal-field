@@ -352,7 +352,10 @@ export function AdminClient() {
                 <li key={item.id} className={styles.item}>
                   <div>
                     <h3>{labelOf(item)}</h3>
-                    <p className={styles.meta}>{summaryOf(item)}</p>
+                    <p className={styles.meta}>
+                  {isTrend(item) && item.logDate ? `${item.logDate} · ` : ""}
+                  {summaryOf(item)}
+                </p>
                     <ResourceLinks item={item} />
                   </div>
                   <div className={styles.row}>
@@ -407,7 +410,10 @@ export function AdminClient() {
                   <span className={styles.badge}>Added</span>
                   {labelOf(item)}
                 </h3>
-                <p className={styles.meta}>{summaryOf(item)}</p>
+                <p className={styles.meta}>
+                  {isTrend(item) && item.logDate ? `${item.logDate} · ` : ""}
+                  {summaryOf(item)}
+                </p>
                 <ResourceLinks item={item} />
               </div>
               {editing === item.id && draft ? (
@@ -461,7 +467,10 @@ export function AdminClient() {
                   <span className={styles.badge}>Built-in</span>
                   {labelOf(item)}
                 </h3>
-                <p className={styles.meta}>{summaryOf(item)}</p>
+                <p className={styles.meta}>
+                  {isTrend(item) && item.logDate ? `${item.logDate} · ` : ""}
+                  {summaryOf(item)}
+                </p>
                 <ResourceLinks item={item} />
               </div>
               {editing === item.id && draft ? (

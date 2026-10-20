@@ -82,6 +82,18 @@ a:hover {
   box-shadow: var(--elev-focus);
 }
 
+html[data-motion="respect-reduced"]::view-transition-old(sf-specimen),
+html[data-motion="respect-reduced"]::view-transition-new(sf-specimen) {
+  animation-duration: 180ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-motion="respect-reduced"]::view-transition-old(sf-specimen),
+  html[data-motion="respect-reduced"]::view-transition-new(sf-specimen) {
+    animation: none;
+  }
+}
+
 code {
   font-family: var(--font-mono);
   font-size: 0.85em;
