@@ -14,7 +14,7 @@ Canonical system: **`design.md`**. Product shell: [rpkim/signal-field](https://g
 
 1. **System rules:** `design.md` (repo `content/design.md` / zip `SIGNAL-FIELD-design.md`).
 2. **Kit CSS:** `tokens.css` then `theme.css` from Compose zip.
-3. **Service brief:** what / who / tone (KO or EN).
+3. **Service brief:** What / Who / Tone.
 4. **Do / Don’t:** §1 anti-patterns (no purple SaaS, no Syne/Figtree defaults, cards only when interactive).
 5. **Checklist:** implement against `design.md` §1–§4 (+ §2.4 Responsive).
 
@@ -24,7 +24,7 @@ Canonical system: **`design.md`**. Product shell: [rpkim/signal-field](https://g
 You must follow Signal Field design.md (attached / SIGNAL-FIELD-design.md in the kit zip).
 Use this kit: [attach zip or tokens.css + theme.css + DESIGN.md].
 Import order: tokens.css, then theme.css.
-Service: [무엇 / 누구 / 톤]
+Service: [What / Who / Tone]
 Do: quiet chrome, one accent, kit type, responsive at --bp-sm/md/lg.
 Don’t: purple gradients, card farms, novelty display fonts, desktop-only layout.
 Implement UI using design.md §1–§4 checklist — do not invent a parallel design system.

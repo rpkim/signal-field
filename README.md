@@ -32,13 +32,17 @@ Full playbook (KO section headers + EN): **[USAGE.md](./USAGE.md)** · also stor
 
 Canonical guidelines: **`content/design.md`** (rendered at `/doc`).
 
+### Agent skill
+
+Discoverable skill for agents applying this system: **[skills/signal-field-design/SKILL.md](./skills/signal-field-design/SKILL.md)** — two-layer handoff (`design.md` always; optional `tokens.css` + `theme.css`), quality bar, recommend→compose→zip flow, and ship checklist.
+
 ### Copy-paste agent prompt
 
 ```
 You must follow Signal Field design.md (attached / SIGNAL-FIELD-design.md in the kit zip).
 Use this kit: [attach zip or tokens.css + theme.css + DESIGN.md].
 Import order: tokens.css, then theme.css.
-Service: …
+Service: [What / Who / Tone]
 Do / Don’t: quiet chrome, one accent, kit type pairing, responsive --bp-sm/md/lg.
 Implement UI using design.md §1–§4 — do not invent a parallel system.
 ```
