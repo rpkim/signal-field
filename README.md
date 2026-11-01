@@ -32,6 +32,10 @@ Full playbook (KO section headers + EN): **[USAGE.md](./USAGE.md)** · also stor
 
 Canonical guidelines: **`content/design.md`** (rendered at `/doc`).
 
+### Agent skill
+
+Discoverable skill for agents applying this system: **[skills/signal-field-design/SKILL.md](./skills/signal-field-design/SKILL.md)** — two-layer handoff (`design.md` always; optional `tokens.css` + `theme.css`), quality bar, recommend→compose→zip flow, and ship checklist.
+
 ### Copy-paste agent prompt
 
 ```
