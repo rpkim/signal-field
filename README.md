@@ -42,7 +42,7 @@ Discoverable skill for agents applying this system: **[skills/signal-field-desig
 You must follow Signal Field design.md (attached / SIGNAL-FIELD-design.md in the kit zip).
 Use this kit: [attach zip or tokens.css + theme.css + DESIGN.md].
 Import order: tokens.css, then theme.css.
-Service: …
+Service: [What / Who / Tone]
 Do / Don’t: quiet chrome, one accent, kit type pairing, responsive --bp-sm/md/lg.
 Implement UI using design.md §1–§4 — do not invent a parallel system.
 ```

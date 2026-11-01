@@ -36,14 +36,14 @@ Never ship CSS alone without `design.md`. Never invent a parallel system.
 ```
 You must follow Signal Field design.md (attached).
 Optional theme kit attached: tokens.css + theme.css (and kit DESIGN.md if present).
-Service brief: [무엇 / 누구 / 톤]
+Service brief: [What / Who / Tone]
 Implement against design.md §1–§4 and §2.4 Responsive.
 Do not invent a second palette, novelty display fonts, or card farms.
 ```
 
 ## When the user describes a new service
 
-1. Score the brief (무엇 / 누구 / 톤) with recommend logic / `/recommend`.
+1. Score the brief (What / Who / Tone) with recommend logic / `/recommend`.
 2. Return **1 primary mix + 2 alternatives** with rationale (color, type, density, research lean).
 3. Compose or load preset → **Download kit (zip)** once (design.md + tokens + theme together).
 4. Hand zip + brief to the implementing agent.
